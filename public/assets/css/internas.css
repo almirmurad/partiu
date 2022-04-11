@@ -1,0 +1,428 @@
+.internal-slider{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    flex: 1;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: top center;
+}
+
+.internal-slider-noticia{
+    background-image: url(../img/museum-1261740_1920.jpg);
+}
+
+.internal-slider-eventos{
+    background-image: url(../img/natal-em-curitiba-8.jpg);
+}
+
+.internal-slider-about{
+    background-image: url(../img/mountain.jpg);
+    background-position: center;
+}
+
+.internal-slider-blog{
+    background-image: url(../img/2.jpg);
+    background-position: center;
+}
+
+.internal-slider-round-map{
+    background-image: url(../img/4.jpg);
+    background-position: center;
+}
+
+
+.internal-slider h1{
+    font-size: 4em;
+    font-weight: bolder;
+    color: #fff;
+    text-shadow: 0 0 20px rgba(0, 0, 0, 1);
+}
+
+
+.categories{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+ 
+    
+}
+.categories .container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.rollover-categories{
+    height: 110px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    overflow: hidden;
+    flex:1;
+}
+
+.internal-categories-area{
+    height: 110px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    transition: all ease 0.3s;
+}
+.internal-categorie-item{
+    max-width: 240px;
+    box-shadow:0 0 5px rgba(0, 0, 0, 0.5);
+    margin: 16px;
+    padding: 50px 130px;
+    background-position: center;
+    background-size: cover;
+}
+
+.internal-categories-controllers{
+   position: absolute;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    background:none;
+   }
+
+.internal-categories-controllers .left,
+.internal-categories-controllers .right{
+    position: relative;
+    z-index: 1502;
+    border-radius: 50px;
+    width: 50px;
+    height: 50px;
+    background-color: #736F36;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+    cursor: pointer;  
+    box-shadow: inset 5px 5px 15px -2px rgba(0,255,0, 0.4), 0px 5px 20px rgba(0, 0, 0, 0.5);
+}
+.internal-categories-controllers .left{
+    margin-left: 5%;
+}
+.internal-categories-controllers .right{
+    margin-right:5%;
+}
+.internal-categories-controllers .left:hover,
+.internal-categories-controllers .right:hover{
+    box-shadow: inset 0px 5px 20px rgba(0, 0, 0, 0.5);
+    background-color: #736F36;
+    cursor: pointer;  
+    color: #000;    
+}
+main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.internal-content{
+    display: flex;
+    flex: 1;
+    height: 100vh;
+    justify-content: center;
+    align-items: flex-start;
+    padding-right: 20px;
+}
+.internal-content .gridNoticias{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+    gap: 20px 20px;
+}
+.internal-content .noticia{
+    height: 350px;
+   
+    }
+aside{
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    justify-content: flex-start;
+    align-items: center; 
+}
+h4{
+    color:#736F36;
+    margin-bottom: 20px;
+}
+.planner{
+    width: 100%;
+text-align: center;
+}
+.planner-area{
+    width: inherit;
+    display: flex;
+    flex-direction: column;
+}
+.planner-item{
+    min-height: 90px;
+    background-color: rgb(242, 159, 5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.planner-link{
+    color: #736F36;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-decoration: none;
+}
+.publicity{
+    margin-top: 20px;
+    width: 100%;
+    text-align: center;
+}
+.plublicity-item{
+width: inherit;
+}
+.final{
+    display: flex;
+    flex-direction: column;
+    margin:20px 0;
+}
+
+.roteiro1,
+.roteiro2{
+    width: 590px;
+    height: 150px;
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.roteiro1 h3,
+.roteiro2 h3{
+    color:#fff;
+    font-size: 1.6em;
+    font-weight: bold;
+}
+
+.roteiro1 h3 span,
+.roteiro2 h3 span{
+    
+    font-size: 1.8em;
+    
+}
+
+
+.roteiro1{
+    background-image:linear-gradient(
+        to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2)),
+        url(../img/2.jpg);
+    background-position: bottom center;
+    background-size: cover;
+    margin-right: 10px;
+}
+.roteiro2{
+    background-image:linear-gradient(
+        to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2)),
+        url(../img/natal-em-curitiba-8.jpg);
+    background-position: bottom center;
+    background-size: cover;
+    margin-left: 10px;
+}
+.final .container .itemEventoL{
+    margin: 0 20px;
+}
+
+
+
+.internal-content{
+justify-content: flex-start;
+height: 100%;
+}
+.eventsH4{
+display: block;
+float: left;
+width: 100%;
+margin:10px 0;
+
+
+}
+.top-integral-notice,
+.top-round-map{
+    display: flex;
+    width: 100%;
+    height: 300px;
+    margin-bottom: 20px;
+}
+
+.cover,
+.cover-round-map{
+    display: flex;
+    flex: 1;
+}
+.data-notice,
+.data-round-map{
+    display: flex;
+    flex: 1;
+    padding: 20px;
+}
+.midlle-integral-notice, .midle-about{
+    display: flex;
+    flex-direction: column;
+}
+
+.foot-integral-notice, .foot-about, .foot-round-map{
+    display: flex;
+    width: 100%;
+    margin: 20px 0;
+}
+.img1,.img2{
+    display: flex;
+    flex:1;
+    height: 300px;
+    margin: 0;
+
+}
+.img1,
+.img2{
+    max-width: 375px;
+    box-sizing: border-box;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+    border: 3px solid #736F36;
+}
+.cover{
+    width: 420px;
+    max-height: 300px;
+    padding:  10px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+    border: 3px solid #736F36;
+}
+
+.legend {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 10px;
+    height: 100%;
+}
+.legend p{
+    display: block;
+    font-size: 1em;
+    font-weight: bold;
+    font-style: italic;
+    color: #736F36;
+}
+.top-about{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+}
+.cover-about{
+    max-width: 350px;
+
+}
+.galerie,
+.round-map{
+    width: 100%;
+}
+.grid-galerie{
+    
+    display: grid;
+    grid-template-columns: repeat(5, 170px);
+    gap: 10px;
+    justify-content: center;
+}
+.galerie-item{
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 170px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.galerie-link{
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+.galerie-link:hover{
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+
+
+.grid-round-map{
+display: grid;
+height: 100%;
+gap:10px;
+grid-template-areas: 
+
+"left-item right-top-item"
+"left-item right-bottom-item"
+"cont-item cont-item"
+"galerie-round-item galerie-round-item"
+;
+}
+.left-item{
+    grid-area: left-item;
+    min-width: 100%;
+    max-width: 100%;
+}
+.right-top-item{
+    grid-area: right-top-item;
+    min-width: 100%;
+    max-width: 100%;
+}
+.right-bottom-item{
+    grid-area: right-bottom-item;
+    min-width: 100%;
+    max-width: 100%;
+}
+.cont-item{
+    grid-area: cont-item;
+    
+}
+.galerie-round-item{
+    grid-area: galerie-round-item;
+    
+}
+.cont-left-item{
+    width: 100%;
+    height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-position: center center;
+    background-size: cover;
+}
+.cont-right-top-item{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-position: center center;
+    background-size: cover;
+}
+.cont-right-bottom-item{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-position: center center;
+    background-size: cover;
+}

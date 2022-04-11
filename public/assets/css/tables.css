@@ -1,0 +1,43 @@
+:root{
+    --cabecColor:#F29F05;
+    --menuHoverColor:#736F36;
+    --boxColor:#FFF;
+    --shadow-boxes: 0 0 10px rgba(0, 0, 0, 0.5);
+    --border-geral: 1px solid #F29F05;
+    --size-tile-1: 2.0em;
+    --size-tile-2: 1.8em;
+    --size-tile-3: 1.5em;
+    --size-tile-4: 1.2em;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style-type: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: normal;
+}
+.list-users{
+    width: 100%;
+    border:3px solid var(--menuHoverColor);
+}
+table{
+    border-collapse: collapse;
+}
+th{
+    background-color: var(--cabecColor);
+    color: var(--boxColor);
+    height: 30px;
+    padding: 5px;
+
+}
+td{
+    height: 30px;
+    padding: 5px;
+}
+tr:nth-child(even) {
+    background-color: var(--menuHoverColor);
+    color: var(--boxColor);
+}

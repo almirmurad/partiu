@@ -1,9 +1,9 @@
 <?php
 namespace src\controllers;
 
-use \core\Controller;
+use \core\ControllerSite;
 
-class ErrorController extends Controller {
+class ErrorController extends ControllerSite {
 
     public function index() {
         $this->render('404');

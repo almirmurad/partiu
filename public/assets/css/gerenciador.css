@@ -1,0 +1,331 @@
+:root{
+    --cabecColor:#F29F05;
+    --menuHoverColor:#736F36;
+    --boxColor:#FFF;
+    --shadow-boxes: 0 0 10px rgba(0, 0, 0, 0.5);
+    --border-geral: 2px solid #f4f4f4;
+    --size-tile-1: 2.0em;
+    --size-tile-2: 1.8em;
+    --size-tile-3: 1.5em;
+    --size-tile-4: 1.2em;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style-type: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: normal;
+}
+.container{
+    width: 100%;
+    display: flex;
+}
+.column{
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+header{
+    width:100%;
+    height: 80px;
+    border-bottom: 3px solid var(--menuHoverColor);
+    display: flex;
+    justify-content: center;
+    background-color:var(--cabecColor)
+}
+header .container{
+    
+    justify-content: space-between;
+    padding: 0 30px;
+}
+header .area-logo{
+    background-color:var(--border-geral);
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+header .area-help{
+    width: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+
+}
+.help,
+.notifications,
+.user
+{
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    background-color:var(--boxColor);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px 10px;
+    box-shadow: var(--shadow-boxes);
+    cursor: pointer;
+    overflow: hidden;
+}
+.notifications img{
+    max-width: 70%;
+}
+.user img{
+    max-width: 100%;
+}
+.help{
+    font-size: 1.5em;
+    font-weight: bold;
+}
+main{
+    width:100%;
+    display:flex;
+    justify-content: center;
+    height: calc(100vh - 150px);
+   
+}
+aside{
+    display: flex;
+    box-shadow: var(--shadow-boxes);
+    width: 300px;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 10px;
+    
+}
+aside h4{
+    font-size: 1.2em;
+    font-weight: 600;
+    color: var(--cabecColor);
+}
+nav{
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+}
+nav ul{
+    width: 100%;
+}
+nav ul li{
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--cabecColor);
+    margin: 0 5px;
+    height: 35px;
+    padding: 2px;
+}
+nav ul li:hover{
+    background-color:var(--menuHoverColor);
+    margin: 0 5px;
+    border-left: 3px solid var(--cabecColor);
+    
+}
+nav ul li a{
+    width: 100%;
+    height: 100%;
+    margin-left: 15px;
+    font-weight: 600;
+    line-height: 30px;
+    color:var(--menuHoverColor);
+}
+nav ul li a:hover{
+    color:var(--boxColor); 
+    margin-left: 12px;
+}
+section{
+   
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+section .container{
+    box-shadow: var(--shadow-boxes);
+    margin: 0 20px;
+    padding: 10px;
+
+}
+.bradcrumbs{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 20px;
+    padding: 2px 10px;
+}
+.bradcrumbs span i a,
+.bradcrumbs span i,
+.bradcrumbs .date{
+    font-weight:bold;
+    color: var(--menuHoverColor);
+}
+.bradcrumbs span i a{
+    text-decoration: underline;
+}
+.content{
+    width: 100%;
+    height: 100%;
+    margin-top: 10px;
+    padding: 10px;
+    display: flex;
+    overflow-y: scroll;
+}
+.content h2{
+    font-weight: 600;
+    font-size: 1.5em;
+    color: var(--menuHoverColor);
+}
+.dash-boxes{
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.dash-box{
+    border: 3px solid var(--menuHoverColor);
+    box-shadow: var(--shadow-boxes);
+    width: 250px;
+    max-width: 300px;
+    height: 250px;
+    max-height: 300px;
+    display: flex;
+    margin: 15px;
+}
+.box-title{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: var(--menuHoverColor);
+    align-items: center;
+    padding: 10px;
+    height: 50px;
+}
+.box-title h4{
+    font-weight: bold;
+    color: var(--boxColor);
+}
+.box-content{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.box-content ul {
+    display: flex; 
+    width: 100%;
+   
+}
+.box-content ul li{
+    height: 40px;
+}
+.box-content ul li a{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+.box-content ul li a span{
+    font-size: 1em;
+    font-weight:bold;
+    color: var(--cabecColor);
+}
+.box-content ul li a:hover span{
+    color: var(--menuHoverColor);
+}
+.box-content ul li a img{
+    max-width: 60%;
+    max-height: 60%; 
+}
+
+.box-footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding:10px;
+    border-top: 1px dashed var(--menuHoverColor);
+}
+
+.box-footer a{
+    font-size: 1em;
+    font-weight:bold;
+    color: var(--menuHoverColor);
+}
+.box-footer a:hover{
+    color: var(--cabecColor);
+}
+footer{
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.avatar-info{
+    width: 250px;
+    height: 250px;
+    box-shadow: var(--shadow-boxes);
+    z-index: 999;
+    position: absolute;
+    background-color: var(--boxColor);
+    top: 80px;
+    left: calc(100% - 250px);
+
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 20px;
+    
+}
+.avatar-img{
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    box-shadow: var(--shadow-boxes);
+    margin-bottom: 20px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.avatar-img img{
+    max-width: 100%;
+}
+.avatar-name{
+    margin-bottom: 10px;
+}
+.avatar-name h5,
+.avatar-email h5{
+    font-size: 1em;
+    color: var(--menuHoverColor);
+    font-weight: bold;
+}
+ .avatar-type{
+     padding: 5px 10px;
+     background-color: var(--cabecColor);
+     border-radius: 15px;
+     margin: 20px 0;
+     box-shadow: var(--shadow-boxes);
+     border: 2px solid var(--menuHoverColor);
+ }
+ .avatar-type-tag{
+     font-size: 0.8em;
+     font-weight: bold; 
+     color: var(--boxColor);
+ }
+
+ .avatar-logout a{
+    font-size: 0.8em;
+    color: var(--menuHoverColor);
+    font-weight: bold;
+ }
