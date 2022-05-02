@@ -12,6 +12,7 @@
 <body>
 
 <header>
+
         <!-- Logo e Search-->
         <?php $render('header',['page'=>$page]);?>
 
@@ -21,16 +22,10 @@
         </div>
         <?php $render('internalSlider',['page'=>$page]);?>
         
-        <?php $render('internalCategories',['page'=>$page]);?>
+        <?php $render('internalCategories',['categories'=>$categories]);?>
                 
 
 </header>
-                <?php
-               /* echo"<pre>";
-                print_r($data);
-                exit;*/
-                ?>
-
 <main>
     <div class="container ">
         <section class="internal-content column">
@@ -40,7 +35,7 @@
                 <div class="cover-round-map">
                     <img src="<?=$base?>/media/uploads/imgs/posts/<?=$post->cover?>" alt="">
                 </div>
-                <div class="post-round-map">
+                <div class="data-round-map">
                     <ul>
                         <li><h1><?=$post->title?></h1></li>
                         <li><?=$post->created_at?></li>
@@ -56,12 +51,11 @@
                 </div>
             </div>
             <div class="foot-round-map">
-                <div class="round-map">
-                    <div class="grid-round-map">
-                        <div class=" left-item " style="background-image:url(<?=$base?>/media/uploads/imgs/posts/<?=$post->img1?>);"><a href="" class="galerie-link">Galeria</a></div>
-                        <div class=" right-top-item" style="background-image:url(<?=$base?>/media/uploads/imgs/posts/<?=$post->img2?>);"><a href="" class="galerie-link">Galeria</a></div>
-                        <div class=" right-bottom-item" style="background-image:url(<?=$base?>/media/uploads/imgs/posts/<?=$post->img3?>);"><a href="" class="galerie-link">texto</a></div>
-                    </div>
+                <div class="round-map flex">
+                    <div class="internal-img" style="background-image:url(<?=$base?>/media/uploads/imgs/posts/<?=$post->img1?>);"><a href="" class="galerie-link">Galeria</a></div>
+                    <div class="internal-img" style="background-image:url(<?=$base?>/media/uploads/imgs/posts/<?=$post->img2?>);"><a href="" class="galerie-link">Galeria</a></div>
+                    <div class="internal-img" style="background-image:url(<?=$base?>/media/uploads/imgs/posts/<?=$post->img3?>);"><a href="" class="galerie-link">texto</a></div>
+                    <div class="internal-img" style="background-image:url(<?=$base?>/media/uploads/imgs/posts/<?=$post->img4?>);"><a href="" class="galerie-link">texto</a></div>  
                 </div>
             </div>
             <?php endforeach; ?>   
@@ -79,5 +73,6 @@
 
 
 </footer>
+<script src = "<?=$base;?>/assets/js/catSlider.js"></script>
 </body>
 </html>

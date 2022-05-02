@@ -3,6 +3,7 @@ namespace src\handlers;
 
 use src\models\Noticia;
 use src\models\Subcategorie;
+use src\models\Categorie;
 
 class NewsHandler {
 
@@ -52,9 +53,11 @@ class NewsHandler {
     public static function newsCat(){
        
         $subCats = [];
-        $cat = Noticia::select('categorie_id')->one();
+        $cat = Categorie::select('id')
+        ->where('name', 'Notícias')
+        ->one();
 
-        $subCatsList = Subcategorie::select()->where('id_cat_asc', $cat['categorie_id'])->execute();
+        $subCatsList = Subcategorie::select()->where('id_cat_asc', $cat['id'])->execute();
 
         foreach($subCatsList as $subcatItem){
 

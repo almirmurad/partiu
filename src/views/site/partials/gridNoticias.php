@@ -34,7 +34,7 @@ EOT;
         foreach($news as $lastedNews){
          
                         echo"<div class=\"noticia\">";
-                            echo"<div style=\"background-image:linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.1)), url(".$base."/assets/img/news/".$lastedNews['cover'].");\" class=\"notImg\"></div>";
+                            echo"<div style=\"background-image:linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.1)), url(".$base."/media/uploads/imgs/news/".$lastedNews['cover'].");\" class=\"notImg\"></div>";
 
                             echo"
                             <div class=\"notCont\">

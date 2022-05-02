@@ -238,8 +238,11 @@ width: inherit;
 
 
 .internal-content{
-justify-content: flex-start;
-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100%;
+
 }
 .eventsH4{
 display: block;
@@ -332,6 +335,15 @@ margin:10px 0;
 .round-map{
     width: 100%;
 }
+.flex{
+    display: flex;
+}
+.internal-img{
+    min-width: 210px;
+    height: 210px;
+    margin: 10px;
+    box-shadow: 5px 2px 10px rgba(0, 0, 0, 0.5);
+}
 .grid-galerie{
     
     display: grid;
@@ -368,7 +380,7 @@ margin:10px 0;
 
 .grid-round-map{
 display: grid;
-height: 100%;
+height: 380px;
 gap:10px;
 grid-template-areas: 
 
@@ -382,6 +394,7 @@ grid-template-areas:
     grid-area: left-item;
     min-width: 100%;
     max-width: 100%;
+
 }
 .right-top-item{
     grid-area: right-top-item;

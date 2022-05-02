@@ -22,25 +22,22 @@ if (empty($page) || $page != 'Blog'){
 EOT;
 
 }else{
-
     echo <<<EOT
-            <div class="categoria-blog">
-            
-            <ul class="categoria-blog-area">
-                <li class="categoria-blog-item"><a href="" class="categoria-blog-link">Categoria 1</a></li>
-                <li class="categoria-blog-item"><a href="" class="categoria-blog-link">Categoria 1</a></li>
-                <li class="categoria-blog-item"><a href="" class="categoria-blog-link">Categoria 1</a></li>
-                <li class="categoria-blog-item"><a href="" class="categoria-blog-link">Categoria 1</a></li>
-                <li class="categoria-blog-item"><a href="" class="categoria-blog-link">Categoria 1</a></li>
-                <li class="categoria-blog-item"><a href="" class="categoria-blog-link">Categoria 1</a></li>
-            </ul>            
-            </div>
-            <div class="publicity">
-                <h4>Anúncios</h4>
-                <div class="plublicity-item"><img src="assets/img/trip.png" alt=""></div>
-                <div class="plublicity-item"><img src="assets/img/trip.png" alt=""></div>
-                <div class="plublicity-item"><img src="assets/img/trip.png" alt=""></div>
-            </div>
+    <div class="categoria-blog">
+    <ul class="categoria-blog-area">
+EOT;         
+        foreach($categories as $categorie){
+            echo '<li class="categoria-blog-item"><a href="" class="categoria-blog-link">'.$categorie->name.'</a></li>';
+        }
+    echo <<<EOT
+    </ul>            
+    </div>
+    <div class="publicity">
+        <h4>Anúncios</h4>
+        <div class="plublicity-item"><img src="assets/img/trip.png" alt=""></div>
+        <div class="plublicity-item"><img src="assets/img/trip.png" alt=""></div>
+        <div class="plublicity-item"><img src="assets/img/trip.png" alt=""></div>
+    </div>
 EOT;
 }
 ?>

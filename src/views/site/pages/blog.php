@@ -23,8 +23,6 @@
         </div>
         <?php $render('internalSlider',['page'=>$page]);?>
         
-        <?php //include_once('assets/php/includes/internalCategories.php');?>
-        
 
 </header>
 <main>
@@ -182,7 +180,7 @@ EOT;
 
 </div>
     <aside>
-    <?php $render('aside',['page'=>$page]);?>
+    <?php $render('aside',['page'=>$page, 'categories'=>$categories]);?>
     </aside>    
     </div>
 </main>

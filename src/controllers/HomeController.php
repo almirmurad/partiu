@@ -35,7 +35,7 @@ class HomeController extends ControllerSite {
         //posts em destaque
         $this->postsDestaques = Post::select('posts.id, posts.cover,posts.title, posts.title, posts.description, posts.categorie_id, subcategories.id, subcategories.name, subcategories.id_cat_asc')
                                         ->join('subcategories', 'posts.categorie_id', '=', 'id_cat_asc')
-                                        ->where('posts.categorie_id', '31')
+                                        //->where('posts.categorie_id', '40')
                                         //->where('subcategories.id_cat_asc', '4')
                                         ->orderBy(new rnd('rand()'))
                                         ->limit(3)
@@ -226,7 +226,7 @@ class HomeController extends ControllerSite {
 
     public function blog() {
         $categoriaBlog =  PostSiteHandler::nameCategoriePosts();
-
+        $categories = SubCatsSiteHandler::catsBlog();
         $posts= PostSiteHandler::posts();
                
         $this->render('blog',[
@@ -234,15 +234,19 @@ class HomeController extends ControllerSite {
                 'posts'=> $this->posts,
                 'postsDestaques'=>$this->postsDestaques,
                 'nameCategorie'=>$categoriaBlog,
-                'posts' => $posts
+                'posts' => $posts,
+                'categories'=>$categories,
             ]);                
     }
 
     public function readBlog($args){
         $post = PostSiteHandler::readPost($args['id']);
+        $categories = SubCatsSiteHandler::catsBlog();
             $this->render('readBlog',[
                 'page'=>'Ler Postagem',
-                'data'=>$post
+                'data'=>$post,
+                'categories'=>$categories,
+                
             ]);
     }
 

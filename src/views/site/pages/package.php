@@ -33,9 +33,7 @@
     <section class="internal-content">
         
     <?php
-    //echo "<pre>";
-    //print_r($packages);
-    //exit;
+
     $render('pacotes',['packages'=> $pacotes]);?>
 
     </section>

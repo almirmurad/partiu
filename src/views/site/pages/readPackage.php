@@ -32,7 +32,7 @@
                     <div class="cover-round-map">
                         <img src="<?=$base?>/media/uploads/imgs/packages/<?=$package->cover?>" alt="">
                     </div>
-                    <div class="post-round-map">
+                    <div class="data-round-map">
                         <ul>
                             <li><h1><?=stripslashes($package->title);?></h1></li>
                             <li>Destino: <?=stripslashes($package->destination);?> - <?=$package->state?></li>
@@ -52,13 +52,12 @@
                     </div>
                 </div>
                 <div class="foot-round-map">
-                    <div class="round-map">
-                        <div class="grid-round-map">
-                            <div class=" left-item " style="background-image:url(<?=$base?>/media/uploads/imgs/packages/<?=$package->img1?>);"><a href="" class="galerie-link">Galeria</a></div>
-                            <div class=" right-top-item" style="background-image:url(<?=$base?>/media/uploads/imgs/packages/<?=$package->img2?>);"><a href="" class="galerie-link">Galeria</a></div>
-                            <div class=" right-bottom-item" style="background-image:url(<?=$base?>/media/uploads/imgs/packages/<?=$package->img3?>);"><a href="" class="galerie-link">texto</a></div>
-                        </div>
-                    </div>
+                    <div class="round-map flex">
+                    <div class="internal-img" style="background-image:url(<?=$base?>/media/uploads/imgs/packages/<?=$package->img1?>);"><a href="" class="galerie-link">Galeria</a></div>
+                    <div class="internal-img" style="background-image:url(<?=$base?>/media/uploads/imgs/packages/<?=$package->img2?>);"><a href="" class="galerie-link">Galeria</a></div>
+                    <div class="internal-img" style="background-image:url(<?=$base?>/media/uploads/imgs/packages/<?=$package->img3?>);"><a href="" class="galerie-link">texto</a></div>
+                    <div class="internal-img" style="background-image:url(<?=$base?>/media/uploads/imgs/packages/<?=$package->img4?>);"><a href="" class="galerie-link">texto</a></div>  
+                </div>
                 </div>
             <?php endforeach; ?>   
         </section>

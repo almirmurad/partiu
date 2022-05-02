@@ -189,7 +189,7 @@ class SubCatsSiteHandler {
     $categoriesList = Subcategorie::select()
     ->where('id_cat_asc','1')
     ->orderBy(new rnd('rand()'))
-    ->limit(8)
+    //->limit(8)
     ->execute();
 
     foreach($categoriesList as $categorieItem){

@@ -38,6 +38,8 @@ class NewsController extends ControllerGerenciador {
         $text   = filter_input(INPUT_POST, 'text');
         $source   = filter_input(INPUT_POST, 'source');
         $categorie_id    = filter_input(INPUT_POST, 'subCatAsc');
+        $legend_img1 = filter_input(INPUT_POST, 'legend_img1');
+        $legend_img2 = filter_input(INPUT_POST, 'legend_img2');
 
         if($title && $description && $text && $legend_img1 && $legend_img2 && $source && $categorie_id){
              //pega as imagens e cria um array com todas

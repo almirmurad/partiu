@@ -12,7 +12,7 @@
 <body>
 <header>
     <!-- Logo e Search-->
-    <?php include_once('assets/php/includes/header.php');?>
+    <?php $render('header');?>
     <div class="nav">
         <!-- Menu navegação--> 
         <?php $render('menuNavigation');?>
@@ -46,12 +46,11 @@
                     </div>
                 </div>
                 <div class="foot-round-map">
-                    <div class="round-map">
-                        <div class="grid-round-map">
-                            <div class=" left-item " style="background-image:url(<?=$base?>/media/uploads/imgs/road-map/<?=$roadMap['img1']?>);"><a href="" class="galerie-link">Galeria</a></div>
-                            <div class=" right-top-item" style="background-image:url(<?=$base?>/media/uploads/imgs/road-map/<?=$roadMap['img2']?>);"><a href="" class="galerie-link">Galeria</a></div>
-                            <div class=" right-bottom-item" style="background-image:url(<?=$base?>/media/uploads/imgs/road-map/<?=$roadMap['img3']?>);"><a href="" class="galerie-link">texto</a></div>      
-                        </div>
+                    <div class="round-map flex">
+                        <div class="internal-img" style="background-image:url(<?=$base?>/media/uploads/imgs/road-map/<?=$roadMap['img1']?>);"><a href="" class="galerie-link">Galeria</a></div>
+                        <div class="internal-img" style="background-image:url(<?=$base?>/media/uploads/imgs/road-map/<?=$roadMap['img2']?>);"><a href="" class="galerie-link">Galeria</a></div>
+                        <div class="internal-img" style="background-image:url(<?=$base?>/media/uploads/imgs/road-map/<?=$roadMap['img3']?>);"><a href="" class="galerie-link">texto</a></div>
+                        <div class="internal-img" style="background-image:url(<?=$base?>/media/uploads/imgs/road-map/<?=$roadMap['img4']?>);"><a href="" class="galerie-link">texto</a></div>  
                     </div>
                 </div>
             <?php endforeach; ?>   

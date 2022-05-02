@@ -53,11 +53,15 @@
         </div>
     </section>
     <section class="noticias">
-        <div class="container">
-        <!-- Call to Action -->
-        
-        <?php $render('gridNoticias',['news'=>$news]);?>
+        <div class="container column">
+
+            <?php $render('gridNoticias',['news'=>$news]);?>
+
+        <div class="anuncio-news">
+            <h4> Anuncie aqui (41) 98533-2397</h4>
         </div>
+        </div>
+        
     </section>
     <div class="bannerDivisor1">
         <div class="container column">

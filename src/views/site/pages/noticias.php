@@ -27,17 +27,19 @@
 
 </header>
 <main>
-    <div class="container">
-    <section class="internal-content">
-     <div class="noticias">   
-        <?php $render('gridNoticias',['news'=> $news]);?>
-    </div>
-   
-    <aside>
-    <?php $render('aside',['page'=>$page]);?>
-
-    </aside>    
-    </div>
+    
+    
+        <div class="container">
+            <section class="internal-content">
+                <div class="noticias">   
+                    <?php $render('gridNoticias',['news'=> $news]);?>
+                </div>
+            </section>
+            <aside>
+                <?php $render('aside',['page'=>$page]);?>
+            </aside>    
+        </div>
+    
 </main>
 <section class="final">
     <?php $render('internalContentFinal');?>

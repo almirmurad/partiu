@@ -396,16 +396,17 @@ section{
 .noticias{
     margin-top: 20px;
 }
+
 .gridNoticias{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     width: 100%;
-    gap: 20px 20px;
+    gap: 10px 10px;
 
 }
 .noticia{
-height: 410px;
-width: 300px;;
+min-height: 400px;
+width: 290px;
 max-width: 300px;
 display: flex;
 flex-direction: column;
@@ -507,8 +508,8 @@ overflow: hidden;
 .eventoRight{
     display: flex;
     flex-direction: column;
-   
-   
+   align-items: flex-start;
+   justify-content: space-between;
 }
 .itemEventoR{
     display: flex;
@@ -519,10 +520,10 @@ overflow: hidden;
         url(../img/2.jpg);
     background-position:left;
     background-size: cover;
-    margin: 20px 0;
-    height:165px;
-    
-   
+    height: 200px;
+    max-width: 300px;
+    max-height:200px;
+       
     padding: 10px;
 
 }
@@ -591,9 +592,9 @@ background-color: rgba(242, 159, 5, 1) ;
     font-size: 1.3em;
 }
 .anunciosIndex{
-    display: flex;
-    justify-content: space-around;
-    margin: 20px 0;
+   display: flex;
+   justify-content: space-around;
+   margin: 20px 0;
    
 }
 .anuncios{
@@ -604,6 +605,18 @@ background-color: rgba(242, 159, 5, 1) ;
     background: url(../img/anuncio.png);
     background-position: center;
     background-size: cover;
+}
+.anuncio-news{
+    min-width: 300px;
+    height: 150px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px 0;
+}
+.anuncio-news h4{
+ font-weight: bold;
 }
 footer{
     height: 70vh;
