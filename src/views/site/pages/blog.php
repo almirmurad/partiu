@@ -78,7 +78,7 @@
                             <div class="cont-item-blog-transparent"></div>
                             <div class="legend">
                                 <h3 class="text-legend">
-                                    <a href="$base/blog/$postItem->id/readBlog" class="link">$postItem->title</a>
+                                    <a href="$base/blog/$postItem->id/readBlog" class="link">$postItem->title </a>
                                 </h3>
                             </div>
                         </div>
