@@ -35,9 +35,10 @@ function updateMargin() {
 setInterval(goNext, 5000);
 
 
+
+
 function showHideAvatarInfo() {
     let avatarBox = document.querySelector('.avatar-info');
-
 
     if (avatarBox.style.display == 'none') {
 
@@ -51,3 +52,18 @@ function showHideAvatarInfo() {
 
 }
 
+
+function showHideCatBlog() {
+    let submenu = document.querySelector('.area-submenu-categoria');
+
+    if (submenu.style.display == 'none') {
+
+        submenu.style.display = 'flex';
+
+    } else {
+
+        submenu.style.display = 'none';
+
+    }
+
+}

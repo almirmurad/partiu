@@ -5,6 +5,8 @@ use src\models\Post;
 use ClanCats\Hydrahon\Query\Expression as Rnd;
 use src\models\Categorie;
 use src\models\Subcategorie;
+use ClanCats\Hydrahon\Query\Sql\Func as F;
+
 
 //use ClanCats\Hydrahon\Query\Expression as Rnd;
 
@@ -166,6 +168,22 @@ class PostSiteHandler {
         
        return $post;
 
+
+    }
+
+    public static function totalPostCategoria($cats){
+
+            
+        foreach($cats as $cat){
+
+            $total = Post::select(new F('count', 'id'))
+            ->where('categorie_id',$cat->id)
+            ->get();
+            
+        }
+       
+        $n = $total[0]["count(`id`)"];
+        return $n;
 
     }
 

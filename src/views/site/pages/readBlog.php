@@ -29,8 +29,9 @@
 <main>
     <div class="container ">
         <section class="internal-content column">
-            <h4>Você está em: <?=$page?></h4>
+            
             <?php foreach($data as $post): ?>
+                <h4>Você está em: <a href="<?=$base?>/blog">Blog</a>/<?=$page?>/<?=$post->title?></h4>
             <div class="top-round-map">
                 <div class="cover-round-map">
                     <img src="<?=$base?>/media/uploads/imgs/posts/<?=$post->cover?>" alt="">

@@ -1,7 +1,5 @@
 <?php 
-
 if (empty($page) || $page != 'Blog'){
-
     echo <<<EOT
         <div class="planner">
         <h4>Planejamento</h4>
@@ -20,17 +18,34 @@ if (empty($page) || $page != 'Blog'){
             <div class="plublicity-item"><img src="assets/img/trip.png" alt=""></div>
         </div>
 EOT;
-
 }else{
+    echo'<div class="categoria-blog">
+    <ul class="categoria-blog-area">';
+foreach($categories as $categoria){
     echo <<<EOT
-    <div class="categoria-blog">
-    <ul class="categoria-blog-area">
+            <li class="categoria-blog-item">
+                    <a href="#" class="categoria-blog-link">$categoria->name</a>
+                    <span class="count-blog">$total</span>
+            </li>
+                <div class="area-submenu-categoria" style="display:flex;">
+                    <ul class="submenu-categoria">
+EOT;
+                    foreach($posts as $post){
+                        if($post->categorie->name == $categoria->name ){                      
+                           echo<<<EOT
+                           <li class="submenu-categoria-item">
+                           <a href="$base/blog/$post->id/readBlog" class="submenu-blog-link">$post->title</a></li>
+EOT;
+                        }
+                    }
+                echo <<<EOT
+                    </ul>
+                </div>  
+                         
 EOT;         
-        foreach($categories as $categorie){
-            echo '<li class="categoria-blog-item"><a href="" class="categoria-blog-link">'.$categorie->name.'</a></li>';
-        }
+}
     echo <<<EOT
-    </ul>            
+    </ul>        
     </div>
     <div class="publicity">
         <h4>Anúncios</h4>

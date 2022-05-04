@@ -228,7 +228,7 @@ class HomeController extends ControllerSite {
         $categoriaBlog =  PostSiteHandler::nameCategoriePosts();
         $categories = SubCatsSiteHandler::catsBlog();
         $posts= PostSiteHandler::posts();
-               
+        $totalPostCat = PostSiteHandler::totalPostCategoria($categoriaBlog);
         $this->render('blog',[
                 'page' => 'Blog',
                 'posts'=> $this->posts,
@@ -236,6 +236,7 @@ class HomeController extends ControllerSite {
                 'nameCategorie'=>$categoriaBlog,
                 'posts' => $posts,
                 'categories'=>$categories,
+                'total'=>$totalPostCat
             ]);                
     }
 
