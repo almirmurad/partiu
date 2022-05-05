@@ -1,10 +1,6 @@
-
     <div class="pacotes">
         <?php
-        
         if(isset($packages['packages'])){
-
-
             foreach ($packages['packages'] as $package){
                echo<<<EOT
                 <a href="package/$package->id/readPackage" class="linkPacotes">
@@ -44,7 +40,7 @@ EOT;
                         <h3>$package->destination - $package->state</h3>
                         <h3>$package->country</h3>
                         <p>
-                        $package->description
+                            $package->description
                         </p>
                     </div>
                     <div class="pctPreco">
@@ -54,60 +50,7 @@ EOT;
                 </a>       
 EOT;
                 }
-            }   
-                
-
-
-        
+            }              
         ?>
-
-        
-
-
-        <!--<div class="pacotesItem">
-            <div class="pctImg">
-
-            </div>
-            <div class="pctCont">
-                <h2>Curitiba - PR</h2>
-                <h3>BRASIL</h3>
-                <p>2 diárias <br>
-                    Café da manhã Incluso
-                </p>
-            </div>
-            <div class="pctPreco">
-                <h2>R$ 250,00</h2>
-            </div>
-        </div>
-        <div class="pacotesItem">
-            <div class="pctImg">
-
-            </div>
-            <div class="pctCont">
-                <h2>Curitiba - PR</h2>
-                <h3>BRASIL</h3>
-                <p>2 diárias <br>
-                    Café da manhã Incluso
-                </p>
-            </div>
-            <div class="pctPreco">
-                <h2>R$ 250,00</h2>
-            </div>
-        </div>
-        <div class="pacotesItem">
-            <div class="pctImg">
-
-            </div>
-            <div class="pctCont">
-                <h2>Curitiba - PR</h2>
-                <h3>BRASIL</h3>
-                <p>2 diárias <br>
-                    Café da manhã Incluso
-                </p>
-            </div>
-            <div class="pctPreco">
-                <h2>R$ 250,00</h2>
-            </div>
-        </div>-->
     </div>
     

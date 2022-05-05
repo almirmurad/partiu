@@ -1,19 +1,43 @@
+/* estilos de Pacotes */
+
+:root{
+    --orange:#F29F05;
+    --green:#736F36;
+    --white:#FFF;
+    --shadow-boxes: 0 0 10px rgba(0, 0, 0, 0.5);
+    --shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    --border-orange: 3px solid #F29F05;
+    --size-tile-1: 2.0em;
+    --size-tile-2: 1.8em;
+    --size-tile-3: 1.5em;
+    --size-tile-4: 1.2em;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style-type: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: normal;
+}
+
 .pacotes{
     height: 350px;
-    width:950px;
+    max-width:100%;
     display: flex;
     justify-content: flex-start;
-    align-items: flex-start;
-    margin-top: 20px;
+    align-items: center;
     flex-wrap: wrap;
 }
 
 .pacotesItem{
-    min-width: 277px;
-    max-width: 277px;
+    width: 260px;
+    max-width: 260px;
     height: 320px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    margin:20px 10px;
+    margin: 20px 15px;
     border-radius: 12px;
     transition: transform .2s; /* Animation */
     transition-timing-function: ease;
@@ -30,18 +54,39 @@
 }
 .pctCont{
     height: 140px;
-    color:#736F36;
+    color:var(--green);
     padding: 0 10px;
     margin-top:10px;
     border-bottom:1px solid rgba(0, 0, 0, 0.3);
+}
+.pctCont h2{
+    font-weight: 600;
+    font-size: var(--size-tile-3);
+}
+.pctCont h3{
+    font-weight: 500;
+    font-size: var(--size-tile-4);
 }
 .pctPreco{
     display: flex;
     justify-content: center;
     height: 80px;
     align-items: center;
-    color: #736F36;
-    background-color: rgb(242, 159, 5);
+    color: var(--green);
+    background-color:var(--orange);
     border-radius: 0 0 12px 12px;
-    font-weight: bold;
 }
+
+.pctPreco h2{
+    font-weight: 600;
+    font-size: var(--size-tile-1);
+} 
+
+
+
+
+
+
+
+
+

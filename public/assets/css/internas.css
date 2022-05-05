@@ -1,3 +1,27 @@
+/* estilos de Internas */
+
+:root{
+    --orange:#F29F05;
+    --green:#736F36;
+    --white:#FFF;
+    --shadow-boxes: 0 0 10px rgba(0, 0, 0, 0.5);
+    --shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    --border-orange: 3px solid #F29F05;
+    --size-tile-1: 2.0em;
+    --size-tile-2: 1.8em;
+    --size-tile-3: 1.5em;
+    --size-tile-4: 1.2em;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style-type: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: normal;
+}
 .internal-slider{
     display: flex;
     justify-content: center;
@@ -145,6 +169,7 @@ aside{
     display: flex;
     flex-direction: column;
     width: 300px;
+    max-width: 300px;
     justify-content: flex-start;
     align-items: center; 
 }
