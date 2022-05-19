@@ -302,7 +302,7 @@ class HomeController extends ControllerSite {
         $eventos=EventsSiteHandler::events($page);
         $eventsFoot = EventsSiteHandler::eventsFoot();
         $this->render('eventos',[
-                'page' => 'eventos',
+                'page' => 'Eventos',
                 'events'=> $eventos,
                 'categories'=>$categories,
                 'eventsFoot'=>$eventsFoot

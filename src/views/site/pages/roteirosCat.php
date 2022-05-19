@@ -77,5 +77,6 @@
 <footer>
     <?php $render('foot');?>
 </footer>
+<script src="<?=$base;?>/assets/js/requests.js"></script>
 </body>
 </html>

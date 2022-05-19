@@ -88,7 +88,8 @@
         <?php $render('foot');?>
     </footer>
 
-    <script src="assets/js/script.js"></script>
+    <script src="<?=$base;?>/assets/js/script.js"></script>
+    <script src="<?=$base;?>/assets/js/requests.js"></script>
 </body>
 
 </html>

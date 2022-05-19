@@ -14,24 +14,20 @@ body{
 header{
     display: flex;
     flex-direction: column;
-    height: 100vh;
-     
-    
+    height: 100vh;    
 }
 .container{
-    width: 1200px;
+    max-width: 1200px;
     display: flex;   
 }
 .column{
     flex-direction: column;
 }
 .header{
-
     color: #736F36;
     display: flex;
     justify-content: center;
-    align-items: center;
-    
+    align-items: center;   
 }
 .header .container{
     display: flex;
@@ -578,8 +574,8 @@ background-color: rgba(242, 159, 5, 1) ;
     background-size: cover;
 }
 footer{
-    height: 70vh;
-    background-color: #8C6C61;
+    height: auto;
+    background-color: #736F36;
     display: flex;
 }
 @media screen and (min-width: 0px) and (max-width: 480px) {

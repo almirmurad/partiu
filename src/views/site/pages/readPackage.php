@@ -62,5 +62,6 @@
     <?php $render('foot');?>
 </footer>
 <script src = "<?=$base;?>/assets/js/catSlider.js"></script>
+<script src="<?=$base;?>/assets/js/requests.js"></script>
 </body>
 </html>

@@ -36,7 +36,6 @@ setInterval(goNext, 5000);
 
 
 
-
 function showHideAvatarInfo() {
     let avatarBox = document.querySelector('.avatar-info');
 
