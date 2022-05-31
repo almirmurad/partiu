@@ -45,9 +45,11 @@ class PackageController extends ControllerGerenciador {
         $dataRetorno = filter_input(INPUT_POST, 'return_in');
         $expiraEm = filter_input(INPUT_POST, 'expires_at');
         $preco = str_replace(",",".",str_replace(".","",filter_input(INPUT_POST, 'price')));
+        $installments = filter_input(INPUT_POST, 'installments');
+        $fee = str_replace(",",".",str_replace(".","",filter_input(INPUT_POST, 'fee')));
         $parceiro = filter_input(INPUT_POST, 'partner_id', FILTER_SANITIZE_ADD_SLASHES);
         
-        if($title && $description && $text && $user_id && $destino && $estado && $pais && $saidaDe && $dataSaida && $dataRetorno && $expiraEm && $preco && $parceiro){
+        if($title && $description && $text && $user_id && $destino && $estado && $pais && $saidaDe && $dataSaida && $dataRetorno && $expiraEm && $preco && $parceiro && $installments && $fee){
            //pega as imagens e cria um array com todas
             $fotosNames = [];
             foreach($_FILES as $img){
@@ -67,7 +69,7 @@ class PackageController extends ControllerGerenciador {
             $imgNames = FuncoesUteis::editImg($fotosNames, 420, 300, $caminho);
             if(isset($imgNames) && !empty($imgNames)){
                 //se gerou insere no banco de dados e retorna ao dashboard
-                PackageHandler::addPackageAction($title, $description, $text, $imgNames, $user_id, $destino, $estado, $pais, $saidaDe, $dataSaida, $dataRetorno, $expiraEm, $preco, $parceiro);
+                PackageHandler::addPackageAction($title, $description, $text, $imgNames, $user_id, $destino, $estado, $pais, $saidaDe, $dataSaida, $dataRetorno, $expiraEm, $preco, $parceiro, $installments, $fee);
                 $this->redirect('/gerenciador');      
             }
             else{

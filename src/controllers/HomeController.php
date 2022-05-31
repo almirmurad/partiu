@@ -89,6 +89,14 @@ class HomeController extends ControllerSite {
             $newPackage->state = $packageItem['state'];
             $newPackage->country = $packageItem['country'];
             $newPackage->price = 'R$ '.number_format($packageItem['price'],2,',','.');
+            $newPackage->installments = $packageItem['installments'];
+            $newPackage->fee = number_format($packageItem['fee'],2,',','.');
+            // calculo de juros por parcela
+            $i = $packageItem['fee'] / 100;
+            $taxa = 1 + $i;
+            $total = $packageItem['price'] * $taxa;
+            //parcela mensal com juros
+            $newPackage->vlrInstallments = number_format($total / $packageItem['installments'],2,',','.');  
                        
 
             //4 usuarios que postaram
@@ -120,6 +128,9 @@ class HomeController extends ControllerSite {
             $newPackage->partner->img3=$newPartner['img3'];
             $newPackage->partner->img4=$newPartner['img4'];
             $newPackage->partner->url=$newPartner['url'];
+            $newPackage->partner->whats=$newPartner['whats'];
+            $newPackage->partner->face=$newPartner['face'];
+            $newPackage->partner->insta=$newPartner['insta'];
             $newPackage->partner->active=$newPartner['active'];
 
             $this->pacotes[] = $newPackage;

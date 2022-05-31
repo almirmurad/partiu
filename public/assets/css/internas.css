@@ -420,8 +420,7 @@ margin:10px 0;
 }
 .round-map{
     display: flex;
-    flex-direction: column;
-    height: 1000px;
+    height: 250px;
 
 }
 .flex{

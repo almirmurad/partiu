@@ -83,6 +83,14 @@
                                     <label for="price">Preço:</label>
                                     <input type="text" id="price" name="price" class="input" pattern="[0-9.,]{1,}" placeholder="Digite preço do pacote de viagem">
                                 </div>
+                                <div class="campo">
+                                    <label for="installments">Parcelas:</label>
+                                    <input type="text" id="installments" name="installments" class="input" placeholder="Digite a quantidade de parcelas">
+                                </div>
+                                <div class="campo">
+                                    <label for="fee">Juros:</label>
+                                    <input type="text" id="fee" name="fee" class="input" placeholder="Digite o valor do juros sobre as parcelas">
+                                </div>
                                 <!--<div class="campo">
                                 <label for="subCatAsc">Categoria pertencente:</label>
                                     <select name="subCatAsc" id="subCatAsc">

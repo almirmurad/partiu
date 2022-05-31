@@ -8,7 +8,7 @@ use src\functions\FuncoesUteis;
 
 class PackageHandler {
 
-    public static function addPackageAction($title, $description, $text, $fotoNames, $user_id, $destino, $estado, $pais, $saidaDe, $dataSaida, $dataRetorno, $expiraEm, $preco, $parceiro ){
+    public static function addPackageAction($title, $description, $text, $fotoNames, $user_id, $destino, $estado, $pais, $saidaDe, $dataSaida, $dataRetorno, $expiraEm, $preco, $parceiro, $installments, $fee ){
         
         list($cover, $img1, $img2, $img3, $img4) = $fotoNames;
        
@@ -30,7 +30,9 @@ class PackageHandler {
             'return_in'     => $dataRetorno,
             'expires_at'    => $expiraEm,
             'price'         => $preco,
+            'installments'  => $installments,
             'partner_id'    => $parceiro,
+            'fee'           => $fee,
             'created_at'    => date('Y-m-d H:i:s'),
            
         ])->execute();

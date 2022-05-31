@@ -44,11 +44,15 @@ class PackageSiteHandler {
             $newPackage->destination = $packageItem['destination'];
             $newPackage->state = $packageItem['state'];
             $newPackage->country = $packageItem['country'];
-            $newPackage->price = number_format($packageItem['price'],2,',','.');
-
-            
-            
-            
+            $newPackage->price = 'R$ '.number_format($packageItem['price'],2,',','.');
+            $newPackage->installments = $packageItem['installments'];
+            $newPackage->fee = number_format($packageItem['fee'],2,',','.');
+            // calculo de juros por parcela
+            $i = $packageItem['fee'] / 100;
+            $taxa = 1 + $i;
+            $total = $packageItem['price'] * $taxa;
+            //parcela mensal com juros
+            $newPackage->vlrInstallments = number_format($total / $packageItem['installments'],2,',','.');                    
 
             //4 usuarios que postaram
             /*$newUser = User::select()->where('id',$packageItem['user_id'])->one();
@@ -79,6 +83,9 @@ class PackageSiteHandler {
                 $newPackage->partner->img3=$newPartner['img3'];
                 $newPackage->partner->img4=$newPartner['img4'];
                 $newPackage->partner->url=$newPartner['url'];
+                $newPackage->partner->whats=$newPartner['whats'];
+                $newPackage->partner->face=$newPartner['face'];
+                $newPackage->partner->insta=$newPartner['insta'];
                 $newPackage->partner->active=$newPartner['active'];
 
 
@@ -123,6 +130,14 @@ class PackageSiteHandler {
             $newPackage->return_in =  date('d/m/Y \à\\s H:i', strtotime($packageList['return_in'])) ;
             $newPackage->expires_at = date('d/m/Y \à\\s H:i', strtotime($packageList['expires_at']));
             $newPackage->price = number_format($packageList['price'],2,',','.');
+            $newPackage->installments = $packageList['installments'];
+            $newPackage->fee = number_format($packageList['fee'],2,',','.');
+            // calculo de juros por parcela
+            $i = $packageList['fee'] / 100;
+            $taxa = 1 + $i;
+            $total = $packageList['price'] * $taxa;
+            //parcela mensal com juros
+            $newPackage->vlrInstallments = number_format($total / $packageList['installments'],2,',','.');    
 
             //4 usuarios que postaram
             $newUser = User::select()->where('id',$packageList['user_id'])->one();

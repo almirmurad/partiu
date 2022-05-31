@@ -4,6 +4,7 @@
     --orange:#F29F05;
     --green:#736F36;
     --white:#FFF;
+    --blue:#ACD7F2;
     --shadow-boxes: 0 0 10px rgba(0, 0, 0, 0.5);
     --shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     --border-orange: 3px solid #F29F05;
@@ -72,11 +73,10 @@
     justify-content: space-between;
     height: 80px;
     align-items: center;
-    
     background-color:var(--orange);
     border-radius: 0 0 12px 12px;
 }
-.link{ 
+.linkWhatsIcon{ 
     flex: 1;
     display: flex;
     justify-content: flex-start;
@@ -86,15 +86,59 @@
     flex:2;
     display: flex;
     justify-content: flex-end;
-    padding-right: 10px;
+    flex-direction: column;
+    padding: 5px 10px 5px 0;
+    font-size: 0.8em;
 }
-
-.pctPreco h2{
+.aVista {
     display: flex;
-    font-weight: 600;
-    color: var(--white);
-    font-size: var(--size-tile-2);
-} 
+    flex-direction: column;    
+    align-items: center;
+    flex: 1;
+    padding: 0 5px;
+}
+.aVista strong{
+    font-size: 0.8em;
+    font-weight: bold;
+    background-color: var(--blue);
+    color:var(--green);
+    width: 100%;
+    padding: 5px 0;
+    text-align: center;
+}
+.aVista h4{
+    color:var(--white);
+    font-size: var(--size-tile-3);
+    font-weight: bold;
+    margin: 0;
+    background-color: var(--green);
+    text-align: center;
+    width: 100%;
+}
+.parcelado{
+    display: flex;
+    flex-direction: column;    
+    align-items: center;
+    flex: 1;
+    padding: 0 5px;
+}
+.parcelado strong{
+    font-size: 0.8em;
+    font-weight: bold;
+    color: var(--green);
+    background-color: white;
+    width: 100%;
+    padding: 5px 0;
+    text-align: center;
+}
+.pctPreco h2{
+    font-size: var(--size-tile-3);
+    font-weight: bold;
+    color: #fff;
+    background-color: var(--green);
+    width: 100%;
+    text-align: center;
+}
 
 a.wats-link-package{
     display: flex;
