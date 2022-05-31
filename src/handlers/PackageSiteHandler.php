@@ -5,64 +5,17 @@ use src\models\Post;
 use ClanCats\Hydrahon\Query\Expression as Rnd;
 use src\models\Categorie;
 use src\models\Package;
+use src\models\Partner;
 use src\models\Subcategorie;
+use src\functions\FuncoesUteis;
 
 //use ClanCats\Hydrahon\Query\Expression as Rnd;
 
 class PackageSiteHandler {
 
-    /*public static function nameCategoriePosts(){
-
-        $catPosts = Subcategorie::select('id, name, id_cat_asc, created_at')
-            ->where('id_cat_asc','4')
-            ->where('name','!=', 'Destaques')
-            ->orderBy('created_at','DESC')
-        ->get();
-
-        $categories = [];
-        foreach($catPosts as $cat){
-            $categorie = new Subcategorie();
-            $categorie->id = $cat['id'];
-            $categorie->name = $cat['name'];
-            $categorie->id_cat_asc = $cat['id_cat_asc'];
-            $categorie->created_at = $cat['created_at'];
-
-            $categories[] = $categorie;
-
-        }        
-
-        return $categories;
-
-    }*/
-
-
     public static function pacotes($page){
         $perPage = 6;
-        //0 as categorias dos posts
-        /*$catPosts = Subcategorie::select()
-            ->where('id_cat_asc','4')
-            ->where('name','!=', 'Destaques')
-            ->orderBy('created_at','DESC')
-        ->get();
-
-        $categories = [];
-        foreach($catPosts as $cat){
-            //$categorie = new Subcategorie();
-            $categories[] = $cat['id'];
-            $categories[] = $cat['name'];
-            $categories[] = $cat['description'];
-            $categories[] = $cat['img'];
-            $categories[] = $cat['id_user'];
-            $categories[] = $cat['id_cat_asc'];
-            $categories[] = $cat['created_at'];
-            
-        } */      
-        //echo"<pre>";
-        //echo $categories;
-       // print_r($categories);
-        //echo $allcats[1];
-       // exit;
-        //3 Posts
+        
         $packagesList = Package::select()
             //->where('categorie_id','in',$categories)
             ->orderBy('created_at', 'DESC')
@@ -103,56 +56,50 @@ class PackageSiteHandler {
             $newPackage->user->id=$newUser['id'];
             $newPackage->user->name=$newUser['name'];
             $newPackage->user->avatar=$newUser['avatar'];
-            $newPackage->user->type_user=$newUser['type_user'];
+            $newPackage->user->type_user=$newUser['type_user'];*/
 
-            //categorias
-            $newCat = Subcategorie::select()->where('id',$packageItem['categorie_id'])->one();
-            $newPackage->categorie = new Subcategorie();
-            $newPackage->categorie->id=$newCat['id'];
-            $newPackage->categorie->name=$newCat['name'];
-            $newPackage->categorie->description=$newCat['description'];
-            $newPackage->categorie->img=$newCat['img'];
-            $newPackage->categorie->id_cat_asc=$newCat['id_cat_asc'];*/
+            //5 Parceiros
+                $newPartner = Partner::select()->where('id',$packageItem['partner_id'])->one();
+                $newPackage->partner = new Partner();
+                $newPackage->partner->id=$newPartner['id'];
+                $newPackage->partner->name=$newPartner['name'];
+                $newPackage->partner->email=$newPartner['email'];
+                $newPackage->partner->phone=$newPartner['phone'];
+                $newPackage->partner->adress=$newPartner['adress'];
+                $newPackage->partner->number=$newPartner['number'];
+                $newPackage->partner->district=$newPartner['district'];
+                $newPackage->partner->city=$newPartner['city'];
+                $newPackage->partner->complement=$newPartner['complement'];
+                $newPackage->partner->state=$newPartner['state'];
+                $newPackage->partner->country=$newPartner['country'];
+                $newPackage->partner->postal_code=$newPartner['postal_code'];
+                $newPackage->partner->cover=$newPartner['cover'];
+                $newPackage->partner->img1=$newPartner['img1'];
+                $newPackage->partner->img2=$newPartner['img2'];
+                $newPackage->partner->img3=$newPartner['img3'];
+                $newPackage->partner->img4=$newPartner['img4'];
+                $newPackage->partner->url=$newPartner['url'];
+                $newPackage->partner->active=$newPartner['active'];
+
 
             $packages[] = $newPackage;
            
         }
-
-        /*echo "<pre>";
-    print_r($packages);
-    exit;*/
-        
+ 
        return [ 'packages'=>$packages,
                 'pageCount'=>$pageCount,
                 'currentPage'=>$page
             ];
-
-       
-        
+    
     }
 
 
 
     public static function readPackage($id){
 
-        /*$onePost = Post::select('posts.id, posts.title, posts.description, posts.text, posts.cover, posts.img1, posts.img2, posts.img3, posts.img4,
-                                posts.user_id, posts.categorie_id, posts.created_at, users.id, users.name, users.type_user, users.avatar,
-                                subcategories.name as categorie, subcategories.id, subcategories.id_cat_asc')
-                                ->join('users', 'posts.user_id','=', 'users.id')
-                                ->join('subcategories', 'posts.categorie_id','=', 'subcategories.id')
-                                ->where('posts.id', $id)
-                                ->one();
-
-        return $onePost;*/
-
         $packageList = Package::select()
         ->where('packages.id', $id)
         ->one();
-        //echo"<pre>";
-        //echo $categories;
-       // print_r($packageList);
-        //echo $allcats[1];
-        //exit;
 
         $package = [];
         
@@ -185,6 +132,29 @@ class PackageSiteHandler {
             $newPackage->user->avatar=$newUser['avatar'];
             $newPackage->user->type_user=$newUser['type_user'];
 
+            //5 Parceiros
+            $newPartner = Partner::select()->where('id',$packageList['partner_id'])->one();
+            $newPackage->partner = new Partner();
+            $newPackage->partner->id=$newPartner['id'];
+            $newPackage->partner->name=$newPartner['name'];
+            $newPackage->partner->email=$newPartner['email'];
+            $newPackage->partner->phone=FuncoesUteis::masc_tel($newPartner['phone']);
+            $newPackage->partner->adress=$newPartner['adress'];
+            $newPackage->partner->number=$newPartner['number'];
+            $newPackage->partner->district=$newPartner['district'];
+            $newPackage->partner->city=$newPartner['city'];
+            $newPackage->partner->complement=$newPartner['complement'];
+            $newPackage->partner->state=$newPartner['state'];
+            $newPackage->partner->country=$newPartner['country'];
+            $newPackage->partner->postal_code=$newPartner['postal_code'];
+            $newPackage->partner->cover=$newPartner['cover'];
+            $newPackage->partner->img1=$newPartner['img1'];
+            $newPackage->partner->img2=$newPartner['img2'];
+            $newPackage->partner->img3=$newPartner['img3'];
+            $newPackage->partner->img4=$newPartner['img4'];
+            $newPackage->partner->url=$newPartner['url'];
+            $newPackage->partner->active=$newPartner['active'];
+
             //categorias
             /*$newCat = Subcategorie::select()->where('id',$packageList['categorie_id'])->one();
             $newPackage->categorie = new Subcategorie();
@@ -196,10 +166,7 @@ class PackageSiteHandler {
 
             $package[] = $newPackage;
 
-      
-        
        return $package;
-
 
     }
 

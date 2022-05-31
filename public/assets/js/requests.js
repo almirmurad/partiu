@@ -1,6 +1,6 @@
 window.onload = async()=>{
 
-    let url = `http://dataservice.accuweather.com/currentconditions/v1/44944?apikey=OYV5niMxriBAqMi8GuVSKKwyfWQV9dI9&language=pt-BR&details=true&metric=true`;
+    let url = `http://dataservice.accuweather.com/currentconditions/v1/44944?apikey=gm8ZjxCZYvhraUez1P1UCa30PgOFGdHf&language=pt-BR&details=true&metric=true`;
     let results = await fetch(url);
     
     if(results.status === 200){

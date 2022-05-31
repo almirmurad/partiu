@@ -6,9 +6,10 @@ $router = new Router();
 /* Rotas do site */
 $router->get('/', 'HomeController@index');
 $router->get('/quemSomos', 'HomeController@quemSomos');
+
+//roteiros
 $router->get('/roteiros', 'HomeController@roteiros');
 $router->get('/readRoadMap/{id}/read', 'HomeController@readRoadMap');
-
 $router->get('/roteiros/{id}/roteirosCat', 'HomeController@roteirosCat');
 
 
@@ -31,7 +32,9 @@ $router->get('/package/{id}/readPackage', 'HomeController@readPackage');
 $router->get('/eventos', 'HomeController@eventos');
 $router->get('/events/{id}/readEvent', 'HomeController@readEvent');
 
-
+/* Parceiros */
+//$router->get('/partner', 'HomeController@partners');
+$router->get('/partner/{id}/readPartner', 'HomeController@readPartner');
 
 
 /********** Rotas do Gerenciador **********/
@@ -125,3 +128,12 @@ $router->get('/event', 'EventsController@listEvents');
 $router->get('/event/{id}/editEvent','EventsController@editEvent');
 $router->post('/event/{id}/editEvent','EventsController@editEventAction');
 $router->get('/event/{id}/deleteEvent', 'EventsController@deleteEvent');
+
+/********** Controle partners **********/
+//Partnes
+$router->get('/newPartner', 'PartnerController@addPartner');
+$router->post('/newPartner', 'PartnerController@addPartnerAction');
+$router->get('/Partner', 'PartnerController@listPartners');
+$router->get('/Partner/{id}/editPartner','PartnerController@editPartner');
+$router->post('/Partner/{id}/editPartner','PartnerController@editPartnerAction');
+$router->get('/Partner/{id}/deletePartner', 'PartnerController@deletePartner');

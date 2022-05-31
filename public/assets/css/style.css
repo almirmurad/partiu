@@ -2,7 +2,7 @@
 
 :root{
     --orange:#F29F05;
-    --green:#736F36;
+    --green:#BFB747;
     --white:#FFF;
     --blue:#ACD7F2;
     --shadow-boxes: 0 0 10px rgba(0, 0, 0, 0.5);
@@ -22,6 +22,10 @@
     font-family: Arial, Helvetica, sans-serif;
     font-size: 16px;
     font-weight: normal;
+}
+h2{
+    font-size: 1.5em;
+    font-weight: 600;
 }
 img{
     max-width: 100%;
@@ -69,6 +73,7 @@ main{
     justify-content: center;
     align-items: flex-start;
     flex-direction: column;
+    margin-right: 50px;
 }
 .areaLogo h1{
     font-size: 3em;
@@ -82,21 +87,24 @@ main{
 }
 .socialSearch{
     display: flex;
-    flex: 3;
-    height:150px;
-    justify-content:flex-start;
-    align-items:center;
+    width: 100%;
+    height: 150px;
+    justify-content: flex-start;
+    align-items: center;
     flex-direction: column;
-
 }
 .social{
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     width: 100%;
- 
-    background-color:var(--green);
-    border-radius: 0 0 10px 10px;
+    background-color:var(--blue);
+    border-radius: 0 0 30px 30px;
+    padding: 0 50px;
+}
+
+.social-icons{
+    display: flex;
 }
 
 .socialBg{
@@ -107,10 +115,25 @@ main{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #F29F05;
+    background-color: var(--blue);
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--white);
+    box-shadow: var(--shadow);
+    transition: all 0.3s;
+}
+.socialBg:hover{
+   
+    background-color: var(--white);
+    transform:rotate(90deg);
+    align-items: center;
+
+ 
+ 
 }
 .socialBg i{
-    font-size: 1.2em;
+    font-size: 1em;
+    color: var(--green);
 }
 .signins{
     display: flex;
@@ -130,7 +153,7 @@ main{
     font-size: 0.8em;
     color:var(--green);
     background-color: var(--white);
-    margin: 5px;
+    margin: 5px 15px;
     border-radius: 5px;
     box-shadow: var(--shadow);
 }
@@ -139,27 +162,40 @@ main{
     color:var(--white);
     background-color: var(--orange);
 }
+.header-btn:first-child{
+    padding: 8px;
+    border: 2px solid var(--white);
+    font-weight: 600;
+    font-size: 0.8em;
+    color:var(--white);
+    background-color: var(--orange);
+    margin: 5px 15px;
+    border-radius: 5px;
+    box-shadow: var(--shadow);
+}
 .search{
-    height:50px;
+    height: 50px;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     margin: 0 5px;
+    flex: 1;
 }
 .search form{
     margin: 0;
     padding: 0;
     display: flex;
+    width: 80%;
 }
-.search input{
+.search form input{
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
     padding: 8px;
     font-size: 0.8em;
     width: 100%;
     outline:none;
     border-radius: 5px;
-    background-color: rgb(220,220,220);
-    border: 2px solid var(--white);
+    background-color: var(--white);
+    border: 2px solid var(--green);
 
 }
 .search button{
@@ -233,7 +269,7 @@ main{
     display: flex;
     align-items: center;
     justify-content: center;
-    max-width: 150px;
+    max-width: 180px;
     height: 70px;
 }
 
@@ -242,8 +278,9 @@ main{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 75px;
+    width: 120px;
     height: 45px;
+    padding: 5px;
 }
 .cli-area-info{
     display: flex;
@@ -277,7 +314,7 @@ main{
 .clima-current{
     height: 20px;
     width: 100%;
-    font-size: 0.8em;
+    font-size: 0.7em;
     display: flex;
     justify-content: center;
     align-items: flex-end;
@@ -296,7 +333,7 @@ main{
 .nav{
     height: 50px;
 
-    background-color:rgb(242, 159, 5);
+    background-color:#F2B705;
     color: #fff;
     border-bottom: 5px solid #736F36;
     display: flex;
@@ -309,7 +346,6 @@ main{
 }
 .nav ul li a:link,
 .nav ul li a:visited{
-
     padding: 14px;
     font-weight: bold;
     transition: 0.4s;
@@ -323,9 +359,8 @@ main{
     max-height: 50px;
 }
 .nav .container{
-
     display: flex;
-    justify-content: flex-start;
+    justify-content:space-between;
     align-items: center;
 }
 .slider{
@@ -424,7 +459,7 @@ section{
     align-items: center;
 }
 .categorias{
-    background-color: rgb(242, 159, 5);
+    background-color: #F2B705;
     height: 275px;
     width: 100%;
     display: flex;
@@ -447,6 +482,7 @@ section{
 .categorias img{
     width: 240px;
     height: 90px;
+    box-shadow: var(--shadow);
 }
 .callToAction1{
     display: flex;
@@ -521,10 +557,10 @@ section{
 .bannerDivisor1{
     background-image:linear-gradient(
         to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2)),
-        url(../img/3.jpg);
+        url(../img/icarai1.jpg);
     margin-top: 20px;
-    background-position: bottom;
-    background-position: top;
+    background-size: cover;
+    background-position: center;
     background-attachment: fixed;
     height: 300px;
     display: flex;
@@ -537,6 +573,7 @@ section{
 }
 .bannerDivisor1 h2{
     line-height: 1.5em;
+
 }
 .noticias{
     margin-top: 20px;

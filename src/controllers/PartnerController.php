@@ -3,13 +3,11 @@ namespace src\controllers;
 
 use \core\ControllerGerenciador;
 use src\handlers\LoginHandler;
-use src\handlers\PackageHandler;
-use src\models\Subcategorie;
-use src\models\Package;
+use src\handlers\PartnerHandler;
 use src\models\Partner;
 use src\functions\FuncoesUteis;
 
-class PackageController extends ControllerGerenciador {
+class PartnerController extends ControllerGerenciador {
 
     private $loggedUser;
     
@@ -21,33 +19,38 @@ class PackageController extends ControllerGerenciador {
         }   
     }
 
-    public function addPackage() {
-        $partners = Partner::select()->execute();
-
-        $this->render('addPackage',[
-            'partners'=>$partners,
-            'page' => 'Cadastro de Pacotes', 
+    public function addPartner() {
+        
+        $this->render('addPartner',[
+            
+            'page' => 'Cadastro de Parceiros', 
             'loggedUser'=>$this->loggedUser
         ]);
     }
 
-    public function addPackageAction() {  
-
-        $title   = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_ADD_SLASHES);
-        $description   = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_ADD_SLASHES);
-        $text   = filter_input(INPUT_POST, 'text', FILTER_SANITIZE_ADD_SLASHES);
+    public function addPartnerAction() {  
+        $name   = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_ADD_SLASHES);
+        $cpf   = filter_input(INPUT_POST, 'cpf', FILTER_SANITIZE_ADD_SLASHES);
+        $cnpj   = filter_input(INPUT_POST, 'cnpj', FILTER_SANITIZE_ADD_SLASHES);
         $user_id = $this->loggedUser->id;
-        $destino = filter_input(INPUT_POST, 'destination', FILTER_SANITIZE_ADD_SLASHES);
-        $estado = filter_input(INPUT_POST, 'state', FILTER_SANITIZE_ADD_SLASHES);
-        $pais = filter_input(INPUT_POST, 'country', FILTER_SANITIZE_ADD_SLASHES);
-        $saidaDe = filter_input(INPUT_POST, 'exit_from', FILTER_SANITIZE_ADD_SLASHES);
-        $dataSaida = filter_input(INPUT_POST, 'going_on');
-        $dataRetorno = filter_input(INPUT_POST, 'return_in');
-        $expiraEm = filter_input(INPUT_POST, 'expires_at');
-        $preco = str_replace(",",".",str_replace(".","",filter_input(INPUT_POST, 'price')));
-        $parceiro = filter_input(INPUT_POST, 'partner_id', FILTER_SANITIZE_ADD_SLASHES);
-        
-        if($title && $description && $text && $user_id && $destino && $estado && $pais && $saidaDe && $dataSaida && $dataRetorno && $expiraEm && $preco && $parceiro){
+        $phone = filter_input(INPUT_POST, 'phone', FILTER_SANITIZE_ADD_SLASHES);
+        $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_ADD_SLASHES);
+        $adress = filter_input(INPUT_POST, 'adress', FILTER_SANITIZE_ADD_SLASHES);
+        $number = filter_input(INPUT_POST, 'number', FILTER_SANITIZE_ADD_SLASHES);
+        $complement = filter_input(INPUT_POST, 'complement', FILTER_SANITIZE_ADD_SLASHES);
+        $district = filter_input(INPUT_POST, 'district', FILTER_SANITIZE_ADD_SLASHES);
+        $city = filter_input(INPUT_POST, 'city', FILTER_SANITIZE_ADD_SLASHES);
+        $state = filter_input(INPUT_POST, 'state', FILTER_SANITIZE_ADD_SLASHES);
+        $country = filter_input(INPUT_POST, 'country', FILTER_SANITIZE_ADD_SLASHES);
+        $postalCode = filter_input(INPUT_POST, 'postal_code', FILTER_SANITIZE_ADD_SLASHES);
+        $description = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_ADD_SLASHES);
+        $about = filter_input(INPUT_POST, 'about', FILTER_SANITIZE_ADD_SLASHES);
+        $url = filter_input(INPUT_POST, 'url', FILTER_SANITIZE_ADD_SLASHES);
+
+        //echo "nome: ".$name."<br> CPF ".$cpf."<br> campo: ".$cnpj."<br> campo: ".$user_id."<br> campo: ".$phone."<br> campo: ".$email."<br> campo: ".$adress."<br> campo: ".$number."<br> campo: ".$complement."<br> campo: ".$district."<br> campo: ".$city."<br> campo: ".$state."<br> campo: ".$country."<br> campo: ".$postalCode."<br> campo: ".$description."<br> campo: ".$about."<br> campo: ".$url;
+        //exit;        
+
+        if($name && $cpf && $user_id && $phone && $email && $adress && $number && $complement && $district && $city && $state && $country && $postalCode && $description && $about && $url){
            //pega as imagens e cria um array com todas
             $fotosNames = [];
             foreach($_FILES as $img){
@@ -58,7 +61,7 @@ class PackageController extends ControllerGerenciador {
                } 
             }
             //verifica se existe a pasta imagens específica para pacotes 
-            $caminho = "media/uploads/imgs/packages";
+            $caminho = "media/uploads/imgs/partners";
             if(!is_dir($caminho)){
                 //se não não existir cria
                 mkdir($caminho, 0777);
@@ -67,24 +70,23 @@ class PackageController extends ControllerGerenciador {
             $imgNames = FuncoesUteis::editImg($fotosNames, 420, 300, $caminho);
             if(isset($imgNames) && !empty($imgNames)){
                 //se gerou insere no banco de dados e retorna ao dashboard
-                PackageHandler::addPackageAction($title, $description, $text, $imgNames, $user_id, $destino, $estado, $pais, $saidaDe, $dataSaida, $dataRetorno, $expiraEm, $preco, $parceiro);
+                PartnerHandler::addPartnerAction($imgNames, $name, $cpf, $cnpj, $user_id, $phone, $email, $adress, $number, $complement, $district, $city, $state, $country, $postalCode, $description, $about, $url);
                 $this->redirect('/gerenciador');      
             }
             else{
                     //se não gerou retorna ao formulario
-                    $this->redirect('/newsNews');
+                    $this->redirect('/newPartner');
                 }          
         }   
     }
 
-    public function listPackages() {
+    public function listPartners() {
 
-        $page = "Lista de Pacotes";
-        $packages = PackageHandler::getPackage();
-
-        $this->render('listPackages',[
+        $page = "Lista de Parceiros";
+        $partners = Partner::select()->execute();
+        $this->render('listPartners',[
             'loggedUser'=>$this->loggedUser,
-            'packages' => $packages,
+            'partners' => $partners,
             'page'=>$page
         ]);
 
@@ -130,7 +132,6 @@ class PackageController extends ControllerGerenciador {
         $dataRetorno = filter_input(INPUT_POST, 'return_in');
         $expiraEm = filter_input(INPUT_POST, 'expires_at');
         $preco = str_replace(",",".",str_replace(".","",filter_input(INPUT_POST, 'price')));
-        $parceiro = filter_input(INPUT_POST, 'partner_id', FILTER_SANITIZE_ADD_SLASHES);
         
         //echo"<pre>";
         //print_r($preco);
@@ -138,9 +139,9 @@ class PackageController extends ControllerGerenciador {
 
         //1.532,32
         
-        if($id && $title && $description && $text && $cover && $img1 && $img2 && $img3 && $img4 && $user_id && $destino && $estado && $pais && $saidaDe && $dataSaida && $dataRetorno && $expiraEm && $preco && $parceiro){
+        if($id && $title && $description && $text && $cover && $img1 && $img2 && $img3 && $img4 && $user_id && $destino && $estado && $pais && $saidaDe && $dataSaida && $dataRetorno && $expiraEm && $preco){
 
-            $alterado = PackageHandler::editPackage($id, $title, $description, $text, $cover, $img1, $img2, $img3, $img4, $user_id, $destino, $estado, $pais, $saidaDe, $dataSaida, $dataRetorno, $expiraEm, $preco, $parceiro);
+            $alterado = PackageHandler::editPackage($id, $title, $description, $text, $cover, $img1, $img2, $img3, $img4, $user_id, $destino, $estado, $pais, $saidaDe, $dataSaida, $dataRetorno, $expiraEm, $preco);
             if($alterado === true){
                 $_SESSION['flash'] = "Pacote de Viagem aterado com sucesso!";
                 $this->redirect('/package/'.$args['id'].'/editPackage');
@@ -154,9 +155,9 @@ class PackageController extends ControllerGerenciador {
     }
 
 
-    public function deletePackage($args){
-        Package::delete()->where('id', $args['id'])->execute();
-        $this->redirect('/package');
+    public function deletePartner($args){
+        Partner::delete()->where('id', $args['id'])->execute();
+        $this->redirect('/partner');
     }
    
 }

@@ -53,11 +53,16 @@ switch($page){
                 <h1>'.$page.'</h1> 
             </div>';
         break;
-        case "Pacote de Viagem":
-            echo'<div class="internal-slider internal-slider-noticia">
-                    <h1>'.$page.'</h1> 
-                </div>';
-            break;
+    case "Pacote de Viagem":
+        echo'<div class="internal-slider internal-slider-noticia">
+                <h1>'.$page.'</h1> 
+            </div>';
+        break;
+    case "Parceiros":
+        echo'<div class="internal-slider internal-slider-noticia">
+                <h1>'.$page.'</h1> 
+            </div>';
+        break;
 }
 ?>
 

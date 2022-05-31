@@ -134,15 +134,29 @@ class RMSiteHandler {
 
         }
 
-        /*echo"<pre>";
-        print_r($rmCats);
-        exit;*/
+        // echo"<pre>";
+        // print_r($rmCats);
+        // exit;
         
        return $rmCats;
 
+       
         
     }
 
+    public static function oneCatRm($args){
+        
+        $newCat = Subcategorie::select()->where('id',$args['id'])->one();
+            $oneCatRm = new Subcategorie();
+            $oneCatRm->id=$newCat['id'];
+            $oneCatRm->name=$newCat['name'];
+            $oneCatRm->description=$newCat['description'];
+            $oneCatRm->img=$newCat['img'];
+            $oneCatRm->id_cat_asc=$newCat['id_cat_asc'];
+
+            return $oneCatRm;
+
+    }
 
 
     //public static function readPost($id){

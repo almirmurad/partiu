@@ -69,18 +69,55 @@
 }
 .pctPreco{
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     height: 80px;
     align-items: center;
-    color: var(--green);
+    
     background-color:var(--orange);
     border-radius: 0 0 12px 12px;
 }
+.link{ 
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 10px;
+}
+.preco{
+    flex:2;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 10px;
+}
 
 .pctPreco h2{
+    display: flex;
     font-weight: 600;
-    font-size: var(--size-tile-1);
+    color: var(--white);
+    font-size: var(--size-tile-2);
 } 
+
+a.wats-link-package{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:49px;
+    height: 49px;
+    border-radius: 100%;
+    border: 1px solid var(--white);
+    background-color:var(--green);
+    color: var(--white);
+    box-shadow: var(--shadow-boxes);
+    font-size: var(--size-tile-1);
+    transition: all 0.2s;
+}
+
+.wats-link-package:hover{
+    background-color:#29B200;
+    color: var(--white);
+    box-shadow: none;
+    border: 1px solid var(--green);
+}
+
 
 
 

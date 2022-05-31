@@ -15,22 +15,31 @@
 <main>
     <div class="container ">
         <section class="internal-content column">
-            <h4>Você está em: <?=$page?></h4>
             <?php foreach($data as $package): ?>
+                <h4>Você está em: <?=$page?> / <?=stripslashes($package->title);?></h4>
                 <div class="top-round-map">
                     <div class="cover-round-map">
                         <img src="<?=$base?>/media/uploads/imgs/packages/<?=$package->cover?>" alt="">
                     </div>
                     <div class="data-round-map">
                         <ul>
-                            <li><h1><?=stripslashes($package->title);?></h1></li>
+                            <li><h1 class="title-package"><?=stripslashes($package->title);?></h1></li>
                             <li>Destino: <?=stripslashes($package->destination);?> - <?=$package->state?></li>
                             <li>País: <?=stripslashes($package->country);?></li>
                             <li>Saída de: <?=stripslashes($package->exit_from);?></li>
                             <li>Saída em: <?=$package->going_on?></li>
                             <li>Retorna em: <?=$package->return_in?></li>
                             <li>Disponivel até: <?=$package->expires_at?></li>
-                            <li><strong>Preço: </strong> R$<?=$package->price?></li>
+                            <li><strong>Preço:  R$<?=$package->price?></strong></li>
+                        </ul>
+                        <div class="espaco">
+
+                        </div>
+                        <ul>
+                            <li>Responsável: <a href="<?=$base;?>/partner/<?=stripslashes($package->partner->id);?>/readPartner"><?=stripslashes($package->partner->name);?></a></li>
+                            <li>Telefone: <?=$package->partner->phone?></li>
+                            <li>E-mail: <?=stripslashes($package->partner->email);?></li>
+                            
                         </ul>
                     </div>
                     

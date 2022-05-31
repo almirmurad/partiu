@@ -5,7 +5,9 @@ use src\models\Noticia;
 use src\models\Post;
 use src\handlers\PostSiteHandler;
 use src\models\Package;
+use src\models\Partner;
 use src\handlers\PackageSiteHandler;
+use src\handlers\PartnerSiteHandler;
 use src\models\RoadMap;
 use ClanCats\Hydrahon\Query\Expression as Rnd;
 use src\models\Event;
@@ -17,6 +19,7 @@ use src\handlers\SubCatsSiteHandler;
 use src\models\Categorie;
 use src\models\Subcategorie;
 use src\models\User;
+use src\functions\FuncoesUteis;
 
 class HomeController extends ControllerSite {
 
@@ -49,10 +52,6 @@ class HomeController extends ControllerSite {
                                         ->orderBy('posts.created_at','desc')
                                         ->execute();
 
-       
-        
-        
-
         //posts por categoria
         /*
         $this->postsCategoria = Post::select('posts.id, posts.cover, posts.title, posts.description, posts.categorie_id, subcategories.id, subcategories.name')
@@ -69,7 +68,7 @@ class HomeController extends ControllerSite {
         $this->roadMaps = RMSiteHandler::roadMaps();
         
         //Pacotes
-        $this->pacotes =[];
+        $this->pacotes = [];
         $packagesList = Package::select()
         ->orderBy(new rnd('rand()'))
         ->limit(4)
@@ -98,16 +97,30 @@ class HomeController extends ControllerSite {
             $newPackage->user->id=$newUser['id'];
             $newPackage->user->name=$newUser['name'];
             $newPackage->user->avatar=$newUser['avatar'];
-            $newPackage->user->type_user=$newUser['type_user'];
+            $newPackage->user->type_user=$newUser['type_user'];*/
 
-            //categorias
-            $newCat = Subcategorie::select()->where('id',$packageItem['categorie_id'])->one();
-            $newPackage->categorie = new Subcategorie();
-            $newPackage->categorie->id=$newCat['id'];
-            $newPackage->categorie->name=$newCat['name'];
-            $newPackage->categorie->description=$newCat['description'];
-            $newPackage->categorie->img=$newCat['img'];
-            $newPackage->categorie->id_cat_asc=$newCat['id_cat_asc'];*/
+            //5 Parceiros
+            $newPartner = Partner::select()->where('id',$packageItem['partner_id'])->one();
+            $newPackage->partner = new Partner();
+            $newPackage->partner->id=$newPartner['id'];
+            $newPackage->partner->name=$newPartner['name'];
+            $newPackage->partner->email=$newPartner['email'];
+            $newPackage->partner->phone=$newPartner['phone'];
+            $newPackage->partner->adress=$newPartner['adress'];
+            $newPackage->partner->number=$newPartner['number'];
+            $newPackage->partner->district=$newPartner['district'];
+            $newPackage->partner->city=$newPartner['city'];
+            $newPackage->partner->complement=$newPartner['complement'];
+            $newPackage->partner->state=$newPartner['state'];
+            $newPackage->partner->country=$newPartner['country'];
+            $newPackage->partner->postal_code=$newPartner['postal_code'];
+            $newPackage->partner->cover=$newPartner['cover'];
+            $newPackage->partner->img1=$newPartner['img1'];
+            $newPackage->partner->img2=$newPartner['img2'];
+            $newPackage->partner->img3=$newPartner['img3'];
+            $newPackage->partner->img4=$newPartner['img4'];
+            $newPackage->partner->url=$newPartner['url'];
+            $newPackage->partner->active=$newPartner['active'];
 
             $this->pacotes[] = $newPackage;
 
@@ -215,11 +228,15 @@ class HomeController extends ControllerSite {
 
     public function roteirosCat($args) {
         $roadMaps = RMSiteHandler::roadMapCat($args);
-
+        $categories = SubCatsSiteHandler::catsRoadMap();
+        $oneCatRm = RMSiteHandler::oneCatRm($args);
+        
         $this->render(
             'roteiros',[
             'page' => 'Roteiros',
-            'roadMaps'=>$roadMaps
+            'roadMaps'=>$roadMaps,
+            'categories'=> $categories,
+            'oneCat'=>$oneCatRm
         ]);
     }
 
@@ -309,7 +326,6 @@ class HomeController extends ControllerSite {
             ]);
 
     }
-
     public function readEvent($args){
         $events = EventsSiteHandler::readEvent($args['id']);
         $categories = SubCatsSiteHandler::catsEvents();
@@ -318,5 +334,14 @@ class HomeController extends ControllerSite {
                 'events'=>$events,
                 'categories'=>$categories
         ]);
+    }
+
+    public function readPartner($args){
+        $partner = PartnerSiteHandler::readPartner($args['id']);
+        $categories = SubCatsSiteHandler::catsRoadMap();
+        $this->render('readPartner',['page'=>'Parceiros',
+                'data'=>$partner,
+                'categories'=>$categories,
+            ]);
     }
 }

@@ -7,7 +7,7 @@
         <li><a href="<?=$base?>/roadMap">Roteiros</a></li>
         <li><a href="<?=$base?>/event">Eventos</a></li>
         <li><a href="<?=$base?>/users">Usuários</a></li>
-        <li><a href="<?=$base?>/gerenciador">Parceiros</a></li>
+        <li><a href="<?=$base?>/partner">Parceiros</a></li>
         <li><a href="<?=$base?>/gerenciador">Newsletter</a></li>
         <li><a href="<?=$base?>/gerenciador">Banners</a></li>
         <li><a href="<?=$base?>/categories">Categorias</a></li>

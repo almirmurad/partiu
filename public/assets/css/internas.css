@@ -4,6 +4,7 @@
     --orange:#F29F05;
     --green:#736F36;
     --white:#FFF;
+    --blue:#ACD7F2;
     --shadow-boxes: 0 0 10px rgba(0, 0, 0, 0.5);
     --shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     --border-orange: 3px solid #F29F05;
@@ -285,16 +286,72 @@ margin:10px 0;
     margin-bottom: 20px;
 }
 
+.top-round-map{
+    background-color: var(--blue);
+    border-radius: 10px;
+    border: 1px solid rgb(168, 169, 182);
+}
+
 .cover,
 .cover-round-map{
     display: flex;
     flex: 1;
 }
+.cover-round-map img{
+    border-radius: 10px 0 0 10px;
+}
 .data-notice,
 .data-round-map{
     display: flex;
     flex: 1;
-    padding: 20px;
+    flex-direction: column;
+    margin: 10px;
+    align-items: center;
+    justify-content: center;
+}
+.espaco{
+    display: flex;
+    margin: 10px 0;
+}
+
+.partner-info,
+.data-round-map ul{
+    display: flex;
+    width: 100%;
+    background-color: var(--white);
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+}
+.partner-info ul,
+.data-round-map ul{
+    display: flex;
+    flex-direction: column;
+    flex:1;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.partner-info ul li{
+    margin: 2px 0;
+    font-size: 0.8em;
+}
+.actions-partner{
+    display: flex;
+    flex-direction: column;
+    width:50px;
+    height: 100%;
+    justify-content: center;
+    background-color: var(--orange);
+    border-radius: 0 10px 10px 0;
+}
+.collum{
+    flex-direction: column;
+}
+
+.title-package{
+    font-size: var(--size-tile-3);
+    font-weight: bold;
+    color:var(--green);
 }
 .midlle-integral-notice, .midle-about{
     display: flex;
@@ -330,7 +387,9 @@ margin:10px 0;
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
     border: 3px solid #736F36;
 }
-
+.text-round-map{
+    text-align: justify;
+}
 .legend {
     display: flex;
     justify-content: flex-start;
@@ -354,11 +413,16 @@ margin:10px 0;
 }
 .cover-about{
     max-width: 350px;
-
 }
 .galerie,
 .round-map{
     width: 100%;
+}
+.round-map{
+    display: flex;
+    flex-direction: column;
+    height: 1000px;
+
 }
 .flex{
     display: flex;

@@ -9,6 +9,12 @@
     </div>
     
     <?php $render('internalSlider',['page'=>$page]);?>
+
+    <?php
+    //  echo '<pre>';
+    //  print_r($oneCat);
+    //  exit;
+    ?>
             
     <?php $render('internalCategories',['categories'=>$categories])?>
 
@@ -16,7 +22,9 @@
 <main>
     <div class="container ">
         <section class="internal-content column">
-            <h4>Você está em: <?=$page?></h4>
+        
+            <h4>Você está em: <?=$page?> <?php if(isset($oneCat)):?>/ <?=$oneCat->name?><?php endif?></h4>
+          
             <div class="midlle-round-map">
                 <div class="round-map">
                     <div class="grid-round-map">

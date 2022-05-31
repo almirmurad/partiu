@@ -6,20 +6,19 @@
         </div>
         <div class="socialSearch">
             <div class="social">
-                <span class="fone">(41) 98902-1385 | </span>
-                <div class="socialBg"><i class="fab fa-facebook fa-2x"></i></div>
-                <div class="socialBg"><i class="fab fa-whatsapp fa-2x"></i></i></div>
-                <div class="socialBg"><i class="fab fa-instagram fa-2x"></i></i></div>
-                <div class="signins">
-                    <button class="header-btn">Anuncie seu Pacote</button>
-                    <button class="header-btn">Cadastre-se</button>
-                    <button class="header-btn">Login</button>
-                </div>
+                <!-- <span class="fone">(41) 98902-1385 | contato@partiuviagenseturismo.com.br</span> -->
+                
+                
                 <div class="search">
                     <form method="" action="">
                         <input type="text" name="search" placeholder="Procurar">
                         <button><i class="fas fa-search fa-2x"></i></button>
                     </form>
+                </div>
+                <div class="signins">
+                    <button class="header-btn">Anuncie seu Pacote</button>
+                    <button class="header-btn">Cadastre-se</button>
+                    <button class="header-btn">Login</button>
                 </div>
             </div>
             <div class="area-api">

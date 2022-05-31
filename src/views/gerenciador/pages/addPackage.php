@@ -91,6 +91,14 @@
                                         <?php endforeach?>
                                     </select>
                                 </div>-->
+                                 <div class="campo">
+                                <label for="partner">Parceiro:</label>
+                                    <select name="partner_id" id="partner">
+                                    <?php foreach ($partners as $partner):?>
+                                        <option value="<?=$partner['id'];?>" ><?=$partner['name'];?></option>
+                                        <?php endforeach?>
+                                    </select>
+                                </div>
                                 <div class="campo">
                                     <input type="submit" class="btn" value="Cadastrar">
                                 </div>
