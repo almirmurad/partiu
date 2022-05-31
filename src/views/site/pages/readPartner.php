@@ -39,11 +39,11 @@
                             </ul>
                             <div class="actions-partner">
                                 <div class="social-icons collum">
-                                    <div class="socialBg"><a href="mailto:<?=stripslashes($partner->email);?>"><i class="fas fa-at fa-2x"></i></a></div>
-                                    <div class="socialBg"><a href="<?=$partner->phone?>"><i class="fas fa-phone-alt fa-2x"></i></a></div>
-                                    <div class="socialBg"><i class="fab fa-facebook-f fa-2x"></i></div>
-                                    <div class="socialBg"><a href="https://wa.me/55<?=$partner->phone?>?text=Contato%20através%20do%20site%20partiu" target="_blank"><i class="fab fa-whatsapp fa-2x"></a></i></div>
-                                    <div class="socialBg"><i class="fab fa-instagram fa-2x"></i></div>
+                                    <div class="socialBg"><a href="mailto:<?=stripslashes($partner->email);?>" target="_blank"><i class="fas fa-at fa-2x"></i></a></div>
+                                    <div class="socialBg"><a href="<?=$partner->phone?>" target="_blank"><i class="fas fa-phone-alt fa-2x"></i></a></div>
+                                    <div class="socialBg"><a href="<?=$partner->face?>" target="_blank"><i class="fab fa-facebook-f fa-2x"></i></a></div>
+                                    <div class="socialBg"><a href="https://wa.me/55<?=$partner->whats?>?text=Contato%20através%20do%20site%20partiu" target="_blank"><i class="fab fa-whatsapp fa-2x"></a></i></div>
+                                    <div class="socialBg"><a href="<?=$partner->insta?>" target="_blank"><i class="fab fa-instagram fa-2x"></i></a></div>
                                 </div>
                             </div>
                         </div>
@@ -53,12 +53,7 @@
                 </div>
                 <div class="midlle-round-map">
                     <div class="text-round-map">
-                    
-                    <?=stripslashes($partner->package->title);?><br>
-
-                  
-
-                    <?=stripslashes($partner->about);?>
+                        <?=stripslashes($partner->about);?>
                     </div>
                 </div>
                 <div class="foot-round-map">

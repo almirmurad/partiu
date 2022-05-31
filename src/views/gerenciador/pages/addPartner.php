@@ -103,7 +103,18 @@ Digite aqui o texto sobre a empresa do parceiro.
                                     <label for="url">Site:</label>
                                     <input type="url" id="url" name="url" class="input" placeholder="Digite o url do site do parceiro">
                                 </div>
-                                
+                                <div class="campo">
+                                    <label for="whats">WhatsApp:</label>
+                                    <input type="text" id="whats" name="whats" class="input" placeholder="Digite numero do Whatsapp parceiro">
+                                </div>
+                                <div class="campo">
+                                    <label for="face">Facebook:</label>
+                                    <input type="url" id="face" name="face" class="input" placeholder="Digite o url do Facebook do parceiro">
+                                </div>
+                                <div class="campo">
+                                    <label for="insta">Instagram:</label>
+                                    <input type="url" id="insta" name="insta" class="input" placeholder="Digite o url do Instagram do parceiro">
+                                </div>
                                 
                                 <!--<div class="campo">
                                 <label for="subCatAsc">Categoria pertencente:</label>

@@ -46,11 +46,14 @@ class PartnerController extends ControllerGerenciador {
         $description = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_ADD_SLASHES);
         $about = filter_input(INPUT_POST, 'about', FILTER_SANITIZE_ADD_SLASHES);
         $url = filter_input(INPUT_POST, 'url', FILTER_SANITIZE_ADD_SLASHES);
+        $whats = filter_input(INPUT_POST, 'whats', FILTER_SANITIZE_ADD_SLASHES);
+        $face = filter_input(INPUT_POST, 'face', FILTER_SANITIZE_ADD_SLASHES);
+        $insta = filter_input(INPUT_POST, 'insta', FILTER_SANITIZE_ADD_SLASHES);
 
         //echo "nome: ".$name."<br> CPF ".$cpf."<br> campo: ".$cnpj."<br> campo: ".$user_id."<br> campo: ".$phone."<br> campo: ".$email."<br> campo: ".$adress."<br> campo: ".$number."<br> campo: ".$complement."<br> campo: ".$district."<br> campo: ".$city."<br> campo: ".$state."<br> campo: ".$country."<br> campo: ".$postalCode."<br> campo: ".$description."<br> campo: ".$about."<br> campo: ".$url;
         //exit;        
 
-        if($name && $cpf && $user_id && $phone && $email && $adress && $number && $complement && $district && $city && $state && $country && $postalCode && $description && $about && $url){
+        if($name && $cpf && $user_id && $phone && $email && $adress && $number && $complement && $district && $city && $state && $country && $postalCode && $description && $about && $url && $whats && $face && $insta){
            //pega as imagens e cria um array com todas
             $fotosNames = [];
             foreach($_FILES as $img){
@@ -70,7 +73,7 @@ class PartnerController extends ControllerGerenciador {
             $imgNames = FuncoesUteis::editImg($fotosNames, 420, 300, $caminho);
             if(isset($imgNames) && !empty($imgNames)){
                 //se gerou insere no banco de dados e retorna ao dashboard
-                PartnerHandler::addPartnerAction($imgNames, $name, $cpf, $cnpj, $user_id, $phone, $email, $adress, $number, $complement, $district, $city, $state, $country, $postalCode, $description, $about, $url);
+                PartnerHandler::addPartnerAction($imgNames, $name, $cpf, $cnpj, $user_id, $phone, $email, $adress, $number, $complement, $district, $city, $state, $country, $postalCode, $description, $about, $url, $whats, $face, $insta);
                 $this->redirect('/gerenciador');      
             }
             else{

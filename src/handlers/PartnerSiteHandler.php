@@ -77,6 +77,9 @@ class PartnerSiteHandler {
                 $newPartner->partner->img4=$newPartner['img4'];
                 $newPartner->partner->url=$newPartner['url'];
                 $newPartner->partner->active=$newPartner['active'];
+                $newPartner->partner->whats=$partnerList['whats'];
+                $newPartner->partner->face=urldecode($partnerList['face']);
+                $newPartner->partner->insta=urldecode($partnerList['insta']);
 
 
             $partners[] = $newPartner;
@@ -91,16 +94,6 @@ class PartnerSiteHandler {
 
     }
     public static function readPartner($id){
-
-        /*$onePost = Post::select('posts.id, posts.title, posts.description, posts.text, posts.cover, posts.img1, posts.img2, posts.img3, posts.img4,
-                                posts.user_id, posts.categorie_id, posts.created_at, users.id, users.name, users.type_user, users.avatar,
-                                subcategories.name as categorie, subcategories.id, subcategories.id_cat_asc')
-                                ->join('users', 'posts.user_id','=', 'users.id')
-                                ->join('subcategories', 'posts.categorie_id','=', 'subcategories.id')
-                                ->where('posts.id', $id)
-                                ->one();
-
-        return $onePost;*/
 
         $partnerList = Partner::select()
         ->where('id', $id)
@@ -135,29 +128,10 @@ class PartnerSiteHandler {
             $newPartner->img3=$partnerList['img3'];
             $newPartner->img4=$partnerList['img4'];
             $newPartner->url=urldecode($partnerList['url']);
-
-
-            /*
-            $newPartner = new Partner();
-            $newPartner->id = $partnerList['id'];
-            $newPartner->title = $partnerList['name'];
-            $newPartner->description = $partnerList['description'];
-            $newPartner->text = $partnerList['text'];
-            $newPartner->cover = $partnerList['cover'];
-            $newPartner->img1 = $partnerList['img1'];
-            $newPartner->img2 = $partnerList['img2'];
-            $newPartner->img3 = $partnerList['img3'];
-            $newPartner->img4 = $partnerList['img4'];
-            $newPartner->created_at = $partnerList['created_at'];
-            $newPartner->destination = $partnerList['destination'];
-            $newPartner->state = $partnerList['state'];
-            $newPartner->country = $partnerList['country'];
-            $newPartner->exit_from = $partnerList['exit_from'];
-            $newPartner->going_on = date('d/m/Y \à\\s H:i',strtotime($partnerList['going_on']));
-            
-            $newPartner->return_in =  date('d/m/Y \à\\s H:i', strtotime($partnerList['return_in'])) ;
-            $newPartner->expires_at = date('d/m/Y \à\\s H:i', strtotime($partnerList['expires_at']));
-            $newPartner->price = number_format($partnerList['price'],2,',','.');*/
+            $newPartner->active=$partnerList['active'];
+            $newPartner->whats=$partnerList['whats'];
+            $newPartner->face=urldecode($partnerList['face']);
+            $newPartner->insta=urldecode($partnerList['insta']);
 
             //4 usuarios que postaram
             $newUser = User::select()->where('id',$partnerList['user_id'])->one();
@@ -168,16 +142,7 @@ class PartnerSiteHandler {
             $newPartner->user->type_user=$newUser['type_user'];
 
             //5 pacotes
-            
-            
-           
             $newPackageList = Package::select()->where('partner_id',$partnerList['id'])->execute();
-            //echo"<pre>";
-        //echo $categories;
-        //print_r($partnerList);
-        //echo $allcats[1];
-        //exit;
-
 
             foreach($newPackageList as $newPackage){
            
@@ -199,23 +164,9 @@ class PartnerSiteHandler {
             $newPartner->package->country=$newPackage['country'];
             $newPartner->package->return_in=date('d/m/Y \à\\s H:i', strtotime($newPackage['return_in']));
             $newPartner->package->expires_at=date('d/m/Y \à\\s H:i', strtotime($newPackage['expires_at']));
-            $newPartner->package->price=number_format($newPackage['price'],2,',','.');
-            
-    
+            $newPartner->package->price=number_format($newPackage['price'],2,',','.');  
         
         }
-
-         
-            
-
-            //categorias
-            /*$newCat = Subcategorie::select()->where('id',$partnerList['categorie_id'])->one();
-            $newPartner->categorie = new Subcategorie();
-            $newPartner->categorie->id=$newCat['id'];
-            $newPartner->categorie->name=$newCat['name'];
-            $newPartner->categorie->description=$newCat['description'];
-            $newPartner->categorie->img=$newCat['img'];
-            $newPartner->categorie->id_cat_asc=$newCat['id_cat_asc'];*/
 
             $partner[] = $newPartner;
 
