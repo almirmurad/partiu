@@ -6,7 +6,7 @@
             <div class="sliderWidth">
                 <div class="sliderItem" style="background-image:url('<?=$base;?>/assets/img/1.jpg');">
                     <h2>PARTIU!</h2>
-                    <span>O fim de uma viajem é apenas o começo de outra</span>
+                    <span>O fim de uma viagem é apenas o começo de outra</span>
                     <!-- <button class="btn">Saiba Mais</button> -->
                 </div>
                 <div class="sliderItem" style="background-image:url('<?=$base;?>/assets/img/2.jpg');">
