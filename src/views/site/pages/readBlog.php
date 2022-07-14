@@ -28,10 +28,10 @@
                 </div>
                 <div class="data-round-map">
                     <ul>
-                        <li><h1><?=$post->title?></h1></li>
-                        <li><?=$post->created_at?></li>
-                        <li>postado por: <?=$post->user->name?></li>
-                        <li>Categoria: <?=$post->categorie->name?></li>
+                        <li class="it-dt-notice"><h1 class="title-package"><?=$post->title?></h1></li>
+                        <li class="it-dt-notice"><?=$post->created_at?></li>
+                        <li class="it-dt-notice">postado por: <?=$post->user->name?></li>
+                        <li class="it-dt-notice">Categoria: <?=$post->categorie->name?></li>
                     </ul>
                 </div>
                 

@@ -16,23 +16,22 @@
 <?php foreach($oneNews as $lastedNews): ?>
     <div class="container ">
         <section class="internal-content column">
-            <h4>Você está em: Notícias/<?= $lastedNews['title'];?></h4>
-            <div class="top-integral-notice">
-                <div class="cover">
+            <h4>Você está em: <a href="<?=$base?>/noticias">Notícias</a>/<?= $lastedNews['title'];?></h4>
+            <div class="top-round-map">
+                <div class="cover-round-map">
                     <img src="<?=$base;?>/media/uploads/imgs/news/<?= $lastedNews['cover'];?>" alt="">
                 </div>
-                <div class="data-notice">
+                <div class="data-round-map">
                     <ul>
-                        <li><h1><?= $lastedNews['title'];?></h1></li>
-                        <li>Postado em: <?= $lastedNews['created_at'];?></li>
-                        <li>Postado por: <?= $lastedNews['name'];?></li>
-                        <li>Fonte:<?= $lastedNews['source'];?></li>
-                        <li>Cover:<?= $lastedNews['cover'];?></li>
+                        <li class="it-dt-notice"><h1 class="title-package"><?= $lastedNews['title'];?></h1></li>
+                        <li class="it-dt-notice">Postado em: <?= $lastedNews['created_at'];?></li>
+                        <li class="it-dt-notice">Postado por: <?= $lastedNews['name'];?></li>
+                        <li class="it-dt-notice">Fonte: <?= $lastedNews['source'];?></li>
                     </ul>
                 </div>
             </div>
             <div class="midlle-integral-notice">
-                <div class="text-integral-notice">
+                <div class="text-round-map">
                 <?= $lastedNews['text'];?>
                 </div>
             </div>
