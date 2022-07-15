@@ -5,6 +5,7 @@ use \core\ControllerGerenciador;
 use src\handlers\LoginHandler;
 use src\handlers\PartnerHandler;
 use src\models\Partner;
+use src\models\Package;
 use src\functions\FuncoesUteis;
 
 class PartnerController extends ControllerGerenciador {
@@ -63,14 +64,26 @@ class PartnerController extends ControllerGerenciador {
                     }
                } 
             }
-            //verifica se existe a pasta imagens específica para pacotes 
-            $caminho = "media/uploads/imgs/partners";
-            if(!is_dir($caminho)){
-                //se não não existir cria
-                mkdir($caminho, 0777);
+
+            //verifica se existe a pasta imagens específica para parceiro 
+            $pathPartners = "media/uploads/imgs/partners";
+            if(!is_dir($pathPartners)){//se não não existir cria
+                mkdir($pathPartners, 0777);
+            }
+            //ultimo cadastrado no banco
+            $lastId = Partner::select('id')->last();
+
+            if($lastId === false)//Se não houver nenhum parceiro cria o caminho para pasta id_1
+            {
+                $pathId = "media/uploads/imgs/partners/id_1";
+            }else{
+                $pathId = "media/uploads/imgs/partners/id_".$lastId['id'] + 1;
+            }
+            if(!is_dir($pathId)){//se não não existir cria
+                mkdir($pathId, 0777);
             }
             //gera todas as imagens no tamanho específicado
-            $imgNames = FuncoesUteis::editImg($fotosNames, 420, 300, $caminho);
+            $imgNames = FuncoesUteis::editImg($fotosNames, 420, 300, $pathId);
             if(isset($imgNames) && !empty($imgNames)){
                 //se gerou insere no banco de dados e retorna ao dashboard
                 PartnerHandler::addPartnerAction($imgNames, $name, $cpf, $cnpj, $user_id, $phone, $email, $adress, $number, $complement, $district, $city, $state, $country, $postalCode, $description, $about, $url, $whats, $face, $insta);
@@ -159,6 +172,7 @@ class PartnerController extends ControllerGerenciador {
 
 
     public function deletePartner($args){
+        package::delete()->where('partner_id',$args['id'])->execute();
         Partner::delete()->where('id', $args['id'])->execute();
         $this->redirect('/partner');
     }

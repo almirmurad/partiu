@@ -28,7 +28,6 @@ class HomeController extends ControllerSite {
     private $pacotes;
     private $events;
     private $categories;
-
     private $total;
     
     public function __construct()
@@ -74,6 +73,9 @@ class HomeController extends ControllerSite {
         ->limit(4)
         ->execute();
 
+        if(empty($packagesList)){
+            unset($this->pacotes);
+        }else{
         foreach($packagesList as $packageItem){
             $newPackage = new Package();
             $newPackage->id = $packageItem['id'];
@@ -134,6 +136,7 @@ class HomeController extends ControllerSite {
             $newPackage->partner->active=$newPartner['active'];
 
             $this->pacotes[] = $newPackage;
+        }
 
     }
 
@@ -192,10 +195,15 @@ class HomeController extends ControllerSite {
 }
 
     public function index() {
+        if (isset($this->pacotes)){
+            $pacotes = $this->pacotes;
+        }else{
+            $pacotes = null;
+        }
         $this->render('home', [
             'page' => 'Home',
             'news' => $this->news,
-            'packages'=>$this->pacotes,
+            'packages'=>$pacotes,
             'events'=>$this->events,
             'categories'=>$this->categories
         ]);
@@ -284,6 +292,7 @@ class HomeController extends ControllerSite {
         $page = intval(filter_input(INPUT_GET, 'page'));
         $pacotes = PackageSiteHandler::pacotes($page);     
         $categories = SubCatsSiteHandler::catsPackages();   //nacionais, internacionais etc    
+        
         $this->render('package',[
             'page' => 'Pacotes',
             'pacotes' => $pacotes,

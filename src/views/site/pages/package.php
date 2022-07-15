@@ -15,8 +15,22 @@
 </header>
 <main>
     <div class="container" >
-        <section class="internal-content"   >
-            <?php $render('pacotes',['packages'=> $pacotes]);?>
+        <section class="internal-content" >
+
+            <?php 
+
+   
+            
+            if (isset($pacotes) && $pacotes !== null){
+                $render('pacotes',['packages'=>$pacotes]);
+                
+            }else{
+                echo"<div clas='pacotes'>
+                Sem pacotes para mostrar na pagina pacotes aqui
+                </div>";
+            }
+    
+            ?>
             
         </section>
         <aside>

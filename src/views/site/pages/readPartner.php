@@ -15,11 +15,23 @@
 <main>
     <div class="container ">
         <section class="internal-content column">
-            <?php foreach($data as $partner): ?>
+
+            <?php
+            if(empty($data[0]->id)){
+                echo "nulo";
+                exit;
+            } 
+            ?>
+            
+                <?php foreach($data as $partner): ?>
+                    <?php if(isset($partner->name) && empty($partner->name)):?>
+                <h4>Não existe parceiro cadastrado!</h4>
+                <?php else:?> 
+
                 <h4>Você está em: <?=$page?> / <?=stripslashes($partner->name);?></h4>
                 <div class="top-round-map">
                     <div class="cover-round-map">
-                        <img src="<?=$base?>/media/uploads/imgs/partners/<?=$partner->cover?>" alt="">
+                        <img src="<?=$base?>/media/uploads/imgs/partners/id_<?=$partner->id?>/<?=$partner->cover?>" alt="">
                     </div>
                     <div class="data-round-map">
                         <div class="partner-info">
@@ -58,13 +70,17 @@
                 </div>
                 <div class="foot-round-map">
                     <div class="round-map flex">
-                    <div class="internal-img" style="background-image:url(<?=$base?>/media/uploads/imgs/partners/<?=$partner->img1?>);"><a href="" class="galerie-link">Galeria</a></div>
-                    <div class="internal-img" style="background-image:url(<?=$base?>/media/uploads/imgs/partners/<?=$partner->img2?>);"><a href="" class="galerie-link">Galeria</a></div>
-                    <div class="internal-img" style="background-image:url(<?=$base?>/media/uploads/imgs/partners/<?=$partner->img3?>);"><a href="" class="galerie-link">texto</a></div>
-                    <div class="internal-img" style="background-image:url(<?=$base?>/media/uploads/imgs/partners/<?=$partner->img4?>);"><a href="" class="galerie-link">texto</a></div>  
+                    <div class="internal-img" style="background-image:url(<?=$base?>/media/uploads/imgs/partners/id_<?=$partner->id?>/<?=$partner->img1?>);"><a href="" class="galerie-link">Galeria</a></div>
+                    <div class="internal-img" style="background-image:url(<?=$base?>/media/uploads/imgs/partners/id_<?=$partner->id?>/<?=$partner->img2?>);"><a href="" class="galerie-link">Galeria</a></div>
+                    <div class="internal-img" style="background-image:url(<?=$base?>/media/uploads/imgs/partners/id_<?=$partner->id?>/<?=$partner->img3?>);"><a href="" class="galerie-link">texto</a></div>
+                    <div class="internal-img" style="background-image:url(<?=$base?>/media/uploads/imgs/partners/id_<?=$partner->id?>/<?=$partner->img4?>);"><a href="" class="galerie-link">texto</a></div>  
                 </div>
                 </div>
-            <?php endforeach; ?>   
+                <?php endif; ?>
+            <?php endforeach; ?>
+                      
+            
+               
             
         </section>
         <aside>

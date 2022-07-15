@@ -20,13 +20,13 @@ class PackageSiteHandler {
             //->where('categorie_id','in',$categories)
             ->orderBy('created_at', 'DESC')
             ->page($page, $perPage)
-        ->get();
+        ->get();     
+
         $total = Package::select()
         //->where('categorie_id','in',$categories)
         ->orderBy('created_at', 'DESC')
         ->count();
         $pageCount = ceil($total / $perPage);
-
 
         //5 transformar em objetos dos models
         $packages = [];
@@ -97,7 +97,7 @@ class PackageSiteHandler {
                 'pageCount'=>$pageCount,
                 'currentPage'=>$page
             ];
-    
+   
     }
 
 

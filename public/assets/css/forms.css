@@ -19,7 +19,11 @@
     font-size: 16px;
     font-weight: normal;
 }
-
+.page-title{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
 .addUser{
     display: flex;
     width: 50%;
@@ -116,19 +120,27 @@ label{
     color: var(--menuHoverColor);
 
 }
-.btn{
+.btn,
+.btn-disabled{
     transition: 0.4s ease-in-out;
     background-color: var(--menuHoverColor);
-    width: 40%;
+    max-width: 40%;
     height: 40px;
     margin: 5px;
     padding: 10px;
     color: var(--boxColor);
     border-radius: 40px;
     border:none;
+    text-align: center;
 }
 .btn:hover{
     background-color: var(--cabecColor);
+}
+.btn-disabled{
+
+    background-color: #ccc;
+    color:var(--menuHoverColor);
+ 
 }
 .error-notice{
     margin: 5px;

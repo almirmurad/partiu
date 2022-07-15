@@ -8,10 +8,9 @@ use src\functions\FuncoesUteis;
 
 class PackageHandler {
 
-    public static function addPackageAction($title, $description, $text, $fotoNames, $user_id, $destino, $estado, $pais, $saidaDe, $dataSaida, $dataRetorno, $expiraEm, $preco, $parceiro, $installments, $fee ){
-        
+    public static function addPackageAction($title, $description, $text, $fotoNames, $user_id, $destino, $estado, $pais, $saidaDe, $dataSaida, $dataRetorno, $expiraEm, $preco, $parceiro, $installments, $fee, $active, $status, $link ){
         list($cover, $img1, $img2, $img3, $img4) = $fotoNames;
-       
+        
         Package::insert([
             'title'         => $title,
             'description'   => $description,
@@ -33,6 +32,9 @@ class PackageHandler {
             'installments'  => $installments,
             'partner_id'    => $parceiro,
             'fee'           => $fee,
+            'active'           => $active,
+            'status'           => $status,
+            'link'           => $link,
             'created_at'    => date('Y-m-d H:i:s'),
            
         ])->execute();

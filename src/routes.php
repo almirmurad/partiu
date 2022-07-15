@@ -12,9 +12,7 @@ $router->get('/roteiros', 'HomeController@roteiros');
 $router->get('/readRoadMap/{id}/read', 'HomeController@readRoadMap');
 $router->get('/roteiros/{id}/roteirosCat', 'HomeController@roteirosCat');
 
-
 //$router->get('/readRoadMap/{id}/read', 'HomeController@readRoadMap');
-
 
 /* Blog */
 $router->get('/blog', 'HomeController@blog');

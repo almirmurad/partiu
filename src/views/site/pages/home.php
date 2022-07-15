@@ -16,7 +16,19 @@
     <section class="column">       
         <div class="container column">
             <!-- Pacotes -->
-            <?php /*echo"<pre>"; print_r($pacotes);*/ $render('pacotes',['packages'=>$packages]);?>
+            <?php 
+          
+            if (isset($packages) && $packages != null){
+                $render('pacotes',['packages'=>$packages]);
+                echo"existe pacote";
+            }else{
+                echo"<div clas='pacotes'>
+                Sem pacotes para mostrar
+                </div>";
+            }
+  
+           
+            ?>
             <!-- Call to Action -->
             <?php $render('callToAction');?>
         </div>

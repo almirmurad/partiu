@@ -32,6 +32,7 @@ class PackageController extends ControllerGerenciador {
     }
 
     public function addPackageAction() {  
+        
 
         $title   = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_ADD_SLASHES);
         $description   = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_ADD_SLASHES);
@@ -48,9 +49,14 @@ class PackageController extends ControllerGerenciador {
         $installments = filter_input(INPUT_POST, 'installments');
         $fee = str_replace(",",".",str_replace(".","",filter_input(INPUT_POST, 'fee')));
         $parceiro = filter_input(INPUT_POST, 'partner_id', FILTER_SANITIZE_ADD_SLASHES);
+        $active = filter_input(INPUT_POST, 'active', FILTER_SANITIZE_ADD_SLASHES);
+        $status = filter_input(INPUT_POST, 'status', FILTER_SANITIZE_ADD_SLASHES);
+        $link = filter_input(INPUT_POST, 'link', FILTER_SANITIZE_ADD_SLASHES);
         
-        if($title && $description && $text && $user_id && $destino && $estado && $pais && $saidaDe && $dataSaida && $dataRetorno && $expiraEm && $preco && $parceiro && $installments && $fee){
+        
+        if($title && $description && $text && $user_id && $destino && $estado && $pais && $saidaDe && $dataSaida && $dataRetorno && $expiraEm && $preco && $parceiro ){
            //pega as imagens e cria um array com todas
+          
             $fotosNames = [];
             foreach($_FILES as $img){
                if(isset ($img['type'])){
@@ -69,7 +75,7 @@ class PackageController extends ControllerGerenciador {
             $imgNames = FuncoesUteis::editImg($fotosNames, 420, 300, $caminho);
             if(isset($imgNames) && !empty($imgNames)){
                 //se gerou insere no banco de dados e retorna ao dashboard
-                PackageHandler::addPackageAction($title, $description, $text, $imgNames, $user_id, $destino, $estado, $pais, $saidaDe, $dataSaida, $dataRetorno, $expiraEm, $preco, $parceiro, $installments, $fee);
+                PackageHandler::addPackageAction($title, $description, $text, $imgNames, $user_id, $destino, $estado, $pais, $saidaDe, $dataSaida, $dataRetorno, $expiraEm, $preco, $parceiro, $installments, $fee, $active, $status, $link);
                 $this->redirect('/gerenciador');      
             }
             else{
@@ -83,10 +89,11 @@ class PackageController extends ControllerGerenciador {
 
         $page = "Lista de Pacotes";
         $packages = PackageHandler::getPackage();
-
+        $partners = Partner::select()->execute();
         $this->render('listPackages',[
             'loggedUser'=>$this->loggedUser,
             'packages' => $packages,
+            'partners' => $partners,
             'page'=>$page
         ]);
 

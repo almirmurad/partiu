@@ -9,7 +9,14 @@
             <div class="container column">
                 <?php $render('breadcrumbs',['page'=>$page]);?>
                 <div class="content column">
-                    <h2><?=$page;?></h2>
+                    <div class="page-title">
+                        <h2><?=$page;?></h2>
+                        <?php if(isset($partners) && !empty($partners)):?>
+                            <a href="<?=$base;?>/newPartner"class="btn ">+ Inserir Parceiros +</a>
+                            <?php else:?>
+                                <a href="<?=$base;?>/newPartner" class=" btn-disabled">+ Inserir Parceiros +</a>
+                        <?php endif;?>
+                    </div>
                     <div class="dash-boxes ">
                         <!-- Lista de Usuários -->
                         <table class="list-users">
@@ -39,14 +46,13 @@
                                 <td class='user-item'><?= $partner['active'];?></td>
                                 <td class="user-item">
                                     <a href="<?=$base;?>/partner/<?= $partner['id'];?>/editPartner">Editar</a>
-                                    <a href="<?=$base;?>/partner/<?= $partner['id'];?>/deletePartner" onclick="confirm('Tem certeza que deseja excluir o Post <?= $partner['name'];?>')">Excluir</a>
+                                    <a href="<?=$base;?>/partner/<?= $partner['id'];?>/deletePartner" onclick="confirm('Tem certeza que deseja excluir o Parceiro: <?= $partner['name']; '? <br/> Esta ação não poderá ser revertida e excluirá também os pacotes de viagem deste parceiro!'?>')">Excluir</a>
                                 </td>
                                 
                             </tr>
                             <?php endforeach; ?>
 
                         </table>
-                        <a href="<?=$base;?>/newPartner">+ Inserir Parceiros +</a>
                         <!-- fim da lista de Usuarios -->
                     </div>
                 </div>

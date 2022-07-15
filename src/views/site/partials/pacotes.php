@@ -1,6 +1,6 @@
     <div class="pacotes">
-        <?php
-        if(isset($packages['packages']))
+        <?php 
+        if(isset($packages['packages']))//lista pacotes na página de pacotes
         {
             foreach ($packages['packages'] as $package){
                 echo'
@@ -45,7 +45,7 @@
                     'link'=>'pacotes'
                     ]);
                      
-            } elseif($packages)
+            } elseif($packages)//pacotes no index
             {
                 foreach ($packages as $package){
                 echo'
