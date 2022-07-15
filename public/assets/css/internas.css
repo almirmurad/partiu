@@ -331,6 +331,10 @@ margin:10px 0;
     padding: 10px;
 }
 
+.it-dt-notice{
+    margin: 4px 0
+}
+
 .partner-info ul li{
     margin: 2px 0;
     font-size: 0.8em;

@@ -16,7 +16,7 @@
     <div class="container ">
         <section class="internal-content column">
             <?php foreach($data as $package): ?>
-                <h4>Você está em: <?=$page?> / <?=stripslashes($package->title);?></h4>
+                <h4>Você está em: <a href="<?=$base?>/pacotes">Pacotes</a>/<?=$page?> / <?=stripslashes($package->title);?></h4>
                 <div class="top-round-map">
                     <div class="cover-round-map">
                         <img src="<?=$base?>/media/uploads/imgs/packages/<?=$package->cover?>" alt="">
