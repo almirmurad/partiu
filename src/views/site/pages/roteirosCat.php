@@ -67,12 +67,12 @@
 
         </section>
         <aside>
-        <?php $render('aside',['page'=>$page]);?>
+        <?php $render('aside',['page'=>$page, 'idPageCat'=>$args]);?>
         </aside>    
     </div>
 </main>
 <section class="final">
-    <?php $render('internalContentFinal')?>
+    <?php $render('internalContentFinal',['events'=>$eventsFoot]);?>
 </section>
 <footer>
     <?php $render('foot');?>

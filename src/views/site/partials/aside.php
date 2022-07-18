@@ -13,9 +13,9 @@ if (empty($page) || $page != 'Blog'){
         </div>
         <div class="publicity">
             <h4>Anúncios</h4>
-            <div class="plublicity-item"><img src="assets/img/trip.png" alt=""></div>
-            <div class="plublicity-item"><img src="assets/img/trip.png" alt=""></div>
-            <div class="plublicity-item"><img src="assets/img/trip.png" alt=""></div>
+            <div class="plublicity-item"><img src="$base/assets/img/trip.png" alt=""></div>
+            <div class="plublicity-item"><img src="$base/assets/img/trip.png" alt=""></div>
+            <div class="plublicity-item"><img src="$base/assets/img/trip.png" alt=""></div>
         </div>
 EOT;
 }else{
@@ -49,9 +49,9 @@ EOT;
     </div>
     <div class="publicity">
         <h4>Anúncios</h4>
-        <div class="plublicity-item"><img src="assets/img/trip.png" alt=""></div>
-        <div class="plublicity-item"><img src="assets/img/trip.png" alt=""></div>
-        <div class="plublicity-item"><img src="assets/img/trip.png" alt=""></div>
+        <div class="plublicity-item"><img src="$base/assets/img/trip.png" alt=""></div>
+        <div class="plublicity-item"><img src="$base/assets/img/trip.png" alt=""></div>
+        <div class="plublicity-item"><img src="$base/assets/img/trip.png" alt=""></div>
     </div>
 EOT;
 }

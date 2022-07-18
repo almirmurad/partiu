@@ -35,7 +35,7 @@ class RMController extends ControllerSite{
             'page' => 'Ler Roteiros',
             'roadMaps'=> $roadMaps,
             'categories'=> $categories,
-            'eventsFoot'=>$eventsFoot
+            'eventsFoot'=>$eventsFoot,
         ]);
     }
 
@@ -43,13 +43,16 @@ class RMController extends ControllerSite{
         $roadMaps = RMSiteHandler::roadMapCat($args);
         $categories = SubCatsSiteHandler::catsRoadMap();
         $oneCatRm = RMSiteHandler::oneCatRm($args);
-        
+        $eventsFoot = EventsSiteHandler::eventsFoot();
+        $id = $args;
         $this->render(
             'roteiros',[
             'page' => 'Roteiros',
             'roadMaps'=>$roadMaps,
             'categories'=> $categories,
-            'oneCat'=>$oneCatRm
+            'oneCat'=>$oneCatRm,
+            'eventsFoot'=>$eventsFoot,
+            'idPageCat'=>$args,
         ]);
     }
 }
