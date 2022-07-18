@@ -254,8 +254,9 @@ class PackageSiteHandler {
 
                 $pacotes[] = $newPackage;
 
-                return $pacotes;
             }
+
+            return $pacotes;
         }
     }
 }
