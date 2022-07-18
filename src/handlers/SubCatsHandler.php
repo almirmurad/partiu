@@ -9,7 +9,6 @@ class SubCatsHandler {
         return $subCat ? true : false;
     }
 
-
     public static function addSubCat($subCat, $description, $img, $userId, $idCatAsc){
 
         if(empty($img)){
