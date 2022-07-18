@@ -128,7 +128,7 @@ class EventsSiteHandler {
         
         $eventsList = Event::select()
         ->orderBy(new rnd('rand()'))
-        ->limit(3)
+        ->limit(4)
         ->get();
     
         //5 transformar em objetos dos models
