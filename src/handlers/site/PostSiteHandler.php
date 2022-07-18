@@ -1,5 +1,5 @@
 <?php
-namespace src\handlers;
+namespace src\handlers\site;
 use src\models\User;
 use src\models\Post;
 use ClanCats\Hydrahon\Query\Expression as Rnd;
@@ -36,7 +36,6 @@ class PostSiteHandler {
 
     }
 
-
     public static function posts(){
         //0 as categorias dos posts
         $catPosts = Subcategorie::select()
@@ -55,13 +54,8 @@ class PostSiteHandler {
             $categories[] = $cat['id_user'];
             $categories[] = $cat['id_cat_asc'];
             $categories[] = $cat['created_at'];
-            
         }       
-        //echo"<pre>";
-        //echo $categories;
-       // print_r($categories);
-        //echo $allcats[1];
-       // exit;
+
         //3 Posts
         $postList = Post::select()
             ->where('categorie_id','in',$categories)
@@ -108,72 +102,49 @@ class PostSiteHandler {
         
     }
 
-
-
     public static function readPost($id){
-
-        /*$onePost = Post::select('posts.id, posts.title, posts.description, posts.text, posts.cover, posts.img1, posts.img2, posts.img3, posts.img4,
-                                posts.user_id, posts.categorie_id, posts.created_at, users.id, users.name, users.type_user, users.avatar,
-                                subcategories.name as categorie, subcategories.id, subcategories.id_cat_asc')
-                                ->join('users', 'posts.user_id','=', 'users.id')
-                                ->join('subcategories', 'posts.categorie_id','=', 'subcategories.id')
-                                ->where('posts.id', $id)
-                                ->one();
-
-        return $onePost;*/
 
         $postList = Post::select()
         ->where('posts.id', $id)
         ->one();
-        //echo"<pre>";
-        //echo $categories;
-       // print_r($postList);
-        //echo $allcats[1];
-        //exit;
-
         $post = [];
-        
-            $newPost = new Post();
-            $newPost->id = $postList['id'];
-            $newPost->title = $postList['title'];
-            $newPost->description = $postList['description'];
-            $newPost->text = $postList['text'];
-            $newPost->cover = $postList['cover'];
-            $newPost->img1 = $postList['img1'];
-            $newPost->img2 = $postList['img2'];
-            $newPost->img3 = $postList['img3'];
-            $newPost->img4 = $postList['img4'];
-            $newPost->created_at = $postList['created_at'];
+    
+        $newPost = new Post();
+        $newPost->id = $postList['id'];
+        $newPost->title = $postList['title'];
+        $newPost->description = $postList['description'];
+        $newPost->text = $postList['text'];
+        $newPost->cover = $postList['cover'];
+        $newPost->img1 = $postList['img1'];
+        $newPost->img2 = $postList['img2'];
+        $newPost->img3 = $postList['img3'];
+        $newPost->img4 = $postList['img4'];
+        $newPost->created_at = $postList['created_at'];
 
-            //4 usuarios que postaram
-            $newUser = User::select()->where('id',$postList['user_id'])->one();
-            $newPost->user = new User();
-            $newPost->user->id=$newUser['id'];
-            $newPost->user->name=$newUser['name'];
-            $newPost->user->avatar=$newUser['avatar'];
-            $newPost->user->type_user=$newUser['type_user'];
+        //4 usuarios que postaram
+        $newUser = User::select()->where('id',$postList['user_id'])->one();
+        $newPost->user = new User();
+        $newPost->user->id=$newUser['id'];
+        $newPost->user->name=$newUser['name'];
+        $newPost->user->avatar=$newUser['avatar'];
+        $newPost->user->type_user=$newUser['type_user'];
 
-            //categorias
-            $newCat = Subcategorie::select()->where('id',$postList['categorie_id'])->one();
-            $newPost->categorie = new Subcategorie();
-            $newPost->categorie->id=$newCat['id'];
-            $newPost->categorie->name=$newCat['name'];
-            $newPost->categorie->description=$newCat['description'];
-            $newPost->categorie->img=$newCat['img'];
-            $newPost->categorie->id_cat_asc=$newCat['id_cat_asc'];
+        //categorias
+        $newCat = Subcategorie::select()->where('id',$postList['categorie_id'])->one();
+        $newPost->categorie = new Subcategorie();
+        $newPost->categorie->id=$newCat['id'];
+        $newPost->categorie->name=$newCat['name'];
+        $newPost->categorie->description=$newCat['description'];
+        $newPost->categorie->img=$newCat['img'];
+        $newPost->categorie->id_cat_asc=$newCat['id_cat_asc'];
 
-            $post[] = $newPost;
+        $post[] = $newPost;
 
-      
-        
        return $post;
-
-
     }
 
     public static function totalPostCategoria($cats){
-
-            
+          
         foreach($cats as $cat){
 
             $total = Post::select(new F('count', 'id'))
@@ -184,6 +155,57 @@ class PostSiteHandler {
        
         $n = $total[0]["count(`id`)"];
         return $n;
+
+    }
+
+    public static function postsDestaques(){ 
+        $postList = Post::select('posts.id, posts.cover, posts.title, posts.description, posts.categorie_id, subcategories.id as id_subcat, subcategories.name as nome, subcategories.id_cat_asc')
+        ->join('subcategories', 'posts.categorie_id', '=', 'subcategories.id_cat_asc')
+        ->orderBy(new rnd('rand()'))
+        ->limit(3)
+        ->get();
+
+        // echo"<pre>";
+        // print_r($postList);
+        // exit;
+
+        $post = [];
+        
+        foreach($postList as $postItem){
+            $newPost = new Post();
+            $newPost->id = $postItem['id'];
+            $newPost->title = $postItem['title'];
+            $newPost->description = $postItem['description'];
+            //$newPost->text = $postItem['text'];
+            $newPost->cover = $postItem['cover'];
+            //$newPost->img1 = $postItem['img1'];
+            //$newPost->img2 = $postItem['img2'];
+            //$newPost->img3 = $postItem['img3'];
+            //$newPost->img4 = $postItem['img4'];
+            //$newPost->created_at = $postItem['created_at'];
+
+            //4 usuarios que postaram
+            // $newUser = User::select()->where('id',$postItem['user_id'])->one();
+            // $newPost->user = new User();
+            // $newPost->user->id=$newUser['id'];
+            // $newPost->user->name=$newUser['name'];
+            // $newPost->user->avatar=$newUser['avatar'];
+            // $newPost->user->type_user=$newUser['type_user'];
+
+            //categorias
+            // $newCat = Subcategorie::select()->where('id',$postItem['categorie_id'])->one();
+            // $newPost->categorie = new Subcategorie();
+            // $newPost->categorie->id=$newCat['id'];
+            // $newPost->categorie->name=$newCat['name'];
+            // $newPost->categorie->description=$newCat['description'];
+            // $newPost->categorie->img=$newCat['img'];
+            // $newPost->categorie->id_cat_asc=$newCat['id_cat_asc'];
+
+            $posts[] = $newPost;
+
+        }
+        
+       return $posts;
 
     }
 

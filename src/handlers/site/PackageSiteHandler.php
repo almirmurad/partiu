@@ -1,5 +1,5 @@
 <?php
-namespace src\handlers;
+namespace src\handlers\site;
 use src\models\User;
 use src\models\Post;
 use ClanCats\Hydrahon\Query\Expression as Rnd;
@@ -93,14 +93,11 @@ class PackageSiteHandler {
            
         }
  
-       return [ 'packages'=>$packages,
+        return [ 'packages'=>$packages,
                 'pageCount'=>$pageCount,
                 'currentPage'=>$page
             ];
-   
     }
-
-
 
     public static function readPackage($id){
 
@@ -181,8 +178,84 @@ class PackageSiteHandler {
 
             $package[] = $newPackage;
 
-       return $package;
+        return $package;
 
     }
 
+    public static function packIndex(){
+
+        $pacotes = [];
+        $packagesList = Package::select()
+        ->orderBy(new rnd('rand()'))
+        ->limit(4)
+        ->execute();
+
+        if(empty($packagesList)){
+            unset($pacotes);
+        }else{
+            foreach($packagesList as $packageItem){
+                $newPackage = new Package();
+                $newPackage->id = $packageItem['id'];
+                $newPackage->title = $packageItem['title'];
+                $newPackage->description = $packageItem['description'];
+                $newPackage->text = $packageItem['text'];
+                $newPackage->cover = $packageItem['cover'];
+                $newPackage->img1 = $packageItem['img1'];
+                $newPackage->img2 = $packageItem['img2'];
+                $newPackage->img3 = $packageItem['img3'];
+                $newPackage->img4 = $packageItem['img4'];
+                $newPackage->destination = $packageItem['destination'];
+                $newPackage->state = $packageItem['state'];
+                $newPackage->country = $packageItem['country'];
+                $newPackage->price = 'R$ '.number_format($packageItem['price'],2,',','.');
+                $newPackage->installments = $packageItem['installments'];
+                $newPackage->fee = number_format($packageItem['fee'],2,',','.');
+                // calculo de juros por parcela
+                $i = $packageItem['fee'] / 100;
+                $taxa = 1 + $i;
+                $total = $packageItem['price'] * $taxa;
+                //parcela mensal com juros
+                $newPackage->vlrInstallments = number_format($total / $packageItem['installments'],2,',','.');  
+                        
+
+                //4 usuarios que postaram
+                /*$newUser = User::select()->where('id',$packageItem['user_id'])->one();
+                $newPackage->user = new User();
+                $newPackage->user->id=$newUser['id'];
+                $newPackage->user->name=$newUser['name'];
+                $newPackage->user->avatar=$newUser['avatar'];
+                $newPackage->user->type_user=$newUser['type_user'];*/
+
+                //5 Parceiros
+                $newPartner = Partner::select()->where('id',$packageItem['partner_id'])->one();
+                $newPackage->partner = new Partner();
+                $newPackage->partner->id=$newPartner['id'];
+                $newPackage->partner->name=$newPartner['name'];
+                $newPackage->partner->email=$newPartner['email'];
+                $newPackage->partner->phone=$newPartner['phone'];
+                $newPackage->partner->adress=$newPartner['adress'];
+                $newPackage->partner->number=$newPartner['number'];
+                $newPackage->partner->district=$newPartner['district'];
+                $newPackage->partner->city=$newPartner['city'];
+                $newPackage->partner->complement=$newPartner['complement'];
+                $newPackage->partner->state=$newPartner['state'];
+                $newPackage->partner->country=$newPartner['country'];
+                $newPackage->partner->postal_code=$newPartner['postal_code'];
+                $newPackage->partner->cover=$newPartner['cover'];
+                $newPackage->partner->img1=$newPartner['img1'];
+                $newPackage->partner->img2=$newPartner['img2'];
+                $newPackage->partner->img3=$newPartner['img3'];
+                $newPackage->partner->img4=$newPartner['img4'];
+                $newPackage->partner->url=$newPartner['url'];
+                $newPackage->partner->whats=$newPartner['whats'];
+                $newPackage->partner->face=$newPartner['face'];
+                $newPackage->partner->insta=$newPartner['insta'];
+                $newPackage->partner->active=$newPartner['active'];
+
+                $pacotes[] = $newPackage;
+
+                return $pacotes;
+            }
+        }
+    }
 }

@@ -5,35 +5,34 @@ $router = new Router();
 
 /* Rotas do site */
 $router->get('/', 'HomeController@index');
-$router->get('/quemSomos', 'HomeController@quemSomos');
+$router->get('/quemSomos', 'site\QmSmsController@index');
 
 //roteiros
-$router->get('/roteiros', 'HomeController@roteiros');
-$router->get('/readRoadMap/{id}/read', 'HomeController@readRoadMap');
-$router->get('/roteiros/{id}/roteirosCat', 'HomeController@roteirosCat');
+$router->get('/roteiros', 'site\RMController@index');
+$router->get('/readRoadMap/{id}/read', 'site\RMController@readRoadMap');
+$router->get('/roteiros/{id}/roteirosCat', 'site\RMController@roteirosCat');
 
 //$router->get('/readRoadMap/{id}/read', 'HomeController@readRoadMap');
 
 /* Blog */
-$router->get('/blog', 'HomeController@blog');
-$router->get('/blog/{id}/readBlog', 'HomeController@readBlog');
+$router->get('/blog', 'site\BlogController@index');
+$router->get('/blog/{id}/readBlog', 'site\BlogController@readBlog');
 
 /* Notícias */
-$router->get('/noticias', 'HomeController@noticias');
-$router->get('/readNews/{id}/read', 'HomeController@read');
+$router->get('/noticias', 'site\NotController@index');
+$router->get('/readNews/{id}/read', 'site\NotController@read');
 
 /* Pacotes */
-$router->get('/pacotes', 'HomeController@pacotes');
-$router->get('/package/{id}/readPackage', 'HomeController@readPackage');
+$router->get('/pacotes', 'site\PacController@index');
+$router->get('/package/{id}/readPackage', 'site\PacController@readPackage');
 
 /* Eventos */
-$router->get('/eventos', 'HomeController@eventos');
-$router->get('/events/{id}/readEvent', 'HomeController@readEvent');
+$router->get('/eventos', 'site\EvenController@index');
+$router->get('/events/{id}/readEvent', 'site\EvenController@readEvent');
 
 /* Parceiros */
-//$router->get('/partner', 'HomeController@partners');
-$router->get('/partner/{id}/readPartner', 'HomeController@readPartner');
-
+//$router->get('/partner', 'site\ParcController@partners');
+$router->get('/partner/{id}/readPartner', 'site\ParcController@readPartner');
 
 /********** Rotas do Gerenciador **********/
 

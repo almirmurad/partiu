@@ -1,5 +1,5 @@
 <?php
-namespace src\handlers;
+namespace src\handlers\site;
 use src\models\User;
 use ClanCats\Hydrahon\Query\Expression as Rnd;
 use src\models\Subcategorie;

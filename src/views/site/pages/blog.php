@@ -17,33 +17,33 @@
     <section class="destaque-blog">
         <h2 class="categoria-titulo-blog">
             Destaques total de posts geral 
-        </h2>
+        </h2>            
         <div class="area-destaque-blog"> 
-            <div class="destaque-left" style="background-image:linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2)),url(<?=$base?>/media/uploads/imgs/posts/<?=$postsDestaques[0]['cover'];?>);">
+            <div class="destaque-left" style="background-image:linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2)),url(<?=$base?>/media/uploads/imgs/posts/<?=$postsDestaques[0]->cover;?>);">
                 <div class="cont-item-blog-transparent"></div>
                 <div class="legend">
                     <h3 class="text-legend">
-                        <?= $postsDestaques[0]['description'];?>
+                        <?=$postsDestaques[0]->title;?>
                     </h3>
                 </div>
             </div>
             <div class="destaque-right">
-                <div class="destaque-right-top" style="background-image:linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2)),url(<?=$base?>/media/uploads/imgs/posts/<?=$postsDestaques[1]['cover'];?>);">
+                <div class="destaque-right-top" style="background-image:linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2)),url(<?=$base?>/media/uploads/imgs/posts/<?=$postsDestaques[1]->cover;?>);">
                     <div class="cont-item-blog">
                         <div class="cont-item-blog-transparent"></div>
                         <div class="legend">
                             <h3 class="text-legend">
-                                <?= $postsDestaques[1]['description'];?>
+                            <?=$postsDestaques[1]->title;?>
                             </h3>
                         </div>
                     </div>
                 </div>
-                <div class="destaque-right-bottom" style="background-image:linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2)),url(<?=$base?>/media/uploads/imgs/posts/<?=$postsDestaques[2]['cover'];?>);">
+                <div class="destaque-right-bottom" style="background-image:linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2)),url(<?=$base?>/media/uploads/imgs/posts/<?=$postsDestaques[2]->cover;?>);">
                     <div class="cont-item-blog">
                         <div class="cont-item-blog-transparent"></div>
                         <div class="legend">
                             <h3 class="text-legend">
-                                <?= $postsDestaques[2]['description'];?> 
+                            <?=$postsDestaques[2]->title;?>
                             </h3>
                         </div>
                     </div>

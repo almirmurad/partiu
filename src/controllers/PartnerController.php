@@ -51,11 +51,12 @@ class PartnerController extends ControllerGerenciador {
         $face = filter_input(INPUT_POST, 'face', FILTER_SANITIZE_ADD_SLASHES);
         $insta = filter_input(INPUT_POST, 'insta', FILTER_SANITIZE_ADD_SLASHES);
 
-        //echo "nome: ".$name."<br> CPF ".$cpf."<br> campo: ".$cnpj."<br> campo: ".$user_id."<br> campo: ".$phone."<br> campo: ".$email."<br> campo: ".$adress."<br> campo: ".$number."<br> campo: ".$complement."<br> campo: ".$district."<br> campo: ".$city."<br> campo: ".$state."<br> campo: ".$country."<br> campo: ".$postalCode."<br> campo: ".$description."<br> campo: ".$about."<br> campo: ".$url;
-        //exit;        
-
+        // echo"<pre>";     
+        // print_r($_POST);
+        //    exit;
         if($name && $cpf && $user_id && $phone && $email && $adress && $number && $complement && $district && $city && $state && $country && $postalCode && $description && $about && $url && $whats && $face && $insta){
            //pega as imagens e cria um array com todas
+           
             $fotosNames = [];
             foreach($_FILES as $img){
                if(isset ($img['type'])){
@@ -67,6 +68,7 @@ class PartnerController extends ControllerGerenciador {
 
             //verifica se existe a pasta imagens específica para parceiro 
             $pathPartners = "media/uploads/imgs/partners";
+            
             if(!is_dir($pathPartners)){//se não não existir cria
                 mkdir($pathPartners, 0777);
             }

@@ -20,14 +20,12 @@
           
             if (isset($packages) && $packages != null){
                 $render('pacotes',['packages'=>$packages]);
-                echo"existe pacote";
             }else{
                 echo"<div clas='pacotes'>
                 Sem pacotes para mostrar
                 </div>";
             }
-  
-           
+    
             ?>
             <!-- Call to Action -->
             <?php $render('callToAction');?>

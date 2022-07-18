@@ -58,7 +58,7 @@
     </div>
 </main>
 <section class="final">
-    <?php $render('internalContentFinal');?>
+    <?php $render('internalContentFinal',['events'=>$eventsFoot]);?>
 </section>
 <footer>
     <?php $render('foot');?>

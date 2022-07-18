@@ -1,16 +1,16 @@
 <?php $render('head');?>
 <body>
 <header>
-        <!-- Logo e Search-->
-        <?php $render('header');?>
+    <!-- Logo e Search-->
+    <?php $render('header');?>
 
-        <div class="nav">
-            <!-- Menu navegação-->
-            <?php $render('menuNavigation');?>
-        </div>
-        <?php $render('internalSlider',['page'=>$page]);?>
-        
-        <?php $render('internalCategories',['categories'=>$categories])?>
+    <div class="nav">
+        <!-- Menu navegação-->
+        <?php $render('menuNavigation');?>
+    </div>
+    <?php $render('internalSlider',['page'=>$page]);?>
+    
+    <?php $render('internalCategories',['categories'=>$categories])?>
         
 </header>
 <main>
@@ -19,8 +19,6 @@
 
             <?php 
 
-   
-            
             if (isset($pacotes) && $pacotes !== null){
                 $render('pacotes',['packages'=>$pacotes]);
                 
@@ -39,7 +37,7 @@
     </div>
 </main>
 <section class="final">
-    <?php $render('internalContentFinal');?>
+    <?php $render('internalContentFinal',['events'=>$eventsFoot]);?>
 </section>
 <footer>
     <?php $render('foot');?>

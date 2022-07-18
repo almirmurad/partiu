@@ -1,5 +1,5 @@
 <?php
-namespace src\handlers;
+namespace src\handlers\site;
 use src\models\User;
 use src\models\RoadMap;
 use ClanCats\Hydrahon\Query\Expression as Rnd;
