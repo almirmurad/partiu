@@ -79,4 +79,32 @@ class FuncoesUteis{
           }
       }
 
+      /**
+     * Apagar Tudo
+     * 
+     * Remove todos os ficheiros, sub-diretorias e seus ficheiros
+     * de dentro do caminho fornecido.
+     * 
+     * @param string $dir Caminho completo para diretoria a esvaziar.
+     */
+    public static function apagarTudo($dir) {
+
+        if (is_dir($dir)) {
+            $arquivos = scandir($dir);
+            
+
+            $list = array_diff(scandir($dir), ['.','..']);
+            foreach($list as $arquivo){
+
+                $caminho = "$dir/$arquivo";
+                echo"<br/>";
+                
+                if(is_file($caminho)){
+                    unlink($caminho);
+                }
+            }
+        }
+        return true;
+    }
+
 }

@@ -110,66 +110,85 @@ class PartnerController extends ControllerGerenciador {
 
     }
 
-    public function editPackage($args){
+    public function editPartner($args){
         $flash = '';
         if(!empty($_SESSION['flash'])){
             $flash = $_SESSION['flash'];
             $_SESSION['flash'] = '';
         }
-        $package    = Package::select()->find($args['id']);
-        //$subCatId = $package['categorie_id'];
+        $partner    = Partner::select()->find($args['id']);
+        //$subCatId = $partner['categorie_id'];
         //$subCat        = Subcategorie::select()->Where('id', $subCatId)->one();
-        $page       = "Edição de Pacotes";
+        $page       = "Edição de Parceiros";
         
-        $this->render('editPackage', [
+        $this->render('editPartner', [
             'loggedUser'=>$this->loggedUser,
             'page'      =>$page,
-            'package'     =>$package,
+            'partner'     =>$partner,
             'flash'     =>$flash,
             //'subCat'    =>$subCat
         ]);
     }
 
-    public function editPackageAction($args){
-        $id = $args['id'];
-        $title   = filter_input(INPUT_POST, 'title');
-        $description   = filter_input(INPUT_POST, 'description');
-        $text   = filter_input(INPUT_POST, 'text');
-        $cover = $_FILES['cover']['name'];
-        $img1   = $_FILES['img1']['name'];
-        $img2   = $_FILES['img2']['name'];
-        $img3   = $_FILES['img3']['name'];
-        $img4   = $_FILES['img4']['name'];
+    public function editPartnerAction($args){
+        $name   = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_ADD_SLASHES);
+        $cpf   = filter_input(INPUT_POST, 'cpf', FILTER_SANITIZE_ADD_SLASHES);
+        $cnpj   = filter_input(INPUT_POST, 'cnpj', FILTER_SANITIZE_ADD_SLASHES);
         $user_id = $this->loggedUser->id;
-        //$categorie_id    = filter_input(INPUT_POST, 'subCatAsc');
-        $destino = filter_input(INPUT_POST, 'destination');
-        $estado = filter_input(INPUT_POST, 'state');
-        $pais = filter_input(INPUT_POST, 'country');
-        $saidaDe = filter_input(INPUT_POST, 'exit_from');
-        $dataSaida = filter_input(INPUT_POST, 'going_on');
-        $dataRetorno = filter_input(INPUT_POST, 'return_in');
-        $expiraEm = filter_input(INPUT_POST, 'expires_at');
-        $preco = str_replace(",",".",str_replace(".","",filter_input(INPUT_POST, 'price')));
-        
-        //echo"<pre>";
-        //print_r($preco);
-        //exit;
+        $phone = filter_input(INPUT_POST, 'phone', FILTER_SANITIZE_ADD_SLASHES);
+        $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_ADD_SLASHES);
+        $adress = filter_input(INPUT_POST, 'adress', FILTER_SANITIZE_ADD_SLASHES);
+        $number = filter_input(INPUT_POST, 'number', FILTER_SANITIZE_ADD_SLASHES);
+        $complement = filter_input(INPUT_POST, 'complement', FILTER_SANITIZE_ADD_SLASHES);
+        $district = filter_input(INPUT_POST, 'district', FILTER_SANITIZE_ADD_SLASHES);
+        $city = filter_input(INPUT_POST, 'city', FILTER_SANITIZE_ADD_SLASHES);
+        $state = filter_input(INPUT_POST, 'state', FILTER_SANITIZE_ADD_SLASHES);
+        $country = filter_input(INPUT_POST, 'country', FILTER_SANITIZE_ADD_SLASHES);
+        $postalCode = filter_input(INPUT_POST, 'postal_code', FILTER_SANITIZE_ADD_SLASHES);
+        $description = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_ADD_SLASHES);
+        $about = filter_input(INPUT_POST, 'about', FILTER_SANITIZE_ADD_SLASHES);
+        $url = filter_input(INPUT_POST, 'url', FILTER_SANITIZE_ADD_SLASHES);
+        $whats = filter_input(INPUT_POST, 'whats', FILTER_SANITIZE_ADD_SLASHES);
+        $face = filter_input(INPUT_POST, 'face', FILTER_SANITIZE_ADD_SLASHES);
+        $insta = filter_input(INPUT_POST, 'insta', FILTER_SANITIZE_ADD_SLASHES);
 
-        //1.532,32
         
-        if($id && $title && $description && $text && $cover && $img1 && $img2 && $img3 && $img4 && $user_id && $destino && $estado && $pais && $saidaDe && $dataSaida && $dataRetorno && $expiraEm && $preco){
+        if($name && $cpf && $user_id && $phone && $email && $adress && $number && $complement && $district && $city && $state && $country && $postalCode && $description && $about && $url && $whats && $face && $insta){
 
-            $alterado = PackageHandler::editPackage($id, $title, $description, $text, $cover, $img1, $img2, $img3, $img4, $user_id, $destino, $estado, $pais, $saidaDe, $dataSaida, $dataRetorno, $expiraEm, $preco);
-            if($alterado === true){
-                $_SESSION['flash'] = "Pacote de Viagem aterado com sucesso!";
-                $this->redirect('/package/'.$args['id'].'/editPackage');
+            $fotosNames = [];
+            foreach($_FILES as $img){
+               if(isset ($img['type'])){
+                    if(in_array($img['type'],['image/jpeg', 'image/jpg', 'image/png'])){
+                        $fotosNames[] = $img;
+                    }
+               } 
+            }
+            
+            $idPartner = $args['id'];
+            //verifica se existe a pasta imagens específica para parceiro 
+            $pathId = "media/uploads/imgs/partners/id_".$idPartner;
+            
+            if(!is_dir($pathId = "media/uploads/imgs/partners/id_".$idPartner)){//se não não existir cria
+                mkdir($pathId, 0777);
             }else{
-                $_SESSION['flash'] = "Erro ao tentar alterar o Pacote de Viagem!";
-                $this->redirect('/package/'.$args['id'].'/editPackage'); 
+                $apagado = FuncoesUteis::apagarTudo($pathId);
+                if($apagado == true){
+                    //gera todas as imagens no tamanho específicado
+                    $imgNames = FuncoesUteis::editImg($fotosNames, 420, 300, $pathId);
+                }
+            }
+            
+            $alterado = PartnerHandler::editPartner($imgNames, $name, $cpf, $user_id, $phone, $email, $adress, $number, $complement, $district, $city, $state, $country, $postalCode, $description, $about, $url, $whats, $face, $insta, $idPartner);
+            if($alterado === true){
+                $_SESSION['flash'] = "Parceiro aterado com sucesso!";
+                $this->redirect('/partner/'.$args['id'].'/editPartner');
+            }else{
+                $_SESSION['flash'] = "Erro ao tentar alterar o Parceiro!";
+                $this->redirect('/partner/'.$args['id'].'/editPartner'); 
             }
         }
-        $_SESSION['flash'] = "Erro ao tentar alterar o Pacote de Viagem! Obs.:Preencha todos os campos.";
-        $this->redirect( '/package/'.$args['id'].'/editPackage');        
+        $_SESSION['flash'] = "Erro ao tentar alterar o Parceiro! Obs.:Preencha todos os campos.";
+        $this->redirect( '/partner/'.$args['id'].'/editPartner');        
     }
 
 
