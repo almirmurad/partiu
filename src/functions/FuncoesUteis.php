@@ -107,4 +107,11 @@ class FuncoesUteis{
         return true;
     }
 
+    public static function log($args){
+
+        echo "<pre>";
+        print_r($args['0']);
+        exit;
+    }
+
 }

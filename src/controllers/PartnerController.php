@@ -4,6 +4,7 @@ namespace src\controllers;
 use \core\ControllerGerenciador;
 use src\handlers\LoginHandler;
 use src\handlers\PartnerHandler;
+use src\handlers\gerenciador\PartnerTypeHandler;
 use src\models\Partner;
 use src\models\Package;
 use src\functions\FuncoesUteis;
@@ -21,9 +22,12 @@ class PartnerController extends ControllerGerenciador {
     }
 
     public function addPartner() {
+
+        $partnersTypes = PartnerTypeHandler::selectAllTypes();
         
         $this->render('addPartner',[
-            
+
+            'partners' => $partnersTypes,
             'page' => 'Cadastro de Parceiros', 
             'loggedUser'=>$this->loggedUser
         ]);
@@ -33,6 +37,7 @@ class PartnerController extends ControllerGerenciador {
         $name   = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_ADD_SLASHES);
         $cpf   = filter_input(INPUT_POST, 'cpf', FILTER_SANITIZE_ADD_SLASHES);
         $cnpj   = filter_input(INPUT_POST, 'cnpj', FILTER_SANITIZE_ADD_SLASHES);
+        $partner_type_id = filter_input(INPUT_POST, 'partner_type_id', FILTER_SANITIZE_ADD_SLASHES);
         $user_id = $this->loggedUser->id;
         $phone = filter_input(INPUT_POST, 'phone', FILTER_SANITIZE_ADD_SLASHES);
         $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_ADD_SLASHES);
@@ -54,7 +59,7 @@ class PartnerController extends ControllerGerenciador {
         // echo"<pre>";     
         // print_r($_POST);
         //    exit;
-        if($name && $cpf && $user_id && $phone && $email && $adress && $number && $complement && $district && $city && $state && $country && $postalCode && $description && $about && $url && $whats && $face && $insta){
+        if($name && $cpf && $partner_type_id && $user_id && $phone && $email && $adress && $number && $complement && $district && $city && $state && $country && $postalCode && $description && $about && $url && $whats && $face && $insta){
            //pega as imagens e cria um array com todas
            
             $fotosNames = [];
@@ -88,7 +93,7 @@ class PartnerController extends ControllerGerenciador {
             $imgNames = FuncoesUteis::editImg($fotosNames, 420, 300, $pathId);
             if(isset($imgNames) && !empty($imgNames)){
                 //se gerou insere no banco de dados e retorna ao dashboard
-                PartnerHandler::addPartnerAction($imgNames, $name, $cpf, $cnpj, $user_id, $phone, $email, $adress, $number, $complement, $district, $city, $state, $country, $postalCode, $description, $about, $url, $whats, $face, $insta);
+                PartnerHandler::addPartnerAction($imgNames, $name, $cpf, $partner_type_id, $cnpj, $user_id, $phone, $email, $adress, $number, $complement, $district, $city, $state, $country, $postalCode, $description, $about, $url, $whats, $face, $insta);
                 $this->redirect('/gerenciador');      
             }
             else{

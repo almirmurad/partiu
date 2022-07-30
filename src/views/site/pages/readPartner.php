@@ -89,7 +89,7 @@
     </div>
 </main>
 <section class="final">
-    <?php $render('internalContentFinal',['events'=>$events]);?>
+<?php $render('internalContentFinal',['events'=>$eventsFoot]);?>
 </section>
 <footer>
     <?php $render('foot');?>

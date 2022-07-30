@@ -5,37 +5,38 @@ use src\models\Partner;
 
 class PartnerHandler {
 
-    public static function addPartnerAction($fotoNames, $name, $cpf, $cnpj, $user_id, $phone, $email, $adress, $number, $complement, $district, $city, $state, $country, $postalCode, $description, $about, $url, $whats, $face, $insta){
+    public static function addPartnerAction($fotoNames, $name, $cpf, $partner_type_id, $cnpj, $user_id, $phone, $email, $adress, $number, $complement, $district, $city, $state, $country, $postalCode, $description, $about, $url, $whats, $face, $insta){
         
         list($cover, $img1, $img2, $img3, $img4) = $fotoNames;
        
         Partner::insert([
-            'name'          => $name,
-            'cpf'           => $cpf,
-            'cnpj'          => $cnpj,
-            'cover'         => $cover,
-            'img1'          => $img1,
-            'img2'          => $img2,
-            'img3'          => $img3,
-            'img4'          => $img4,
-            'phone'         => $phone,
-            'state'         => $state,
-            'city'          => $city,
-            'country'       => $country,
-            'user_id'       => $user_id,
-            'email'         => $email,
-            'adress'        => $adress,
-            'number'        => $number,
-            'complement'    => $complement,
-            'district'      => $district,
-            'postal_code'      => $postalCode,
-            'description'      => $description,
-            'about'      => $about,
-            'url'      => urlencode($url),
-            'whats'         => $whats,
-            'face'      => urlencode($face),
-            'insta'      => urlencode($insta),
-            'created_at'    => date('Y-m-d H:i:s'),
+            'name'              => $name,
+            'cpf'               => $cpf,
+            'cnpj'              => $cnpj,
+            'partner_type_id'   => $partner_type_id,
+            'cover'             => $cover,
+            'img1'              => $img1,
+            'img2'              => $img2,
+            'img3'              => $img3,
+            'img4'              => $img4,
+            'phone'             => $phone,
+            'state'             => $state,
+            'city'              => $city,
+            'country'           => $country,
+            'user_id'           => $user_id,
+            'email'             => $email,
+            'adress'            => $adress,
+            'number'            => $number,
+            'complement'        => $complement,
+            'district'          => $district,
+            'postal_code'       => $postalCode,
+            'description'       => $description,
+            'about'             => $about,
+            'url'               => urlencode($url),
+            'whats'             => $whats,
+            'face'              => urlencode($face),
+            'insta'             => urlencode($insta),
+            'created_at'        => date('Y-m-d H:i:s'),
            
         ])->execute();
 

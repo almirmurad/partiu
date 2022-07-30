@@ -134,3 +134,10 @@ $router->get('/Partner', 'PartnerController@listPartners');
 $router->get('/Partner/{id}/editPartner','PartnerController@editPartner');
 $router->post('/Partner/{id}/editPartner','PartnerController@editPartnerAction');
 $router->get('/Partner/{id}/deletePartner', 'PartnerController@deletePartner');
+
+$router->get('/newPartnerType', 'gerenciador\PartnerTypeController@addPartnerType');
+$router->post('/newPartnerType', 'gerenciador\PartnerTypeController@addPartnerTypeAction');
+$router->get('/partnersType', 'gerenciador\PartnerTypeController@listPartnersType');
+$router->get('/partnersType/{id}/editPartnerType', 'gerenciador\PartnerTypeController@editPartnerType');
+$router->post('/partnersType/{id}/editPartnerType', 'gerenciador\PartnerTypeController@editPartnerTypeAction');
+$router->get('/partnersType/{id}/deletePartnerType', 'gerenciador\PartnerTypeController@deletePartnerType');
