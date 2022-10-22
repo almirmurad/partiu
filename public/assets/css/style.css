@@ -328,8 +328,6 @@ main{
 }
 
 
-
-
 .nav{
     height: 50px;
 
@@ -535,6 +533,11 @@ section{
     align-items: center;
     text-align: center;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+.cta-publicity a img{
+    height: 350px;
 }
 .cta1-right-top a:link, .cta1-right-top a:active, .cta1-right-top a:hover, .cta1-right-top a:visited,
 .cta1-right-bottom a:link, .cta1-right-bottom a:active, .cta1-right-bottom a:hover, .cta1-right-bottom a:visited{
@@ -696,11 +699,11 @@ overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image:linear-gradient(
+    /* background-image:linear-gradient(
         to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.1)),
         url(../img/2.jpg);
     background-position:left;
-    background-size: cover;
+    background-size: cover; */
     height: 200px;
     max-width: 300px;
     max-height:200px;
@@ -795,6 +798,7 @@ background-color: rgba(242, 159, 5, 1) ;
     justify-content: center;
     align-items: center;
     margin: 30px 0;
+    overflow: hidden;
 }
 .anuncio-news h4{
  font-weight: bold;

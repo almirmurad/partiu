@@ -11,10 +11,10 @@
                 <div class="content column">
                     <div class="page-title">
                         <h2><?=$page;?></h2>
-                        <?php if(isset($partners) && !empty($partners)):?>
-                            <a href="<?=$base;?>/newPartner"class="btn ">+ Inserir Parceiros +</a>
+                        <?php if(isset($bannerPosition) && !empty($bannerPosition)):?>
+                            <a href="<?=$base;?>/newBannerPosition" class="btn ">+ Inserir posições de banner +</a>
                             <?php else:?>
-                                <a href="<?=$base;?>/newPartner" class=" btn-disabled">+ Inserir Parceiros +</a>
+                                <a href="<?=$base;?>/newBannerPosition" class=" btn-disabled">+ Inserir Tipo de Parcerias +</a>
                         <?php endif;?>
                     </div>
                     <div class="dash-boxes ">
@@ -22,31 +22,25 @@
                         <table class="list-users">
                             <tr>
                                 <th>ID</th>
-                                <th>Nome</th>
-                                <th>E-mail</th>
-                                <th>Telefone</th>
+                                <th>Título</th>
                                 <th>Descrição</th>
-                                <th>Tipo</th>
                                 <th>Criado por</th>
                                 <th>Criado em</th>
-                                <th>Ativo</th>
+                                
                                 <th>Ações</th>
                             </tr>
-                            <?php foreach($partners as $partner): ?>
+                            <?php foreach($bannerPosition as $partner): ?>
                             <tr>
                                     
                                 <td class="user-item"><?= $partner['id'];?></td>
-                                <td class="user-item"><?= $partner['name'];?></td>
-                                <td class="user-item"><?= $partner['email'];?></td>
-                                <td class="user-item"><?= $partner['phone'];?></td>
-                                <td class="user-item"><?= $partner['description'];?> - <?= $partner['state'];?>/<?= $partner['country'];?></td>
-                                <td class='user-item'><?= $partner['partner_type_id'];?></td>
+                                <td class="user-item"><?= $partner['title'];?></td>
+                                <td class="user-item"><?= $partner['description'];?>
                                 <td class='user-item'><?= $partner['user_id'];?></td>
-                                <td class='user-item'><?= $partner['created_at'];?></td>
-                                <td class='user-item'><?= $partner['active'];?></td>
+                                <td class='user-item'><?= date('d/m/Y', strtotime($partner['created_at']));?></td>
+                                
                                 <td class="user-item">
-                                    <a href="<?=$base;?>/partner/<?= $partner['id'];?>/editPartner">Editar</a>
-                                    <a href="<?=$base;?>/partner/<?= $partner['id'];?>/deletePartner" onclick="confirm('Tem certeza que deseja excluir o Parceiro: <?= $partner['name']; '? <br/> Esta ação não poderá ser revertida e excluirá também os pacotes de viagem deste parceiro!'?>')">Excluir</a>
+                                    <a href="<?=$base;?>/partnersType/<?= $partner['id'];?>/editPartnerType">Editar</a>
+                                    <a href="<?=$base;?>/partnersType/<?= $partner['id'];?>/deletePartnerType" onclick="confirm('Tem certeza que deseja excluir o Parceiro: <?= $partner['title']; '? <br/> Esta ação não poderá ser revertida e excluirá também os pacotes de viagem deste parceiro!'?>')">Excluir</a>
                                 </td>
                                 
                             </tr>

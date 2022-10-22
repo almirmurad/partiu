@@ -80,7 +80,7 @@ EOT;
     </div>
     <aside>
     
-        <?php $render('aside',['page'=>$page, 'categories'=>$categories, 'posts'=>$posts, 'total'=>$total]);?>
+        <?php $render('aside',['page'=>$page, 'categories'=>$categories, 'posts'=>$posts, 'total'=>$total, 'banners'=>$internalPublicity]);?>
     </aside>    
     </div>
 </main>

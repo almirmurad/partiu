@@ -1,5 +1,5 @@
 <?php
-namespace src\controllers;
+namespace src\controllers\gerenciador;
 
 use \core\ControllerGerenciador;
 use src\handlers\LoginHandler;

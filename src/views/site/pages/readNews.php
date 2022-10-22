@@ -47,13 +47,13 @@
             </div>
         </section>
         <aside>
-            <?php $render('aside',['page'=>$page]);?>
+            <?php $render('aside',['page'=>$page, 'banners'=>$internalPublicity]);?>
         </aside>    
     </div>
 <?php endforeach; ?>    
 </main>
 <section class="final">
-    <?php $render('internalContentFinal',['events'=>$eventsFoot]);?>
+    <?php $render('internalContentFinal',['events'=>$eventsFoot, 'banners'=>$publicityFoot]);?>
 </section>
 <footer>
     <?php $render('foot');?>

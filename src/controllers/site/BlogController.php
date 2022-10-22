@@ -7,6 +7,7 @@ use src\models\Post;
 use src\handlers\site\SubCatsSiteHandler;
 use src\handlers\site\PostSiteHandler;
 use src\handlers\site\EventsSiteHandler;
+use src\handlers\site\BannerSiteHandler;
 
 class BlogController extends ControllerSite{
     public function index() {
@@ -16,6 +17,8 @@ class BlogController extends ControllerSite{
         $postsAll = Post::select()->get(); //todos os po
         $totalPostCat = PostSiteHandler::totalPostCategoria($categoriaBlog);
         $postsDestaques = PostSiteHandler::postsDestaques();
+        $internalBanner = BannerSiteHandler::bannerPublicityInternals();
+        $publicityFoot = BannerSiteHandler::publicityFoot();
         $this->render('blog',[
             'page' => 'Blog',
             'postsAll' => $postsAll,
@@ -23,19 +26,32 @@ class BlogController extends ControllerSite{
             'nameCategorie'=>$categoriaBlog,
             'posts' => $posts,
             'categories'=>$categories,
-            'total'=>$totalPostCat
+            'total'=>$totalPostCat,
+            'internalPublicity'=>$internalBanner,
+            'publicityFoot'=>$publicityFoot
         ]);                
     }
 
     public function readBlog($args){
+        $posts= PostSiteHandler::posts();
         $post = PostSiteHandler::readPost($args['id']);
+        $categoriaBlog =  PostSiteHandler::nameCategoriePosts();
+        $totalPostCat = PostSiteHandler::totalPostCategoria($categoriaBlog);
         $categories = SubCatsSiteHandler::catsBlog();
         $eventsFoot = EventsSiteHandler::eventsFoot();
+        $internalBanner = BannerSiteHandler::bannerPublicityInternals();
+        $publicityFoot = BannerSiteHandler::publicityFoot();
         $this->render('readBlog',[
             'page'=>'Ler Postagem',
             'data'=>$post,
+            'posts' => $posts,
             'categories'=>$categories,
+            'total'=>$totalPostCat,
             'eventsFoot'=>$eventsFoot,
+            'internalPublicity'=>$internalBanner,
+            'publicityFoot'=>$publicityFoot
         ]);
     }
+
+    
 }

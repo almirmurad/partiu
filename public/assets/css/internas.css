@@ -229,8 +229,8 @@ width: inherit;
 .roteiro1 h3,
 .roteiro2 h3{
     color:#fff;
-    font-size: 1.6em;
-    font-weight: bold;
+    font-size: 1.8em;
+    
 }
 
 .roteiro1 h3 span,
@@ -243,16 +243,14 @@ width: inherit;
 
 .roteiro1{
     background-image:linear-gradient(
-        to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2)),
-        url(../img/2.jpg);
+        to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2));
     background-position: bottom center;
     background-size: cover;
     margin-right: 10px;
 }
 .roteiro2{
     background-image:linear-gradient(
-        to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2)),
-        url(../img/natal-em-curitiba-8.jpg);
+        to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2));
     background-position: bottom center;
     background-size: cover;
     margin-left: 10px;

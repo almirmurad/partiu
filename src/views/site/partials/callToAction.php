@@ -18,8 +18,19 @@
         
     </div>
     <div class="cta-publicity">
-        Anuncie Aqui!<br/>
-        (41) 98533-2397
+        <?php if (!empty($banners)):?>
+            <?php foreach ($banners as $banner):?>
+                <?php if ($banner->position_id === 1):?>
+                    <a class="link-banners" target="_blank" href="<?=$banner->url;?>">
+                        <img src="<?=$base?>/media/uploads/imgs/banners/<?=$banner->img;?>" alt="<?=$banner->title;?>">
+                    </a>
+                
+                <?php endif ?>
+            <?php endforeach ?> 
+        <?php else:?>   
+            Anuncie Aqui!<br/>
+            (41) 98533-2397
+        <?php endif?>
     </div>
     
 </div>

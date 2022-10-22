@@ -128,16 +128,37 @@ $router->get('/event/{id}/deleteEvent', 'EventsController@deleteEvent');
 
 /********** Controle partners **********/
 //Partnes
-$router->get('/newPartner', 'PartnerController@addPartner');
-$router->post('/newPartner', 'PartnerController@addPartnerAction');
-$router->get('/Partner', 'PartnerController@listPartners');
-$router->get('/Partner/{id}/editPartner','PartnerController@editPartner');
-$router->post('/Partner/{id}/editPartner','PartnerController@editPartnerAction');
-$router->get('/Partner/{id}/deletePartner', 'PartnerController@deletePartner');
+$router->get('/newPartner', 'gerenciador\PartnerController@addPartner');
+$router->post('/newPartner', 'gerenciador\PartnerController@addPartnerAction');
+$router->get('/Partner', 'gerenciador\PartnerController@listPartners');
+$router->get('/Partner/{id}/editPartner','gerenciador\PartnerController@editPartner');
+$router->post('/Partner/{id}/editPartner','gerenciador\PartnerController@editPartnerAction');
+$router->get('/Partner/{id}/deletePartner', 'gerenciador\PartnerController@deletePartner');
 
+
+/********** Controle partners types **********/
+//Partnes types
 $router->get('/newPartnerType', 'gerenciador\PartnerTypeController@addPartnerType');
 $router->post('/newPartnerType', 'gerenciador\PartnerTypeController@addPartnerTypeAction');
 $router->get('/partnersType', 'gerenciador\PartnerTypeController@listPartnersType');
 $router->get('/partnersType/{id}/editPartnerType', 'gerenciador\PartnerTypeController@editPartnerType');
 $router->post('/partnersType/{id}/editPartnerType', 'gerenciador\PartnerTypeController@editPartnerTypeAction');
 $router->get('/partnersType/{id}/deletePartnerType', 'gerenciador\PartnerTypeController@deletePartnerType');
+
+/********** Controle banner positions **********/
+//banner positions
+$router->get('/newBannerPosition', 'gerenciador\BannerPositionController@addBannerPosition');
+$router->post('/newBannerPosition', 'gerenciador\BannerPositionController@addBannerPositionAction');
+$router->get('/bannerPosition', 'gerenciador\BannerPositionController@listBannerPosition');
+$router->get('/partnersType/{id}/editBannerPosition', 'gerenciador\BannerPositionController@editBannerPosition');
+$router->post('/partnersType/{id}/editBannerPosition', 'gerenciador\BannerPositionController@editBannerPositionAction');
+$router->get('/partnersType/{id}/deleteBannerPosition', 'gerenciador\BannerPositionController@deleteBannerPosition');
+
+/********** Controle banners **********/
+//banners
+$router->get('/newBanner', 'gerenciador\BannerController@addBanner');
+$router->post('/newBanner', 'gerenciador\BannerController@addBannerAction');
+$router->get('/Banner', 'gerenciador\BannerController@listBanner');
+$router->get('/Banner/{id}/editBannerPosition', 'gerenciador\BannerPositionController@editBannerPosition');
+$router->post('/partnersType/{id}/editBannerPosition', 'gerenciador\BannerPositionController@editBannerPositionAction');
+$router->get('/partnersType/{id}/deleteBannerPosition', 'gerenciador\BannerPositionController@deleteBannerPosition');

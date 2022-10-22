@@ -1,5 +1,6 @@
 <?php 
-if (empty($page) || $page != 'Blog'){
+//se a página for vazio e diferente de blog
+if ($page != 'Blog' and $page != 'Ler Postagem' ){
     echo <<<EOT
         <div class="planner">
         <h4>Planejamento</h4>
@@ -13,11 +14,36 @@ if (empty($page) || $page != 'Blog'){
         </div>
         <div class="publicity">
             <h4>Anúncios</h4>
-            <div class="plublicity-item"><img src="$base/assets/img/trip.png" alt=""></div>
-            <div class="plublicity-item"><img src="$base/assets/img/trip.png" alt=""></div>
-            <div class="plublicity-item"><img src="$base/assets/img/trip.png" alt=""></div>
-        </div>
 EOT;
+if (!empty($banners)){
+    // echo"<pre>";
+    // print_r($banners);
+    // exit;
+    foreach ($banners as $banner){
+        if ($banner->position_id === 2){
+            echo <<<EOT
+            <div class="plublicity-item">
+                <a class="link-banners" target="_blank" href="$banner->url">
+                    <img src="$base/media/uploads/imgs/banners/$banner->img" alt="$banner->title">
+                </a>
+            </div>
+EOT;
+}else{
+            echo <<<EOT
+            
+                <div class="plublicity-item"><img src="$base/assets/img/trip.png" alt=""></div>
+                <div class="plublicity-item"><img src="$base/assets/img/trip.png" alt=""></div>
+                <div class="plublicity-item"><img src="$base/assets/img/trip.png" alt=""></div>
+
+EOT;
+             }
+
+ }
+     
+     }
+            
+echo"</div>";
+
 }else{
     echo'<div class="categoria-blog">
     <ul class="categoria-blog-area">';
@@ -44,7 +70,37 @@ EOT;
                          
 EOT;         
 }
-    echo <<<EOT
+
+ if (!empty($banners)){
+    // echo"<pre>";
+    // print_r($banners);
+    // exit;
+    foreach ($banners as $banner){
+        if ($banner->position_id === 2){
+            echo <<<EOT
+            <div class="plublicity-item">
+                <a class="link-banners" target="_blank" href="$banner->url">
+                    <img src="$base/media/uploads/imgs/banners/$banner->img" alt="$banner->title">
+                </a>
+            </div>
+EOT;
+}else{
+            echo <<<EOT
+            </ul>        
+            </div>
+            <div class="publicity">
+                <h4>Anúncios</h4>
+                <div class="plublicity-item"><img src="$base/assets/img/trip.png" alt=""></div>
+                <div class="plublicity-item"><img src="$base/assets/img/trip.png" alt=""></div>
+                <div class="plublicity-item"><img src="$base/assets/img/trip.png" alt=""></div>
+            </div>
+EOT;
+             }
+
+ }
+     
+     } else{
+        echo <<<EOT
     </ul>        
     </div>
     <div class="publicity">
@@ -54,5 +110,7 @@ EOT;
         <div class="plublicity-item"><img src="$base/assets/img/trip.png" alt=""></div>
     </div>
 EOT;
+     } 
+      
 }
 ?>

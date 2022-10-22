@@ -28,7 +28,7 @@
     
             ?>
             <!-- Call to Action -->
-            <?php $render('callToAction');?>
+            <?php $render('callToAction',['banners'=>$bannersCta]);?>
         </div>
     </section>
 
@@ -43,13 +43,23 @@
             </div>
         </div>
     </div>
-
     <div class="container">
         <section class="noticias">
             <div class="container column">
-                <?php $render('gridNoticias',['news'=>$news]);?>
+                <?php $render('gridNoticias',['news'=>$news,'bannersNews'=>$bannersNews]);?>
                 <div class="anuncio-news">
-                    <h4> Anuncie aqui (41) 98533-2397</h4>
+                    <?php if (!empty($bannersNews)):?>
+                        <?php foreach ($bannersNews as $banner):?>
+                            <?php if ($banner->position_id === 3):?>
+                                <a class="link-banners" target="_blank" href="<?=$banner->url;?>">
+                                    <img src="<?=$base?>/media/uploads/imgs/banners/<?=$banner->img;?>" alt="<?=$banner->title;?>">
+                                </a> 
+                            <?php endif ?>
+                        <?php endforeach ?> 
+                    <?php else:?>   
+                        Anuncie Aqui!<br/>
+                        (41) 98533-2397
+                    <?php endif?>
                 </div>
             </div>
         </section>
@@ -73,11 +83,11 @@
                 <div class="gridEventos1">
                     <div class="eventoLeft">
                         <!-- Eventos -->
-                        <?php $render('events',['events'=>$events]);?>
+                        <?php $render('events',['events'=>$events, 'banners'=>$bannersEvents]);?>
                     </div>
                     <aside class="eventoRight">
                         <!-- Banner Eventos Right -->
-                        <?php $render('bannerEventos');?>
+                        <?php $render('bannerEventos', ['banners'=>$bannersEvents]);?>
                     </aside>
                 </div>
             </div>
@@ -87,7 +97,7 @@
                 <!-- Depoimentos -->
                 <?php $render('depoimentos');?>
                 <!-- Anuncios -->
-                <?php $render('anunciosIndex');?>
+                <?php $render('anunciosIndex',['banners'=>$bannersEndPage]);?>
             </div>
         </section>
     </div>

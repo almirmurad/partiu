@@ -6,6 +6,7 @@ use src\models\Partner;
 use src\handlers\site\SubCatsSiteHandler;
 use src\handlers\site\PartnerSiteHandler;
 use src\handlers\site\EventsSiteHandler;
+use src\handlers\site\BannerSiteHAndler;
 
 class ParcController extends ControllerSite{
 
@@ -13,10 +14,14 @@ class ParcController extends ControllerSite{
         $partner = PartnerSiteHandler::readPartner($args['id']);
         $categories = SubCatsSiteHandler::catsRoadMap();
         $eventsFoot = EventsSiteHandler::eventsFoot();
+        $internalBanner = BannerSiteHandler::bannerPublicityInternals();
+        $publicityFoot = BannerSiteHandler::publicityFoot();
         $this->render('readPartner',['page'=>'Parceiros',
                 'data'=>$partner,
                 'categories'=>$categories,
                 'eventsFoot'=>$eventsFoot,
+                'internalPublicity'=>$internalBanner,
+                'publicityFoot'=>$publicityFoot
             ]);
     }
 

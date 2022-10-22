@@ -52,13 +52,13 @@
             <?php endforeach; ?>   
         </section>
         <aside>
-        <?php $render('aside',['page'=>$page]);?>
+        <?php $render('aside',['page'=>$page, 'categories'=>$categories, 'total'=>$total, 'posts'=>$posts, 'banners'=>$internalPublicity]);?>
 
         </aside>    
     </div>
 </main>
 <section class="final">
-    <?php $render('internalContentFinal',['events'=>$eventsFoot]);?>
+    <?php $render('internalContentFinal',['events'=>$eventsFoot, 'banners'=>$publicityFoot]);?>
 </section>
 <footer>
     <?php $render('foot');?>

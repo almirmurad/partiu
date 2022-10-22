@@ -10,7 +10,8 @@
         <li><a href="<?=$base?>/partner">Parceiros</a></li>
         <li><a href="<?=$base?>/partnersType">Tipos de parceria</a></li>
         <li><a href="<?=$base?>/gerenciador">Newsletter</a></li>
-        <li><a href="<?=$base?>/gerenciador">Banners</a></li>
+        <li><a href="<?=$base?>/bannerPosition">Posição dos Banners</a></li>
+        <li><a href="<?=$base?>/banner">Banners</a></li>
         <li><a href="<?=$base?>/categories">Categorias</a></li>
         <li><a href="<?=$base?>/logout">Sair</a></li>
     </ul>

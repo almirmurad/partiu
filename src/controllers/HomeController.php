@@ -12,6 +12,7 @@ use src\handlers\NewsSiteHandler;
 use src\handlers\site\PackageSiteHandler;
 use src\handlers\site\EventsSiteHandler;
 use src\handlers\site\SubCatsSiteHandler;
+use src\handlers\site\BannerSiteHandler;
 
 use ClanCats\Hydrahon\Query\Expression as Rnd;
 
@@ -33,8 +34,13 @@ class HomeController extends ControllerSite {
         $this->events = EventsSiteHandler::eventsIndex();
         //Categorias
         $this->categories = SubCatsSiteHandler::catsHome();
+        //Banners
+        $this->bannersCta = BannerSiteHandler::bannerCta();
+        $this->bannerNews = BannerSiteHandler::bannerNews();
+        $this->bannerEvents = BannerSiteHandler::bannerEvents();
+        $this->bannersEndPage = BannerSiteHandler::bannerEndPage();
     }
-
+    
     public function index() {
         if (isset($this->pacotes)){
             $pacotes = $this->pacotes;
@@ -46,7 +52,11 @@ class HomeController extends ControllerSite {
             'news' => $this->news,
             'packages'=>$pacotes,
             'events'=>$this->events,
-            'categories'=>$this->categories
+            'categories'=>$this->categories,
+            'bannersCta'=>$this->bannersCta,
+            'bannersNews'=>$this->bannerNews,
+            'bannersEvents'=>$this->bannerEvents,
+            'bannersEndPage'=>$this->bannersEndPage,
         ]);
     }    
 }

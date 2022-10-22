@@ -24,7 +24,7 @@
                                             'events'=>$events]);?> 
                         </div>
                         <aside class="eventoRight">
-                            <?php $render('aside',['page'=>$page]);?>
+                            <?php $render('aside',['page'=>$page, 'banners'=>$internalPublicity]);?>
                         </aside>
                         <div class="paginationArea">
                             <?php 
@@ -43,9 +43,7 @@
     </div>
 </main>
 <section class="final">
-    <?php $render('internalContentFinal',[
-        'events'=>$eventsFoot
-    ]);?>
+    <?php $render('internalContentFinal',['events'=>$eventsFoot, 'banners'=>$publicityFoot ]);?>
     
 </section>
 <footer>
