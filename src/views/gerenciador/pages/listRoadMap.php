@@ -12,7 +12,10 @@
             <div class="container column">
                 <?php $render('breadcrumbs',['page'=>$page]);?>
                 <div class="content column">
-                    <h2><?=$page;?></h2>
+                    <div class="page-title">
+                        <h2><?=$page;?></h2>
+                        <a href="<?=$base;?>/newRoadMap" class="btn " >+ Inserir Roteiro +</a>
+                    </div>
                     <div class="dash-boxes ">
                         <!-- Lista de Usuários -->
                         <table class="list-users">
@@ -36,16 +39,15 @@
                                 <td class='user-item'><?= $roadMap['created_at'];?></td>
                                 
                                 <td class="user-item">
-                                    <a href="<?=$base;?>/roadMap/<?= $roadMap['id'];?>/editRoadMap">Editar</a>
-                                    <a href="<?=$base;?>/roadMap/<?= $roadMap['id'];?>/deleteRoadMap" onclick="confirm('Tem certeza que deseja excluir o Usuário <?= $usuario['name'];?>')">Excluir</a>
+                                    <a href="<?=$base;?>/roadMap/<?= $roadMap['id'];?>/editRoadMap"><img src="<?=$base?>/assets/img/img_admin/edit.png" width="20px" height="20px" alt=""></a>
+                                    <a href="<?=$base;?>/roadMap/<?= $roadMap['id'];?>/deleteRoadMap" onclick="confirm('Tem certeza que deseja excluir o Usuário <?= $usuario['name'];?>')"><img src="<?=$base?>/assets/img/img_admin/del.png" width="20px" height="20px" alt=""></a>
                                 </td>
                                 
                             </tr>
                             <?php endforeach; ?>
 
                         </table>
-                        <a href="<?=$base;?>/newRoadMap">+ Inserir Roteiro +</a>
-                        <!-- fim da lista de Usuarios -->
+                        <!-- fim da lista de Roteiros -->
                     </div>
                 </div>
             </div>

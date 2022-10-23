@@ -11,7 +11,10 @@
             <div class="container column">
                 <?php $render('breadcrumbs',['page'=>$page]);?>
                 <div class="content column">
-                    <h2><?=$page;?></h2>
+                    <div class="page-title">
+                        <h2><?=$page;?></h2>
+                        <a href="<?=$base;?>/newCat" class="btn " >+ Inserir Categoria +</a>
+                    </div>
                     <div class="dash-boxes ">
                         <!-- inicio dos boxes individuais-->
                         <?php $render('dashBoxesCats', [

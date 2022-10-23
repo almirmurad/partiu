@@ -10,7 +10,10 @@
             <div class="container column">
                 <?php $render('breadcrumbs',['page'=>$page]);?>
                 <div class="content column">
-                    <h2><?=$page;?></h2>
+                    <div class="page-title">
+                        <h2><?=$page;?></h2>
+                        <a href="<?=$base;?>/newUser" class="btn " >+ Inserir Usuário +</a>
+                    </div>
                     <div class="dash-boxes ">
                         <!-- Lista de Usuários -->
                         <table class="list-users">
@@ -34,8 +37,8 @@
                                 <td class="user-item"><?= $usuario['avatar'];?></td>
                                 <td class="user-item"><?= $usuario['created_at'];?></td>
                                 <td class="user-item">
-                                    <a href="<?=$base;?>/user/<?= $usuario['id'];?>/editUser">Editar</a>
-                                    <a href="<?=$base;?>/user/<?= $usuario['id'];?>/deleteUser" onclick="confirm('Tem certeza que deseja excluir o Usuário <?= $usuario['name'];?>')">Excluir</a>
+                                    <a href="<?=$base;?>/user/<?= $usuario['id'];?>/editUser"><img src="<?=$base?>/assets/img/img_admin/edit.png" width="20px" height="20px" alt=""></a>
+                                    <a href="<?=$base;?>/user/<?= $usuario['id'];?>/deleteUser" onclick="confirm('Tem certeza que deseja excluir o Usuário <?= $usuario['name'];?>')"><img src="<?=$base?>/assets/img/img_admin/del.png" width="20px" height="20px" alt=""></a>
                                 </td>
                                 
                             </tr>

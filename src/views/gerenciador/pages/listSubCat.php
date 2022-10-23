@@ -34,8 +34,8 @@
                                 <td class="user-item"><?= $subCat['id_cat_asc'];?></td>
                                 <td class="user-item"><?= $subCat['created_at'];?></td>
                                 <td class="user-item">
-                                    <a href="<?=$base;?>/subCat/<?= $subCat['id'];?>/editSubCat">Editar</a>
-                                    <a href="<?=$base;?>/subCat/<?= $subCat['id'];?>/deleteSubCat" onclick="confirm('Tem certeza que deseja excluir o Usuário <?= $subCat['name'];?>')">Excluir</a>
+                                    <a href="<?=$base;?>/subCat/<?= $subCat['id'];?>/editSubCat"><img src="<?=$base?>/assets/img/img_admin/edit.png" width="20px" height="20px" alt=""></a>
+                                    <a href="<?=$base;?>/subCat/<?= $subCat['id'];?>/deleteSubCat" onclick="confirm('Tem certeza que deseja excluir o Usuário <?= $subCat['name'];?>')"><img src="<?=$base?>/assets/img/img_admin/del.png" width="20px" height="20px" alt=""></a>
                                 </td>
                                 
                             </tr>

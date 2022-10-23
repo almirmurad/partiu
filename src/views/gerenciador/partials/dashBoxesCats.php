@@ -18,5 +18,5 @@
 </div>
 <?php endforeach;?>
 <div class="more">
-    <a href="<?=$base?>/newCat" class="moreCats"> + Adicionar categoria + </a>
+    
 </div>

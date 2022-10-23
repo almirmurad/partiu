@@ -9,7 +9,10 @@
             <div class="container column">
                 <?php $render('breadcrumbs',['page'=>$page]);?>
                 <div class="content column">
-                    <h2><?=$page;?></h2>
+                    <div class="page-title">
+                        <h2><?=$page;?></h2>
+                        <a href="<?=$base;?>/newPost" class="btn " >+ Inserir Post +</a>
+                    </div>
                     <div class="dash-boxes ">
                         <!-- Lista de Usuários -->
                         <table class="list-users">
@@ -33,16 +36,15 @@
                                 <td class='user-item'><?= $post['created_at'];?></td>
                                 
                                 <td class="user-item">
-                                    <a href="<?=$base;?>/post/<?= $post['id'];?>/editPost">Editar</a>
-                                    <a href="<?=$base;?>/post/<?= $post['id'];?>/deletePost" onclick="confirm('Tem certeza que deseja excluir o Post <?= $post['title'];?>')">Excluir</a>
+                                    <a href="<?=$base;?>/post/<?= $post['id'];?>/editPost"><img src="<?=$base?>/assets/img/img_admin/edit.png" width="20px" height="20px" alt=""></a>
+                                    <a href="<?=$base;?>/post/<?= $post['id'];?>/deletePost" onclick="confirm('Tem certeza que deseja excluir o Post <?= $post['title'];?>')"><img src="<?=$base?>/assets/img/img_admin/del.png" width="20px" height="20px" alt=""></a>
                                 </td>
                                 
                             </tr>
                             <?php endforeach; ?>
 
                         </table>
-                        <a href="<?=$base;?>/newPost">+ Inserir Posts +</a>
-                        <!-- fim da lista de Usuarios -->
+                        <!-- fim da lista de Posts -->
                     </div>
                 </div>
             </div>

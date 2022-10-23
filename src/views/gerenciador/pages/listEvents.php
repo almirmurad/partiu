@@ -9,7 +9,10 @@
             <div class="container column">
                 <?php $render('breadcrumbs',['page'=>$page]);?>
                 <div class="content column">
-                    <h2><?=$page;?></h2>
+                    <div class="page-title">
+                        <h2><?=$page;?></h2>
+                        <a href="<?=$base;?>/newEvent" class="btn " >+ Inserir Evento +</a>
+                    </div>
                     <div class="dash-boxes ">
                         <!-- Lista de Usuários -->
                         <table class="list-users">
@@ -32,15 +35,14 @@
                                 <td class='user-item'><?= $event['user_id'];?></td>
                                 <td class='user-item'><?= $event['created_at'];?></td>
                                 <td class="user-item">
-                                    <a href="<?=$base;?>/event/<?= $event['id'];?>/editEvent">Editar</a>
-                                    <a href="<?=$base;?>/event/<?= $event['id'];?>/deleteEvent" onclick="confirm('Tem certeza que deseja excluir o Post <?= $event['title'];?>')">Excluir</a>
+                                    <a href="<?=$base;?>/event/<?= $event['id'];?>/editEvent"><img src="<?=$base?>/assets/img/img_admin/edit.png" width="20px" height="20px" alt=""></a>
+                                    <a href="<?=$base;?>/event/<?= $event['id'];?>/deleteEvent" onclick="confirm('Tem certeza que deseja excluir o Post <?= $event['title'];?>')"><img src="<?=$base?>/assets/img/img_admin/del.png" width="20px" height="20px" alt=""></a>
                                 </td>
                                 
                             </tr>
                             <?php endforeach; ?>
 
                         </table>
-                        <a href="<?=$base;?>/newEvent">+ Inserir Eventos +</a>
                         <!-- fim da lista de Usuarios -->
                     </div>
                 </div>

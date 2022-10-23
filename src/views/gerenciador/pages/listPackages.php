@@ -24,9 +24,9 @@
                                     <th>ID</th>
                                     <th>Título</th>
                                     <th>Descrição</th>
-                                    <th>Capa</th>
-                                    <th>Destino</th>
-                                    <th>Saída de:</th>
+                                    <!-- <th>Capa</th> -->
+                                    <!-- <th>Destino</th> -->
+                                    <!-- <th>Saída de:</th> -->
                                     <th>Parceiro</th>
                                     <th>Criado por</th>
                                     <th>Criado em</th>
@@ -40,17 +40,17 @@
                                     <td class="user-item"><?= $package->id;?></td>
                                     <td class="user-item"><?= $package->title;?></td>
                                     <td class="user-item"><?= $package->description;?></td>
-                                    <td class="user-item"><?= $package->cover;?></td>
-                                    <td class="user-item"><?= $package->destination;?> - <?= $package->state;?>/<?= $package->country;?></td>
-                                    <td class='user-item'><?= $package->exit_from;?></td>
+                                    <!-- <td class="user-item"><?= $package->cover;?></td> -->
+                                    <!-- <td class="user-item"><?= $package->destination;?> - <?= $package->state;?>/<?= $package->country;?></td> -->
+                                    <!-- <td class='user-item'><?= $package->exit_from;?></td> -->
                                     <td class='user-item'><?= $package->partner->name;?></td>
                                     <td class='user-item'><?= $package->user->name;?></td>
                                     <td class='user-item'><?= $package->created_at;?></td>
                                     
                                     
                                     <td class="user-item">
-                                        <a href="<?=$base;?>/package/<?= $package->id;?>/editPackage">Editar</a>
-                                        <a href="<?=$base;?>/package/<?= $package->id;?>/deletePackage" onclick="confirm('Tem certeza que deseja excluir o Post <?= $package->title?>')">Excluir</a>
+                                        <a href="<?=$base;?>/package/<?= $package->id;?>/editPackage"><img src="<?=$base?>/assets/img/img_admin/edit.png" width="20px" height="20px" alt=""></a>
+                                        <a href="<?=$base;?>/package/<?= $package->id;?>/deletePackage" onclick="confirm('Tem certeza que deseja excluir o Post <?= $package->title?>')"><img src="<?=$base?>/assets/img/img_admin/del.png" width="20px" height="20px" alt=""></a>
                                     </td>
                                     
                                 </tr>

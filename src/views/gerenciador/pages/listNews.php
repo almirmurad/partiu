@@ -10,7 +10,10 @@
             <div class="container column">
                 <?php $render('breadcrumbs',['page'=>$page]);?>
                 <div class="content column">
-                    <h2><?=$page;?></h2>
+                    <div class="page-title">
+                        <h2><?=$page;?></h2>
+                        <a href="<?=$base;?>/newNews" class="btn " >+ Inserir Notícias +</a>
+                    </div>
                     <div class="dash-boxes ">
                         <!-- Lista de Usuários -->
                         <table class="list-users">
@@ -32,15 +35,14 @@
                                 <td class="user-item"><?= $lastedNews['user_id'];?></td>
                                 <td class="user-item"><?= $lastedNews['created_at'];?></td>
                                 <td class="user-item">
-                                    <a href="<?=$base;?>/news/<?= $lastedNews['id'];?>/editNews">Editar</a>
-                                    <a href="<?=$base;?>/news/<?= $lastedNews['id'];?>/deleteNews" onclick="confirm('Tem certeza que deseja excluir o Usuário <?= $usuario['name'];?>')">Excluir</a>
+                                    <a href="<?=$base;?>/news/<?= $lastedNews['id'];?>/editNews"><img src="<?=$base?>/assets/img/img_admin/edit.png" width="20px" height="20px" alt=""></a>
+                                    <a href="<?=$base;?>/news/<?= $lastedNews['id'];?>/deleteNews" onclick="confirm('Tem certeza que deseja excluir o Usuário <?= $usuario['name'];?>')"><img src="<?=$base?>/assets/img/img_admin/del.png" width="20px" height="20px" alt=""></a>
                                 </td>
                                 
                             </tr>
                             <?php endforeach; ?>
 
                         </table>
-                        <a href="<?=$base;?>/newNews">+ Inserir Notícias +</a>
                         <!-- fim da lista de Noticias -->
                     </div>
                 </div>

@@ -39,8 +39,8 @@
                                 <td class='user-item'><?= date('d/m/Y', strtotime($partner['created_at']));?></td>
                                 
                                 <td class="user-item">
-                                    <a href="<?=$base;?>/partnersType/<?= $partner['id'];?>/editPartnerType">Editar</a>
-                                    <a href="<?=$base;?>/partnersType/<?= $partner['id'];?>/deletePartnerType" onclick="confirm('Tem certeza que deseja excluir o Parceiro: <?= $partner['title']; '? <br/> Esta ação não poderá ser revertida e excluirá também os pacotes de viagem deste parceiro!'?>')">Excluir</a>
+                                    <a href="<?=$base;?>/partnersType/<?= $partner['id'];?>/editPartnerType"><img src="<?=$base?>/assets/img/img_admin/edit.png" width="20px" height="20px" alt=""></a>
+                                    <a href="<?=$base;?>/partnersType/<?= $partner['id'];?>/deletePartnerType" onclick="confirm('Tem certeza que deseja excluir o Parceiro: <?= $partner['title']; '? <br/> Esta ação não poderá ser revertida e excluirá também os pacotes de viagem deste parceiro!'?>')"><img src="<?=$base?>/assets/img/img_admin/del.png" width="20px" height="20px" alt=""></a>
                                 </td>
                                 
                             </tr>
