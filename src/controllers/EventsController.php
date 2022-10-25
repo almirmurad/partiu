@@ -75,7 +75,7 @@ class EventsController extends ControllerGerenciador {
     public function listEvents() {
 
         $page = "Lista de Pacotes";
-        $events = Event::select()->execute();
+        $events = EventsHandler::getEvents();
         $this->render('listEvents',[
             'loggedUser'=>$this->loggedUser,
             'events' => $events,

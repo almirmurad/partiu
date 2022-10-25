@@ -4,6 +4,7 @@ namespace src\handlers;
 use src\models\Noticia;
 use src\models\Subcategorie;
 use src\models\Categorie;
+use src\models\User;
 
 class NewsHandler {
 
@@ -71,4 +72,42 @@ class NewsHandler {
         return $subCats;
     }
 
-}
+    public static function getNews(){
+        $newsLists = Noticia::select()->execute();
+        $news = [];
+            foreach($newsLists as $newsList)
+                {            
+                    $newNews = new Noticia();
+                    $newNews->id = $newsList['id'];
+                    $newNews->title = $newsList['title'];
+                    $newNews->description = $newsList['description'];
+                    $newNews->text = $newsList['text'];
+                    $newNews->cover = $newsList['cover'];
+                    $newNews->img1 = $newsList['img1'];
+                    $newNews->legend_img2 = $newsList['legend_img1'];
+                    $newNews->img2 = $newsList['img2'];
+                    $newNews->legend_img2 = $newsList['legend_img2'];
+                    $newNews->source = $newsList['source'];
+                    $newNews->user_id = $newsList['user_id'];
+                    $newNews->categorie_id = $newsList['categorie_id'];
+                    $newNews->subcategorie_id = $newsList['subcategorie_id'];
+                    $newNews->clicks = $newsList['clicks'];
+                    $newNews->views = $newsList['views'];
+                    $newNews->link =  $newsList['link'];
+                    $newNews->created_at = $newsList['created_at'];
+
+                    //4 usuario que postou
+                    $newUser = User::select()->where('id',$newsList['user_id'])->one();
+                    $newNews->user = new User();
+                    $newNews->user->id=$newUser['id'];
+                    $newNews->user->name=$newUser['name'];
+                    $newNews->user->avatar=$newUser['avatar'];
+                    $newNews->user->type_user=$newUser['type_user'];
+
+                    $news[] = $newNews;
+                }
+        return $news;
+        }
+
+    }
+

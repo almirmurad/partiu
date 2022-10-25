@@ -46,7 +46,7 @@ class PartnerTypeController extends ControllerGerenciador{
     public function listPartnersType(){
 
         $page = "Lista de Tipos de Parcerias";
-        $partnersType = Typespartner::select()->execute();
+        $partnersType = PartnerTypeHandler::selectAllTypes();
         
         $this->render('listPartnersType',[
             'loggedUser'=>$this->loggedUser,

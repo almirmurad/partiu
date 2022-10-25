@@ -36,7 +36,7 @@
                                 <td class="user-item"><?= $roadMap['description'];?></td>
                                 <td class="user-item"><?= $roadMap['cover'];?></td>
                                 <td class='user-item'><?= $roadMap['name'];?></td>
-                                <td class='user-item'><?= $roadMap['created_at'];?></td>
+                                <td class='user-item'><?= date('d/m/Y', strtotime($roadMap['created_at']));?></td>
                                 
                                 <td class="user-item">
                                     <a href="<?=$base;?>/roadMap/<?= $roadMap['id'];?>/editRoadMap"><img src="<?=$base?>/assets/img/img_admin/edit.png" width="20px" height="20px" alt=""></a>

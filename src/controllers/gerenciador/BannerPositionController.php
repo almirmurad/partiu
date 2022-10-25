@@ -68,7 +68,7 @@ class BannerPositionController extends ControllerGerenciador{
     public function listBannerPosition(){
 
         $page = "Lista de Posições de banners";
-        $bannerPositions = BannerPosition::select()->execute();
+        $bannerPositions = BannerPositionHandler::selectAllTypes();
         
         $this->render('listBannerPosition',[
             'loggedUser'=>$this->loggedUser,

@@ -73,7 +73,8 @@ class NewsController extends ControllerGerenciador {
     public function listNews() {
 
         $page = "Lista de Notícias";
-        $news = Noticia::select()->execute();
+
+        $news = NewsHandler::getNews();
         $this->render('listNews',[
             'loggedUser'=>$this->loggedUser,
             'news' => $news,

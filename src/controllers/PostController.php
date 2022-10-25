@@ -68,7 +68,7 @@ class PostController extends ControllerGerenciador {
     public function listPosts() {
 
         $page = "Lista de Posts";
-        $posts = Post::select()->execute();
+        $posts = PostHandler::getPosts();
         $this->render('listPosts',[
             'loggedUser'=>$this->loggedUser,
             'posts' => $posts,

@@ -2,6 +2,7 @@
 namespace src\handlers;
 
 use src\models\Post;
+use src\models\User;
 
 class PostHandler {
 
@@ -43,6 +44,46 @@ class PostHandler {
                 ->execute();
 
                 return true;               
+    }
+
+    public static function getPosts(){
+
+        $postsLists = Post::select()->execute();
+        $posts = [];
+            foreach($postsLists as $postList)
+                {            
+                    $newPost = new Post();
+                    $newPost->id = $postList['id'];
+                    $newPost->title = $postList['title'];
+                    $newPost->description = $postList['description'];
+                    $newPost->text = $postList['text'];
+                    $newPost->cover = $postList['cover'];
+                    $newPost->img1 = $postList['img1'];
+                    $newPost->img2 = $postList['img2'];
+                    $newPost->img3 = $postList['img3'];
+                    $newPost->img4 = $postList['img4'];
+                    
+                    $newPost->user_id = $postList['user_id'];
+                    $newPost->categorie_id = $postList['categorie_id'];
+                    
+                    $newPost->clicks = $postList['clicks'];
+                    $newPost->views = $postList['views'];
+                    $newPost->link =  $postList['link'];
+                    $newPost->created_at = $postList['created_at'];
+
+                    //4 usuario que postou
+                    $newUser = User::select()->where('id',$postList['user_id'])->one();
+                    $newPost->user = new User();
+                    $newPost->user->id=$newUser['id'];
+                    $newPost->user->name=$newUser['name'];
+                    $newPost->user->avatar=$newUser['avatar'];
+                    $newPost->user->type_user=$newUser['type_user'];
+
+                    $posts[] = $newPost;
+                }
+        return $posts;
+
+
     }
 
 }

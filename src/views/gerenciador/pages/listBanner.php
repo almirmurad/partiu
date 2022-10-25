@@ -32,15 +32,15 @@
                             <?php foreach($banners as $banner): ?>
                             <tr>
                                     
-                                <td class="user-item"><?= $banner['id'];?></td>
-                                <td class="user-item"><?= $banner['title'];?></td>
-                                <td class="user-item"><?= $banner['description'];?>
-                                <td class='user-item'><?= $banner['user_id'];?></td>
-                                <td class='user-item'><?= date('d/m/Y', strtotime($banner['created_at']));?></td>
+                                <td class="user-item"><?= $banner->id;?></td>
+                                <td class="user-item"><?= $banner->title;?></td>
+                                <td class="user-item"><?= $banner->description;?>
+                                <td class='user-item'><?= $banner->user->name;?></td>
+                                <td class='user-item'><?= date('d/m/Y', strtotime($banner->created_at));?></td>
                                 
                                 <td class="user-item">
-                                    <a href="<?=$base;?>/partnersType/<?= $banner['id'];?>/editPartnerType"><img src="<?=$base?>/assets/img/img_admin/edit.png" width="20px" height="20px" alt=""></a>
-                                    <a href="<?=$base;?>/partnersType/<?= $banner['id'];?>/deletePartnerType" onclick="confirm('Tem certeza que deseja excluir o Parceiro: <?= $partner['title']; '? <br/> Esta ação não poderá ser revertida e excluirá também os pacotes de viagem deste parceiro!'?>')"><img src="<?=$base?>/assets/img/img_admin/del.png" width="20px" height="20px" alt=""></a>
+                                    <a href="<?=$base;?>/partnersType/<?= $banner->id;?>/editPartnerType"><img src="<?=$base?>/assets/img/img_admin/edit.png" width="20px" height="20px" alt=""></a>
+                                    <a href="<?=$base;?>/partnersType/<?= $banner->id;?>/deletebannerType" onclick="confirm('Tem certeza que deseja excluir o Parceiro: <?= $banner->title; '? <br/> Esta ação não poderá ser revertida e excluirá também os pacotes de viagem deste parceiro!'?>')"><img src="<?=$base?>/assets/img/img_admin/del.png" width="20px" height="20px" alt=""></a>
                                 </td>
                                 
                             </tr>

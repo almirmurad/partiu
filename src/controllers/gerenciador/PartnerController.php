@@ -106,7 +106,7 @@ class PartnerController extends ControllerGerenciador {
     public function listPartners() {
 
         $page = "Lista de Parceiros";
-        $partners = Partner::select()->execute();
+        $partners = PartnerHandler::getPartners();
         $this->render('listPartners',[
             'loggedUser'=>$this->loggedUser,
             'partners' => $partners,

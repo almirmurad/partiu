@@ -20,7 +20,7 @@
                                 <th>ID</th>
                                 <th>Título</th>
                                 <th>Descrição</th>
-                                <th>Capa</th>
+                                <!-- <th>Capa</th> -->
                                 <th>Criado por</th>
                                 <th>Criado em</th>
                                 <th>Ações</th>
@@ -28,15 +28,15 @@
                             <?php foreach($events as $event): ?>
                             <tr>
                                     
-                                <td class="user-item"><?= $event['id'];?></td>
-                                <td class="user-item"><?= $event['title'];?></td>
-                                <td class="user-item"><?= $event['description'];?></td>
-                                <td class="user-item"><?= $event['cover'];?></td>
-                                <td class='user-item'><?= $event['user_id'];?></td>
-                                <td class='user-item'><?= $event['created_at'];?></td>
+                                <td class="user-item"><?= $event->id;?></td>
+                                <td class="user-item"><?= $event->title;?></td>
+                                <td class="user-item"><?= $event->description;?></td>
+                                <!-- <td class="user-item"><?= $event->cover;?></td> -->
+                                <td class='user-item'><?= $event->user->name;?></td>
+                                <td class='user-item'><?= date('d/m/Y', strtotime($event->created_at));?></td>
                                 <td class="user-item">
-                                    <a href="<?=$base;?>/event/<?= $event['id'];?>/editEvent"><img src="<?=$base?>/assets/img/img_admin/edit.png" width="20px" height="20px" alt=""></a>
-                                    <a href="<?=$base;?>/event/<?= $event['id'];?>/deleteEvent" onclick="confirm('Tem certeza que deseja excluir o Post <?= $event['title'];?>')"><img src="<?=$base?>/assets/img/img_admin/del.png" width="20px" height="20px" alt=""></a>
+                                    <a href="<?=$base;?>/event/<?= $event->id;?>/editEvent"><img src="<?=$base?>/assets/img/img_admin/edit.png" width="20px" height="20px" alt=""></a>
+                                    <a href="<?=$base;?>/event/<?= $event->id;?>/deleteEvent" onclick="confirm('Tem certeza que deseja excluir o Post <?= $event->title;?>')"><img src="<?=$base?>/assets/img/img_admin/del.png" width="20px" height="20px" alt=""></a>
                                 </td>
                                 
                             </tr>

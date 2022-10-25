@@ -3,6 +3,7 @@ namespace src\handlers;
 
 use src\models\Partner;
 use src\models\User;
+use src\models\Typespartner;
 
 class PartnerHandler {
 
@@ -87,7 +88,6 @@ class PartnerHandler {
 public static function getPartners(){
        
     $listPartners = Partner::select()->get();
-
     $partners = [];
     foreach($listPartners as $listPartnersItem){
         $newPartners = new Partner;
@@ -97,19 +97,20 @@ public static function getPartners(){
         $newPartners-> name = $listPartnersItem['name'];
         $newPartners-> email = $listPartnersItem['email'];
         $newPartners-> phone = $listPartnersItem['phone'];
-        // $newPartners-> page = $listPartnersItem['page'];
-        // $newPartners-> price_click = $listPartnersItem['price_click'];
-        // $newPartners-> price_views = $listPartnersItem['price_views'];
-        // $newPartners-> price_days = $listPartnersItem['price_days'];
-        // $newPartners-> width = $listPartnersItem['width'];
-        // $newPartners-> heigth = $listPartnersItem['heigth'];
-        // $newPartners-> user_id = $listPartnersItem['user_id'];
-        // $newPartners-> created_at = $listPartnersItem['created_at'];
+        $newPartners-> description = $listPartnersItem['description'];
+        $newPartners-> state = $listPartnersItem['state'];
+        $newPartners-> country = $listPartnersItem['country'];
+        $newPartners-> active = $listPartnersItem['active'];
+        $newPartners-> created_at = $listPartnersItem['created_at'];
         
         $newUser = User::select()->where('id',$listPartnersItem['user_id'])->one();
         $newPartners->user = new User();
         $newPartners->user->name=$newUser['name'];
         $newPartners->user->avatar=$newUser['avatar'];
+
+        $newPartnersType = Typespartner::select()->where('id',$listPartnersItem['partner_type_id'])->one();
+        $newPartners->partnerType = new Typespartner();
+        $newPartners->partnerType->title=$newPartnersType['title'];
 
         $partners [] = $newPartners;
     

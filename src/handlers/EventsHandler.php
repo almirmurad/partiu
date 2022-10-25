@@ -2,7 +2,7 @@
 namespace src\handlers;
 
 use src\models\Event;
-
+use src\models\User;
 class EventsHandler {
 
     public static function addEventAction($title, $description, $text, $user_id, $link, $expiraEm, $imgNames){
@@ -47,6 +47,42 @@ class EventsHandler {
                 ->execute();
 
                 return true;               
+    }
+
+    public static function getEvents(){
+        $eventsLists = Event::select()->execute();
+        $events = [];
+            foreach($eventsLists as $eventList)
+                {            
+                    $newEvent = new Event();
+                    $newEvent->id = $eventList['id'];
+                    $newEvent->title = $eventList['title'];
+                    $newEvent->description = $eventList['description'];
+                    $newEvent->text = $eventList['text'];
+                    $newEvent->created_at = $eventList['created_at'];
+                    $newEvent->user_id = $eventList['user_id'];
+                    $newEvent->clicks = $eventList['clicks'];
+                    $newEvent->views = $eventList['views'];
+                    $newEvent->status = $eventList['status'];
+                    $newEvent->link =  $eventList['link'];
+                    $newEvent->cover = $eventList['cover'];
+                    $newEvent->img1 = $eventList['img1'];
+                    $newEvent->img2 = $eventList['img2'];
+                    $newEvent->img3 = $eventList['img3'];
+                    $newEvent->img4 = $eventList['img4'];
+                    $newEvent->expires_at = $eventList['expires_at'];               
+                    
+                    //4 usuario que postou
+                    $newUser = User::select()->where('id',$eventList['user_id'])->one();
+                    $newEvent->user = new User();
+                    $newEvent->user->id=$newUser['id'];
+                    $newEvent->user->name=$newUser['name'];
+                    $newEvent->user->avatar=$newUser['avatar'];
+                    $newEvent->user->type_user=$newUser['type_user'];
+
+                    $events[] = $newEvent;
+                }
+        return $events;
     }
 
 }
