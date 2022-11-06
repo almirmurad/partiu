@@ -91,6 +91,22 @@
                                     <label for="fee">Juros:</label>
                                     <input type="text" id="fee" name="fee" class="input" placeholder="Digite o valor do juros sobre as parcelas">
                                 </div>
+                                <div class="campo row" id="pck-situation">
+                                    <div class="label-situation">
+                                        <label for="pack-situation">Ativo:</label>
+                                    </div>
+                                    <div class="radios">
+                                        <label>
+                                            <input type="radio" name="active" value="A" id="packStatusA" checked="checked">
+                                            <div class="tag-radio">Sim</div>
+                                        </label>
+                                        <label>
+                                            <input type="radio" name="active" value="I" id="packStatusI">
+                                            <div class="tag-radio">Não</div>
+                                        </label>
+                                    </div>
+
+                                </div>
                                 <!--<div class="campo">
                                 <label for="subCatAsc">Categoria pertencente:</label>
                                     <select name="subCatAsc" id="subCatAsc">

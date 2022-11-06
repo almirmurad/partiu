@@ -33,7 +33,7 @@ class PackageHandler {
             'partner_id'    => $parceiro,
             'fee'           => $fee,
             'active'           => $active,
-            'status'           => $status,
+            // 'status'           => $status,
             'link'           => $link,
             'created_at'    => date('Y-m-d H:i:s'),
            

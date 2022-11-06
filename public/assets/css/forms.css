@@ -46,9 +46,37 @@ fieldset{
     flex-direction: column;
     max-width: 800px;
 }
+.row::before{
+    content: 'Status:';
+    color: #736F36;
+    margin-left: -15px;
+    font-weight: bold;
+    margin-top:-40px;
+    display: flex;
+}
+.row{
+    margin-top: 30px;
+    flex-direction: row;
+    justify-content: space-between;
+    border:3px solid var(--cabecColor);
+    padding: 10px;
+}
+.label-situation{
+    width:30%;
+
+}
+.radios{
+    display:flex;
+    flex:1;
+    justify-content: space-evenly;
+}
+.tag-radio{
+    margin: 0 5px;
+}
 label{
     color: var(--menuHoverColor);
     font-weight: bold;
+    display: flex;
 }
 .input{
     border:3px solid var(--cabecColor);

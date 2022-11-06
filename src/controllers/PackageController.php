@@ -52,9 +52,12 @@ class PackageController extends ControllerGerenciador {
         $active = filter_input(INPUT_POST, 'active', FILTER_SANITIZE_ADD_SLASHES);
         $status = filter_input(INPUT_POST, 'status', FILTER_SANITIZE_ADD_SLASHES);
         $link = filter_input(INPUT_POST, 'link', FILTER_SANITIZE_ADD_SLASHES);
+
+        // echo $active;
+        // exit;
         
         
-        if($title && $description && $text && $user_id && $destino && $estado && $pais && $saidaDe && $dataSaida && $dataRetorno && $expiraEm && $preco && $parceiro ){
+        if($active && $title && $description && $text && $user_id && $destino && $estado && $pais && $saidaDe && $dataSaida && $dataRetorno && $expiraEm && $preco && $parceiro ){
            //pega as imagens e cria um array com todas
           
             $fotosNames = [];
