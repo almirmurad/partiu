@@ -16,15 +16,15 @@
                     </form>
                 </div>
                 <div class="signins">
-                    <button class="header-btn">Anuncie seu Pacote</button>
-                    <button class="header-btn">Cadastre-se</button>
-                    <button class="header-btn">Login</button>
+                    <a class="header-btn" href="<?=$base;?>/parcerias">Anuncie seu Pacote</a>
+                    <a class="header-btn">Cadastre-se</a>
+                    <a class="header-btn">Login</a>
                 </div>
             </div>
             <div class="area-api">
                 <div class="ct-anuncie">
                     <div class="bt-anuncie-aqui">
-                        <i class="fas fa-bullhorn"></i>
+                        <a href="<?=$base;?>/parcerias"><i class="fas fa-bullhorn"></i></a>
                     </div>
                     <div class="txt-anuncie-aqui">
                         <span>Anuncie sua empresa</span>

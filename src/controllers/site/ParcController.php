@@ -25,4 +25,18 @@ class ParcController extends ControllerSite{
             ]);
     }
 
+    public function index(){
+        $categories = SubCatsSiteHandler::catsRoadMap();
+        $eventsFoot = EventsSiteHandler::eventsFoot();
+        $internalBanner = BannerSiteHandler::bannerPublicityInternals();
+        $publicityFoot = BannerSiteHandler::publicityFoot();
+
+        $this->render('parcerias',['page'=>'Parcerias',
+                'categories'=>$categories,
+                'eventsFoot'=>$eventsFoot,
+                'internalPublicity'=>$internalBanner,
+                'publicityFoot'=>$publicityFoot
+            ]);
+    }
+
 }

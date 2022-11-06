@@ -7,6 +7,8 @@ $router = new Router();
 $router->get('/', 'HomeController@index');
 $router->get('/quemSomos', 'site\QmSmsController@index');
 
+
+
 //roteiros
 $router->get('/roteiros', 'site\RMController@index');
 $router->get('/readRoadMap/{id}/read', 'site\RMController@readRoadMap');
@@ -33,6 +35,8 @@ $router->get('/events/{id}/readEvent', 'site\EvenController@readEvent');
 /* Parceiros */
 //$router->get('/partner', 'site\ParcController@partners');
 $router->get('/partner/{id}/readPartner', 'site\ParcController@readPartner');
+$router->get('/parcerias', 'site\ParcController@index');
+
 
 /********** Rotas do Gerenciador **********/
 

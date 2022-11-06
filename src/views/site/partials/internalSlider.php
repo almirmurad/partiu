@@ -58,8 +58,8 @@ switch($page){
                 <h1>'.$page.'</h1> 
             </div>';
         break;
-    case "Parceiros":
-        echo'<div class="internal-slider internal-slider-noticia">
+    case "Parcerias":
+        echo'<div class="internal-slider internal-slider-parceria">
                 <h1>'.$page.'</h1> 
             </div>';
         break;
