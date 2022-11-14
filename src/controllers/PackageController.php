@@ -109,6 +109,7 @@ class PackageController extends ControllerGerenciador {
             $_SESSION['flash'] = '';
         }
         $package    = Package::select()->find($args['id']);
+        $partners = Partner::select()->execute();
         //$subCatId = $package['categorie_id'];
         //$subCat        = Subcategorie::select()->Where('id', $subCatId)->one();
         $page       = "Edição de Pacotes";
@@ -117,6 +118,7 @@ class PackageController extends ControllerGerenciador {
             'loggedUser'=>$this->loggedUser,
             'page'      =>$page,
             'package'     =>$package,
+            'partners' => $partners,
             'flash'     =>$flash,
             //'subCat'    =>$subCat
         ]);
@@ -127,11 +129,6 @@ class PackageController extends ControllerGerenciador {
         $title   = filter_input(INPUT_POST, 'title');
         $description   = filter_input(INPUT_POST, 'description');
         $text   = filter_input(INPUT_POST, 'text');
-        $cover = $_FILES['cover']['name'];
-        $img1   = $_FILES['img1']['name'];
-        $img2   = $_FILES['img2']['name'];
-        $img3   = $_FILES['img3']['name'];
-        $img4   = $_FILES['img4']['name'];
         $user_id = $this->loggedUser->id;
         //$categorie_id    = filter_input(INPUT_POST, 'subCatAsc');
         $destino = filter_input(INPUT_POST, 'destination');
@@ -143,21 +140,58 @@ class PackageController extends ControllerGerenciador {
         $expiraEm = filter_input(INPUT_POST, 'expires_at');
         $preco = str_replace(",",".",str_replace(".","",filter_input(INPUT_POST, 'price')));
         $parceiro = filter_input(INPUT_POST, 'partner_id', FILTER_SANITIZE_ADD_SLASHES);
+        $installments = filter_input(INPUT_POST, 'installments');
+        $fee = str_replace(",",".",str_replace(".","",filter_input(INPUT_POST, 'fee')));
+        $active = filter_input(INPUT_POST, 'active', FILTER_SANITIZE_ADD_SLASHES);
+        $status = filter_input(INPUT_POST, 'status', FILTER_SANITIZE_ADD_SLASHES);
+        $link = filter_input(INPUT_POST, 'link', FILTER_SANITIZE_ADD_SLASHES);
         
-        //echo"<pre>";
-        //print_r($preco);
-        //exit;
+        // echo"<pre>";
+        // print_r($_POST);
+        // echo "id = ". $id ." User id " .$user_id." Status ".$status." Link ".$link;
+        // exit;
 
-        if($id && $title && $description && $text && $cover && $img1 && $img2 && $img3 && $img4 && $user_id && $destino && $estado && $pais && $saidaDe && $dataSaida && $dataRetorno && $expiraEm && $preco && $parceiro){
-
-            $alterado = PackageHandler::editPackage($id, $title, $description, $text, $cover, $img1, $img2, $img3, $img4, $user_id, $destino, $estado, $pais, $saidaDe, $dataSaida, $dataRetorno, $expiraEm, $preco, $parceiro);
-            if($alterado === true){
-                $_SESSION['flash'] = "Pacote de Viagem aterado com sucesso!";
-                $this->redirect('/package/'.$args['id'].'/editPackage');
-            }else{
-                $_SESSION['flash'] = "Erro ao tentar alterar o Pacote de Viagem!";
+        if($id && $title && $description && $text && $user_id && $destino && $estado && $pais && $saidaDe && $dataSaida && $dataRetorno && $expiraEm && $preco && $parceiro && $installments && $fee && $active){
+            //pega as imagens e cria um array com todas
+        //     echo"<pre>";
+        // print_r($preco);
+        // echo "entrou?";
+        // exit;
+          
+            $fotosNames = [];
+            foreach($_FILES as $img){
+               if(isset ($img['type'])){
+                    if(in_array($img['type'],['image/jpeg', 'image/jpg', 'image/png'])){
+                        $fotosNames[] = $img;
+                    }
+               } 
+            }
+            //verifica se existe a pasta imagens específica para pacotes 
+            $caminho = "media/uploads/imgs/packages";
+            if(!is_dir($caminho)){
+                //se não não existir cria
+                mkdir($caminho, 0777);
+            }
+            //gera todas as imagens no tamanho específicado
+            $imgNames = FuncoesUteis::editImg($fotosNames, 420, 300, $caminho);
+            if(isset($imgNames) && !empty($imgNames)){
+                //se gerou insere no banco de dados e retorna ao dashboard
+                $alterado = PackageHandler::editPackage($id, $title, $description, $text, $imgNames, $user_id, $destino, $estado, $pais, $saidaDe, $dataSaida, $dataRetorno, $expiraEm, $preco, $parceiro, $installments, $fee, $active);               
+                // $this->redirect('/gerenciador');      
+                if($alterado === true){
+                    $_SESSION['flash'] = "Pacote de Viagem aterado com sucesso!";
+                    $this->redirect('/package/'.$args['id'].'/editPackage');
+                }else{
+                    $_SESSION['flash'] = "Erro ao tentar alterar o Pacote de Viagem!";
+                    $this->redirect('/package/'.$args['id'].'/editPackage'); 
+                }
+            }
+            else{
+                $_SESSION['flash'] = "Não gerou as Imagens.";
                 $this->redirect('/package/'.$args['id'].'/editPackage'); 
             }
+            
+            
         }
         $_SESSION['flash'] = "Erro ao tentar alterar o Pacote de Viagem! Obs.:Preencha todos os campos.";
         $this->redirect( '/package/'.$args['id'].'/editPackage');        
@@ -167,6 +201,20 @@ class PackageController extends ControllerGerenciador {
     public function deletePackage($args){
         Package::delete()->where('id', $args['id'])->execute();
         $this->redirect('/package');
+    }
+
+    public function more($args){
+
+        $page = "Mais Informações do Pacote";
+        $packages = PackageHandler::readPackage($args);
+        $partners = Partner::select()->execute();
+        $this->render('moreInfoPackage',[
+            'loggedUser'=>$this->loggedUser,
+            'packages' => $packages,
+            'partners' => $partners,
+            'page'=>$page
+        ]);
+
     }
    
 }

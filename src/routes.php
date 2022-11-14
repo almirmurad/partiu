@@ -119,6 +119,7 @@ $router->get('/package', 'PackageController@listPackages');
 $router->get('/package/{id}/editPackage','PackageController@editPackage');
 $router->post('/package/{id}/editPackage','PackageController@editPackageAction');
 $router->get('/package/{id}/deletePackage', 'PackageController@deletePackage');
+$router->get('/package/{id}/moreInfoPackage', 'PackageController@more');
 
 
 /********** Controle Events **********/

@@ -12,6 +12,7 @@
                             <h2>'.$package->title.'</h2>
                             <h3>'.$package->destination.' - '.$package->state.'</h3>
                             <h3>'.$package->country.'</h3>
+                            <h3>'.$package->totalDays.'</h3>
                             <p>
                                 '.$package->description.'
                             </p>
@@ -57,6 +58,7 @@
                             <h2>'.$package->title.'</h2>
                             <h3>'.$package->destination.' - '.$package->state.'</h3>
                             <h3>'.$package->country.'</h3>
+                            <h3>'.$package->totalDays.'</h3>
                             <p>
                                 '.$package->description.'
                             </p>

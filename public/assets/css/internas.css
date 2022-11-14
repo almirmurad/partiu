@@ -577,7 +577,7 @@ grid-template-areas:
 }
 .boxes i, .icon i{
     font-size:2em;
-    color:var(--orange);
+    color:var(--green);
 }
 
 

@@ -1,6 +1,8 @@
 <?php
 namespace src\functions;
 
+use DateTime;
+
 class FuncoesUteis{
 
     public static function editImg($array, $w, $h, $folder){
@@ -112,6 +114,43 @@ class FuncoesUteis{
         echo "<pre>";
         print_r($args['0']);
         exit;
+    }
+
+    public static function missingDays($args){
+
+        // echo "<pre>";
+        // print_r($args);
+        // exit;
+
+        $date1 = new DateTime(date('Y-m-d', strtotime($args['inicio'])));
+        $date2 = new DateTime(date('Y-m-d', strtotime($args['fim'])));
+        $today = new DateTime();
+
+        if($date2 < $today){
+            $diff = $date1->diff($date2)->format('expirou em %a dias');
+
+            return $diff;
+        }else{
+            $diff = $today->diff($date2)->format('expira em %a dias');
+
+            return $diff;
+        }
+
+    }
+
+    public static function totalDays($args){
+        // echo "<pre>";
+        // print_r($args);
+        // exit;
+
+        $date1 = new DateTime(date('Y-m-d', strtotime($args['saida'])));
+        $date2 = new DateTime(date('Y-m-d', strtotime($args['retorno'])));
+        
+
+            $diff = $date1->diff($date2)->format('%a dias');
+
+            return $diff;
+     
     }
 
 }

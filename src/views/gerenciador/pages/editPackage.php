@@ -1,5 +1,4 @@
 <?php $render('head');?>
-
     <?php $render('header',['loggedUser'=>$loggedUser]);?>
     <main>
         <aside>
@@ -34,9 +33,7 @@
                                 </div>
                                 <div class="campo">
                                     <label for="text">Texto:</label>
-                                    <textarea name="text" id="text" cols="30" rows="10">
-                                    <?=$package['text'];?>
-                                    </textarea>
+                                    <textarea name="text" id="text" cols="30" rows="10"><?=$package['text'];?></textarea>
                                 </div>
                                 <div class="campo">
                                     <label for="cover">Capa:</label>
@@ -98,9 +95,52 @@
                                     <label for="expires_at">Expira em:</label>
                                     <input type="DateTime-Local" id="expires_at" name="expires_at" class="input" placeholder="Digite a data de expiração do pacote de viagem" value="<?=$package['expires_at'];?>">
                                 </div>
+                                
                                 <div class="campo">
                                     <label for="price">Preço:</label>
-                                    <input type="text" id="price" name="price" class="input" placeholder="Digite preço do pacote de viagem" value="<?=$package['price'];?>" pattern="[0-9.,]{1,10}" title="somente números" />
+                                    <input type="text" id="price" name="price" class="input" pattern="[0-9.,]{1,}" placeholder="Digite preço do pacote de viagem" value="<?=$package['price'];?>">
+                                </div>
+                                <div class="campo">
+                                    <label for="installments">Parcelas:</label>
+                                    <input type="text" id="installments" name="installments" class="input" placeholder="Digite a quantidade de parcelas" value="<?=$package['installments'];?>">
+                                </div>
+                                <div class="campo">
+                                    <label for="fee">Juros:</label>
+                                    <input type="text" id="fee" name="fee" class="input" placeholder="Digite o valor do juros sobre as parcelas" value="<?=$package['fee'];?>">
+                                </div>
+                                <div class="campo row" id="pck-situation">
+                                    <div class="label-situation">
+                                        <label for="pack-situation">Ativo:</label>
+                                    </div>
+                                    <div class="radios">
+                                        <?php if($package['active'] === 1):?>
+                                        <label>
+                                            <input type="radio" name="active" value="1" id="packStatusA" checked="checked">
+                                            <div class="tag-radio">Sim</div>
+                                        </label>
+                                        <label>
+                                            <input type="radio" name="active" value="0" id="packStatusI" >
+                                            <div class="tag-radio">Não</div>
+                                        </label>
+                                        <?php else:?>
+                                        <label>
+                                            <input type="radio" name="active" value="1" id="packStatusA" >
+                                            <div class="tag-radio">Sim</div>
+                                        </label>
+                                        <label>
+                                            <input type="radio" name="active" value="0" id="packStatusI" checked="checked">
+                                            <div class="tag-radio">Não</div>
+                                        </label>
+                                        <?php endif?>
+                                    </div>
+                                </div>
+                                <div class="campo">
+                                <label for="partner">Parceiro:</label>
+                                    <select name="partner_id" id="partner">
+                                    <?php foreach ($partners as $partner):?>
+                                        <option value="<?=$partner['id'];?>" ><?=$partner['name'];?></option>
+                                        <?php endforeach?>
+                                    </select>
                                 </div>
                                 <div class="campo">
                                     <input type="submit" class="btn" value="Alterar">

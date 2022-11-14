@@ -23,34 +23,46 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Título</th>
-                                    <th>Descrição</th>
-                                    <!-- <th>Capa</th> -->
-                                    <!-- <th>Destino</th> -->
-                                    <!-- <th>Saída de:</th> -->
+                                    <th>Descrição</th>                                    
                                     <th>Parceiro</th>
-                                    <th>Criado por</th>
                                     <th>Criado em</th>
-
+                                    <th>Situação</th>
+                                    <th>Status</th>
                                     <th>Ações</th>
                                 </tr>
                                 
                                 <?php foreach($packages as $package): ?>
+                                    <?php 
+                                        $today = date('Y-m-d H:i:s', strtotime("now"));
+                                        $expires = $package->expires_at;
+
+                                        
+                                    ?>
                                 <tr>
                                         
                                     <td class="user-item"><?= $package->id;?></td>
                                     <td class="user-item"><?= $package->title;?></td>
-                                    <td class="user-item"><?= $package->description;?></td>
-                                    <!-- <td class="user-item"><?= $package->cover;?></td> -->
-                                    <!-- <td class="user-item"><?= $package->destination;?> - <?= $package->state;?>/<?= $package->country;?></td> -->
-                                    <!-- <td class='user-item'><?= $package->exit_from;?></td> -->
+                                    <td class="user-item"><?= $package->description;?></td>                                   
                                     <td class='user-item'><?= $package->partner->name;?></td>
-                                    <td class='user-item'><?= $package->user->name;?></td>
-                                    <td class='user-item'><?= $package->created_at;?></td>
+                                    <td class='user-item'><?= date('d/m/Y', strtotime($package->created_at));?></td>
+                
+
+                                    <?php if( $package->active == 1 ):?>
+                                    <td class='user-item'><span class="no-prazo">Ativo</span></td>
+                                    <?php else:?>
+                                        <td class='user-item'><span class="vencido">Inativo</span></td>
+                                        <?php endif?>
                                     
-                                    
+
+                                    <?php if( $today < $expires ):?>
+                                    <td class='user-item'><span class="no-prazo">No prazo</span></td>
+                                    <?php else:?>
+                                        <td class='user-item'><span class="vencido">Vencido</span></td>
+                                        <?php endif?>
                                     <td class="user-item">
                                         <a href="<?=$base;?>/package/<?= $package->id;?>/editPackage"><img src="<?=$base?>/assets/img/img_admin/edit.png" width="20px" height="20px" alt=""></a>
                                         <a href="<?=$base;?>/package/<?= $package->id;?>/deletePackage" onclick="confirm('Tem certeza que deseja excluir o Post <?= $package->title?>')"><img src="<?=$base?>/assets/img/img_admin/del.png" width="20px" height="20px" alt=""></a>
+                                        <a href="<?=$base;?>/package/<?= $package->id;?>/moreInfoPackage"><img src="<?=$base?>/assets/img/img_admin/search.png" width="20px" height="20px" alt=""></a>
                                     </td>
                                     
                                 </tr>

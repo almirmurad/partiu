@@ -15,15 +15,17 @@ class PackageSiteHandler {
 
     public static function pacotes($page){
         $perPage = 6;
+        $today = date('Y-m-d H:i:s', strtotime("now"));
         
         $packagesList = Package::select()
-            //->where('categorie_id','in',$categories)
+            ->where('active', 1)
+            ->where('expires_at','>', $today)
             ->orderBy('created_at', 'DESC')
             ->page($page, $perPage)
         ->get();     
 
         $total = Package::select()
-        //->where('categorie_id','in',$categories)
+        ->where('expires_at','>', $today)
         ->orderBy('created_at', 'DESC')
         ->count();
         $pageCount = ceil($total / $perPage);
@@ -52,7 +54,21 @@ class PackageSiteHandler {
             $taxa = 1 + $i;
             $total = $packageItem['price'] * $taxa;
             //parcela mensal com juros
-            $newPackage->vlrInstallments = number_format($total / $packageItem['installments'],2,',','.');                    
+            $newPackage->vlrInstallments = number_format($total / $packageItem['installments'],2,',','.');      
+            
+            $newPackage->created_at = $packageItem['created_at'];
+                $newPackage->expires_at = $packageItem['expires_at'];
+                $newPackage->going_on = $packageItem['going_on'];
+                $newPackage->return_in = $packageItem['return_in'];
+
+                $dates = [
+                    "inicio" =>$newPackage->created_at,
+                    "fim" => $newPackage->expires_at,
+                    "saida" => $newPackage->going_on,
+                    "retorno" => $newPackage->return_in,
+                ];
+                $newPackage->days = funcoesUteis::missingDays($dates);
+                $newPackage->totalDays = funcoesUteis::totalDays($dates);
 
             //4 usuarios que postaram
             /*$newUser = User::select()->where('id',$packageItem['user_id'])->one();
@@ -183,9 +199,11 @@ class PackageSiteHandler {
     }
 
     public static function packIndex(){
-
+        $today = date('Y-m-d H:i:s', strtotime("now"));
         $pacotes = [];
         $packagesList = Package::select()
+        ->where('active', 1)
+        ->where('expires_at','>', $today)
         ->orderBy(new rnd('rand()'))
         ->limit(4)
         ->execute();
@@ -216,7 +234,19 @@ class PackageSiteHandler {
                 $total = $packageItem['price'] * $taxa;
                 //parcela mensal com juros
                 $newPackage->vlrInstallments = number_format($total / $packageItem['installments'],2,',','.');  
-                        
+                $newPackage->created_at = $packageItem['created_at'];
+                $newPackage->expires_at = $packageItem['expires_at'];
+                $newPackage->going_on = $packageItem['going_on'];
+                $newPackage->return_in = $packageItem['return_in'];
+
+                $dates = [
+                    "inicio" =>$newPackage->created_at,
+                    "fim" => $newPackage->expires_at,
+                    "saida" => $newPackage->going_on,
+                    "retorno" => $newPackage->return_in,
+                ];
+                $newPackage->days = funcoesUteis::missingDays($dates);
+                $newPackage->totalDays = funcoesUteis::totalDays($dates);
 
                 //4 usuarios que postaram
                 /*$newUser = User::select()->where('id',$packageItem['user_id'])->one();
