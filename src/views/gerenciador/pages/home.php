@@ -14,7 +14,8 @@
                     <h2><?=$page;?></h2>
                     <div class="dash-boxes ">
                         <!-- inicio dos boxes individuais-->
-                        <?php $render('dashBoxes', ['loggedUser'=>$loggedUser]);?>
+                        <?php $render('dashBoxes', ['loggedUser'=>$loggedUser, 'totalPack'=>$totalPack, 'totalActive'=>$totalActive,
+                                        'totalForaPrazo'=>$totalForaPrazo]);?>
                         <!-- fim dos boxes individuais-->
                     </div>
                 </div>

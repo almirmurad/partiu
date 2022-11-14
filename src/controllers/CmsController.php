@@ -3,6 +3,7 @@ namespace src\controllers;
 
 use \core\ControllerGerenciador;
 use \src\handlers\LoginHandler;
+use \src\handlers\PackageHandler;
 
 class CmsController extends ControllerGerenciador {
 
@@ -18,10 +19,19 @@ class CmsController extends ControllerGerenciador {
 
     public function index() {
         $page = "Dashboard";
-        $loggedUser = $this->loggedUser = LoginHandler::checkLogin();        
+        $loggedUser = $this->loggedUser = LoginHandler::checkLogin();
+        $dash = PackageHandler::dash();
+        
+        // echo"<pre>";
+        // print_r($dash);
+        // exit;
+               
         $this->render('home', [
             'page' => $page,
-            'loggedUser'=>$loggedUser
+            'loggedUser'=>$loggedUser,
+            'totalPack'=>$dash['total'],
+            'totalActive'=>$dash['totalActive'],
+            'totalForaPrazo' =>$dash['totalForaPrazo'],
         ]);
     }
 

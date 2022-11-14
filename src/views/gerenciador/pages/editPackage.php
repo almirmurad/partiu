@@ -115,20 +115,20 @@
                                     <div class="radios">
                                         <?php if($package['active'] === 1):?>
                                         <label>
-                                            <input type="radio" name="active" value="1" id="packStatusA" checked="checked">
+                                            <input type="radio" name="active" value="A" id="packStatusA" checked="checked">
                                             <div class="tag-radio">Sim</div>
                                         </label>
                                         <label>
-                                            <input type="radio" name="active" value="0" id="packStatusI" >
+                                            <input type="radio" name="active" value="I" id="packStatusI" >
                                             <div class="tag-radio">Não</div>
                                         </label>
                                         <?php else:?>
                                         <label>
-                                            <input type="radio" name="active" value="1" id="packStatusA" >
+                                            <input type="radio" name="active" value="A" id="packStatusA" >
                                             <div class="tag-radio">Sim</div>
                                         </label>
                                         <label>
-                                            <input type="radio" name="active" value="0" id="packStatusI" checked="checked">
+                                            <input type="radio" name="active" value="I" id="packStatusI" checked="checked">
                                             <div class="tag-radio">Não</div>
                                         </label>
                                         <?php endif?>

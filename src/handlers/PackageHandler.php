@@ -102,11 +102,24 @@ class PackageHandler {
                     $newPackage->expires_at = $packageList['expires_at']; //date('d/m/Y \à\\s H:i', strtotime($packageList['expires_at']));
                     $newPackage->price = number_format($packageList['price'],2,',','.');
                     $dates = [
+                        "hoje" => date('Y-m-d h:i:s', strtotime("now")),
                         "inicio" =>$newPackage->created_at,
                         "fim" => $newPackage->expires_at,
                         "saida" => $newPackage->going_on,
                         "retorno" => $newPackage->return_in,
                     ];
+                    if($dates['hoje'] < $dates['fim'] ){
+                        $args = [];
+                        $args[] = 1;
+                        $args[] = $newPackage->id;
+                        PackageHandler::alteraStatus($args);
+
+                    }else{
+                        $args = [];
+                        $args[] = 0;
+                        $args[] = $newPackage->id;
+                        PackageHandler::alteraStatus($args);
+                    }
                     $newPackage->days = funcoesUteis::missingDays($dates);
                     $newPackage->totalDays = funcoesUteis::totalDays($dates);
 
@@ -188,11 +201,13 @@ class PackageHandler {
                     $newPackage->expires_at = $packageList['expires_at']; //date('d/m/Y \à\\s H:i', strtotime($packageList['expires_at']));
                     $newPackage->price = number_format($packageList['price'],2,',','.');
                     $dates = [
+                        "hoje" => date('Y-m-d h:i:s', strtotime("now")),
                         "inicio" =>$newPackage->created_at,
                         "fim" => $newPackage->expires_at,
                         "saida" => $newPackage->going_on,
                         "retorno" => $newPackage->return_in,
                     ];
+                    
                     $newPackage->days = funcoesUteis::missingDays($dates);
                     $newPackage->totalDays = funcoesUteis::totalDays($dates);
                     $newPackage->active = $packageList['active'];
@@ -245,6 +260,32 @@ class PackageHandler {
     
             return $package;
     
+        }
+
+        public static function dash(){
+            $total = Package::select()->where('id', '>', '')->count();
+            $totalActive = Package::select()->where('active', '=', 'A')->count();
+            $totalForaPrazo = Package::select()->where('status', '!=', 1)->count();
+
+            return ['total'=>$total, 'totalActive'=>$totalActive, 'totalForaPrazo'=>$totalForaPrazo];
+        }
+
+        public static function alteraStatus($args){
+
+            // echo"<pre>";
+            // print_r($args);
+            // exit;
+            $status = $args['0'];
+            $id =  $args['1'];
+            Package::update()
+                
+                ->set('status', $status)
+                
+                ->where('id', $id)
+                ->execute();
+
+                return true;               
+            
         }
 
 }

@@ -97,11 +97,11 @@
                                     </div>
                                     <div class="radios">
                                         <label>
-                                            <input type="radio" name="active" value="1" id="packStatusA" checked="checked">
+                                            <input type="radio" name="active" value="A" id="packStatusA" checked="checked">
                                             <div class="tag-radio">Sim</div>
                                         </label>
                                         <label>
-                                            <input type="radio" name="active" value="0" id="packStatusI">
+                                            <input type="radio" name="active" value="I" id="packStatusI">
                                             <div class="tag-radio">Não</div>
                                         </label>
                                     </div>

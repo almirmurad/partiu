@@ -18,7 +18,8 @@ class PackageSiteHandler {
         $today = date('Y-m-d H:i:s', strtotime("now"));
         
         $packagesList = Package::select()
-            ->where('active', 1)
+            ->where('active', 'A')
+            ->where('status', 1)
             ->where('expires_at','>', $today)
             ->orderBy('created_at', 'DESC')
             ->page($page, $perPage)
@@ -202,7 +203,8 @@ class PackageSiteHandler {
         $today = date('Y-m-d H:i:s', strtotime("now"));
         $pacotes = [];
         $packagesList = Package::select()
-        ->where('active', 1)
+        ->where('active', 'A')
+        ->where('status', 1)
         ->where('expires_at','>', $today)
         ->orderBy(new rnd('rand()'))
         ->limit(4)

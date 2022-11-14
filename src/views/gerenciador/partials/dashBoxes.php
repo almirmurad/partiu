@@ -3,12 +3,19 @@
         <h4>Pacotes</h4>
     </div>
     <div class="box-content ">
+
+        <!-- <div class="collumn">
+            <div class="dash-total ">    
+                Total
+                <h2><?= $totalPack;?><h2>
+            </div>
+            
+        </div> -->
         <ul class="column">
-            <li>8</li>
-            <!-- <li><a href="<?=$base?>/newPackage"> <span>Inserir</span> <img src="<?=$base?>/assets/img/img_admin/insert.png" alt="" class="nav-box-insert">  </a></li>
+            <li><a href="<?=$base?>/newPackage"><span>Total</span><?= $totalPack;?></a></li>
+            <li><a href="<?=$base?>/newPackage"><span>Total Ativo</span><?= $totalActive;?></a></li>
+            <li><a href="<?=$base?>/newPackage"><span>Total vencido</span><?= $totalForaPrazo;?></a></li>
             <li><a href="<?=$base?>/package"> <span>Listar</span> <img src="<?=$base?>/assets/img/img_admin/list.png" alt="" class="nav-box-list">  </a></li>
-            <li><a href="<?=$base?>/package"> <span>Editar</span> <img src="<?=$base?>/assets/img/img_admin/edit.png" alt="" class="nav-box-edit">  </a></li>
-            <li><a href="<?=$base?>/package"> <span>Excluir</span> <img src="<?=$base?>/assets/img/img_admin/del.png" alt="" class="nav-box-delete">  </a></li> -->
         </ul>
     </div>
     <div class="box-footer">

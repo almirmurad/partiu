@@ -42,7 +42,7 @@
                                     <li>EXPIRA EM: <?= date('d/m/Y', strtotime($package->expires_at));?></li>
                                     <li>EXPIRA EM (DIAS): <?= $package->days;?></li>
                                     <li>TOTAL DE DIAS: <?= $package->totalDays;?></li>
-                                    <?php if( $package->active == 1 ):?>
+                                    <?php if( $package->active == 'A' ):?>
                                         <li >SITUAÇÃO: <span class="no-prazo">Ativo</span></li>
                                     <?php else:?>
                                         <li >SITUAÇÃO: <span class="vencido">Inativo</span></li>

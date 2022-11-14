@@ -47,7 +47,7 @@
                                     <td class='user-item'><?= date('d/m/Y', strtotime($package->created_at));?></td>
                 
 
-                                    <?php if( $package->active == 1 ):?>
+                                    <?php if( $package->active === 'A' ):?>
                                     <td class='user-item'><span class="no-prazo">Ativo</span></td>
                                     <?php else:?>
                                         <td class='user-item'><span class="vencido">Inativo</span></td>
