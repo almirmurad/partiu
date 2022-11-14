@@ -31,6 +31,7 @@
                             <li>Retorna em: <?=$package->return_in?></li>
                             <li>Disponivel até: <?=$package->expires_at?></li>
                             <li><strong>Preço:  R$<?=$package->price?></strong></li>
+                            <li><strong>link Externo:  <a href="<?=$package->link?>"target="_blank"><?=$package->link_title?></a></strong></li>
                         </ul>
                         <div class="espaco">
 

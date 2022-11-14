@@ -47,6 +47,8 @@ class PackageSiteHandler {
             $newPackage->destination = $packageItem['destination'];
             $newPackage->state = $packageItem['state'];
             $newPackage->country = $packageItem['country'];
+            $newPackage->link = urldecode($packageItem['link']);
+            $newPackage->link_title = $packageItem['link_title'];
             $newPackage->price = 'R$ '.number_format($packageItem['price'],2,',','.');
             $newPackage->installments = $packageItem['installments'];
             $newPackage->fee = number_format($packageItem['fee'],2,',','.');
@@ -61,6 +63,7 @@ class PackageSiteHandler {
                 $newPackage->expires_at = $packageItem['expires_at'];
                 $newPackage->going_on = $packageItem['going_on'];
                 $newPackage->return_in = $packageItem['return_in'];
+                
 
                 $dates = [
                     "inicio" =>$newPackage->created_at,
@@ -70,6 +73,7 @@ class PackageSiteHandler {
                 ];
                 $newPackage->days = funcoesUteis::missingDays($dates);
                 $newPackage->totalDays = funcoesUteis::totalDays($dates);
+                
 
             //4 usuarios que postaram
             /*$newUser = User::select()->where('id',$packageItem['user_id'])->one();
@@ -152,6 +156,8 @@ class PackageSiteHandler {
             $total = $packageList['price'] * $taxa;
             //parcela mensal com juros
             $newPackage->vlrInstallments = number_format($total / $packageList['installments'],2,',','.');    
+            $newPackage->link = urldecode($packageList['link']);
+            $newPackage->link_title = $packageList['link_title'];
 
             //4 usuarios que postaram
             $newUser = User::select()->where('id',$packageList['user_id'])->one();
@@ -249,6 +255,8 @@ class PackageSiteHandler {
                 ];
                 $newPackage->days = funcoesUteis::missingDays($dates);
                 $newPackage->totalDays = funcoesUteis::totalDays($dates);
+                $newPackage->link = urldecode($packageItem['link']);
+                $newPackage->link_title = $packageItem['link_title'];
 
                 //4 usuarios que postaram
                 /*$newUser = User::select()->where('id',$packageItem['user_id'])->one();

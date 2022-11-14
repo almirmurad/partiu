@@ -8,7 +8,7 @@ use src\functions\FuncoesUteis;
 
 class PackageHandler {
 
-    public static function addPackageAction($title, $description, $text, $fotoNames, $user_id, $destino, $estado, $pais, $saidaDe, $dataSaida, $dataRetorno, $expiraEm, $preco, $parceiro, $installments, $fee, $active, $status, $link ){
+    public static function addPackageAction($title, $description, $text, $fotoNames, $user_id, $destino, $estado, $pais, $saidaDe, $dataSaida, $dataRetorno, $expiraEm, $preco, $parceiro, $installments, $fee, $active, $status, $link, $link_tilte ){
         list($cover, $img1, $img2, $img3, $img4) = $fotoNames;
         
         Package::insert([
@@ -34,7 +34,8 @@ class PackageHandler {
             'fee'           => $fee,
             'active'        => $active,
             // 'status'     => $status,
-            'link'          => $link,
+            'link'          => urlencode($link),
+            'link_title'    =>$link_tilte,
             'created_at'    => date('Y-m-d H:i:s'),
            
         ])->execute();
@@ -42,7 +43,7 @@ class PackageHandler {
         return true;
     }
 
-    public static function editPackage($id, $title, $description, $text, $fotoNames, $user_id, $destino, $estado, $pais, $saidaDe, $dataSaida, $dataRetorno, $expiraEm, $preco, $parceiro, $installments, $fee, $active){
+    public static function editPackage($id, $title, $description, $text, $fotoNames, $user_id, $destino, $estado, $pais, $saidaDe, $dataSaida, $dataRetorno, $expiraEm, $preco, $parceiro, $installments, $fee, $active, $link, $link_tilte){
         list($cover, $img1, $img2, $img3, $img4) = $fotoNames;
         Package::update()
                 ->set('title', $title)
@@ -65,7 +66,8 @@ class PackageHandler {
                 ->set('fee', $fee)
                 ->set('active', $active)
                 // ->set('status', $status)
-                // ->set('link', $link)
+                ->set('link', urlencode($link))
+                ->set('link_title', $link_tilte)
                 ->set('partner_id', $parceiro)
                 //->set('categorie_id', $categorie_id)
                 ->set('user_id', $user_id)
@@ -123,6 +125,8 @@ class PackageHandler {
                     $newPackage->days = funcoesUteis::missingDays($dates);
                     $newPackage->totalDays = funcoesUteis::totalDays($dates);
 
+                    $newPackage->link = urldecode($packageList['link']);
+                    $newPackage->link_title = $packageList['link_title'];
                     $newPackage->active = $packageList['active'];
                     $newPackage->status = $packageList['status'];
 
@@ -214,7 +218,8 @@ class PackageHandler {
                     $newPackage->status = $packageList['status'];
                     $newPackage->clicks = $packageList['clicks'];
                     $newPackage->views = $packageList['views'];
-                    $newPackage->link = $packageList['link'];
+                    $newPackage->link_title = $packageList['link_title'];
+                    $newPackage->link = urldecode($packageList['link']);
     
                 //4 usuarios que postaram
                 $newUser = User::select()->where('id',$packageList['user_id'])->one();

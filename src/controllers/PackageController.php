@@ -52,6 +52,7 @@ class PackageController extends ControllerGerenciador {
         $active = filter_input(INPUT_POST, 'active', FILTER_SANITIZE_ADD_SLASHES);
         $status = filter_input(INPUT_POST, 'status', FILTER_SANITIZE_ADD_SLASHES);
         $link = filter_input(INPUT_POST, 'link', FILTER_SANITIZE_ADD_SLASHES);
+        $link_title = filter_input(INPUT_POST, 'link_title', FILTER_SANITIZE_ADD_SLASHES);
 
         // echo $active;
         // exit;
@@ -78,7 +79,7 @@ class PackageController extends ControllerGerenciador {
             $imgNames = FuncoesUteis::editImg($fotosNames, 420, 300, $caminho);
             if(isset($imgNames) && !empty($imgNames)){
                 //se gerou insere no banco de dados e retorna ao dashboard
-                PackageHandler::addPackageAction($title, $description, $text, $imgNames, $user_id, $destino, $estado, $pais, $saidaDe, $dataSaida, $dataRetorno, $expiraEm, $preco, $parceiro, $installments, $fee, $active, $status, $link);
+                PackageHandler::addPackageAction($title, $description, $text, $imgNames, $user_id, $destino, $estado, $pais, $saidaDe, $dataSaida, $dataRetorno, $expiraEm, $preco, $parceiro, $installments, $fee, $active, $status, $link, $link_title);
                 $this->redirect('/gerenciador');      
             }
             else{
@@ -145,6 +146,7 @@ class PackageController extends ControllerGerenciador {
         $active = filter_input(INPUT_POST, 'active', FILTER_SANITIZE_ADD_SLASHES);
         $status = filter_input(INPUT_POST, 'status', FILTER_SANITIZE_ADD_SLASHES);
         $link = filter_input(INPUT_POST, 'link', FILTER_SANITIZE_ADD_SLASHES);
+        $link_title = filter_input(INPUT_POST, 'link_title', FILTER_SANITIZE_ADD_SLASHES);
         
         // echo"<pre>";
         // print_r($_POST);
@@ -176,7 +178,7 @@ class PackageController extends ControllerGerenciador {
             $imgNames = FuncoesUteis::editImg($fotosNames, 420, 300, $caminho);
             if(isset($imgNames) && !empty($imgNames)){
                 //se gerou insere no banco de dados e retorna ao dashboard
-                $alterado = PackageHandler::editPackage($id, $title, $description, $text, $imgNames, $user_id, $destino, $estado, $pais, $saidaDe, $dataSaida, $dataRetorno, $expiraEm, $preco, $parceiro, $installments, $fee, $active);               
+                $alterado = PackageHandler::editPackage($id, $title, $description, $text, $imgNames, $user_id, $destino, $estado, $pais, $saidaDe, $dataSaida, $dataRetorno, $expiraEm, $preco, $parceiro, $installments, $fee, $active, $link, $link_title);               
                 // $this->redirect('/gerenciador');      
                 if($alterado === true){
                     $_SESSION['flash'] = "Pacote de Viagem aterado com sucesso!";

@@ -91,6 +91,14 @@
                                     <label for="fee">Juros:</label>
                                     <input type="text" id="fee" name="fee" class="input" placeholder="Digite o valor do juros sobre as parcelas">
                                 </div>
+                                <div class="campo">
+                                    <label for="link_title">Nome do link externo:</label>
+                                    <input type="text" id="link_title" name="link_title" class="input" placeholder="Digite o nome do link externo">
+                                </div>
+                                <div class="campo">
+                                    <label for="link">Link Externo:</label>
+                                    <input type="link" id="link" name="link" class="input" placeholder="Digite o url externo do pacote">
+                                </div>
                                 <div class="campo row" id="pck-situation">
                                     <div class="label-situation">
                                         <label for="pack-situation">Ativo:</label>

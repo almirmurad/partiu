@@ -57,7 +57,7 @@
                                     <li>JUROS: <?= $package->fee;?> </li>
                                     <li>CLICKS: <?= $package->clicks;?></li>
                                     <li>VIEWS: <?= $package->views;?></li>
-                                    <li>LINK: <?= $package->link;?> </li>
+                                    <li>LINK: <a href="<?= $package->link;?>" target="_blank"><?= $package->link_title;?></a> </li>
                                     <li></li>
                                     <li></li>
                                     <li></li>
