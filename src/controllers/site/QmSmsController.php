@@ -4,7 +4,7 @@ namespace src\controllers\site;
 use core\ControllerSite;
 use src\handlers\site\SubCatsSiteHandler;
 use src\handlers\site\EventsSiteHandler;
-use src\handlers\site\BannerSiteHAndler;
+use src\handlers\site\BannerSiteHandler;
 
 class QmSmsController extends ControllerSite{
 

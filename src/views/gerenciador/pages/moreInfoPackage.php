@@ -19,8 +19,50 @@
                         </div>
                         <div class="dash-boxes ">
                             <!-- Lista de Usuários -->
+                            <?php foreach($packages as $package):?>
+                                <div class="top-more-package">
+                                    <div class="cover-more-package">
+                                        <img src="<?=$base;?>/media/uploads/imgs/packages/<?=$package->cover?>" alt="">
+                                    </div>
+                                    <div class="data-more-package">
+                                        <ul>
+                                            <?php 
+                                                $today = date('Y-m-d H:i:s', strtotime("now"));
+                                                $expires = $package->expires_at;
+                                            ?>
+                                            <li>Id <?= $package->id;?></li>
+                                            <li>TÍTULO: <?= $package->title;?></li>
+                                            <li>DESTINO: <?= $package->destination;?> - <?= $package->state;?>/<?= $package->country;?></li>
+                                            <li>USUÁRIO: <?= $package->user->name;?></li>
+                                            <li>CRIADO EM: <?= date('d/m/Y', strtotime($package->created_at));?></li>
+                                            <li>EXPIRA EM: <?= date('d/m/Y', strtotime($package->expires_at));?></li>
+                                            <li>PREÇO: R$ <?= $package->price;?></li>
+                                            <li>LINK: <a href="<?= $package->link;?>" target="_blank"><?= $package->link_title;?></a> </li>
+                                        </ul>
+                                        <div class="espaco">
 
-                            <ul>
+                                        </div>
+                                        <ul>
+                                            <li>Responsável: <a href="<?=$base;?>/partner/<?=stripslashes($package->partner->id);?>/readPartner"><?=stripslashes($package->partner->name);?></a></li>
+                                            <li>Telefone: <?=$package->partner->phone?></li>
+                                            <li>E-mail: <?=stripslashes($package->partner->email);?></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="midlle-more-package">
+                                    <div class="text-more-package">
+                                        <?=stripslashes($package->text);?>
+                                    </div>
+                                </div>
+                                <div class="foot-more-package">
+                                    <div class="more-package flex">
+                                    <div class="internal-img" style="background-image:url(<?=$base?>/media/uploads/imgs/packages/<?=$package->img1?>);"><a href="" class="galerie-link">Galeria</a></div>
+                                    <div class="internal-img" style="background-image:url(<?=$base?>/media/uploads/imgs/packages/<?=$package->img2?>);"><a href="" class="galerie-link">Galeria</a></div>
+                                    <div class="internal-img" style="background-image:url(<?=$base?>/media/uploads/imgs/packages/<?=$package->img3?>);"><a href="" class="galerie-link">texto</a></div>
+                                    <div class="internal-img" style="background-image:url(<?=$base?>/media/uploads/imgs/packages/<?=$package->img4?>);"><a href="" class="galerie-link">texto</a></div>  
+                                </div>
+                            <?php endforeach; ?>
+                            <!-- <ul>
                                 <?php foreach($packages as $package):?>
                                     <?php 
                                         $today = date('Y-m-d H:i:s', strtotime("now"));
@@ -61,9 +103,9 @@
                                     <li></li>
                                     <li></li>
                                     <li></li>
-                            </ul>
-                            <?php endforeach; ?>
-
+                            
+                                <?php endforeach; ?>
+                            </ul> -->
                             
 
                             

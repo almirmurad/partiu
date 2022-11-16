@@ -3,17 +3,22 @@
 if ($page != 'Blog' and $page != 'Ler Postagem' ){
     echo <<<EOT
         <div class="planner">
-        <h4>Planejamento</h4>
-        <ul class="planner-area">
-            <li class="planner-item"><a href="" class="planner-link">Seguro Viagem</a></li>
-            <li class="planner-item"><a href="" class="planner-link">Aluguel de Veículo</a></li>
-            <li class="planner-item"><a href="" class="planner-link">Encontre um Hotel</a></li>
-            <li class="planner-item"><a href="" class="planner-link">Pacotes</a></li>
-            <li class="planner-item"><a href="" class="planner-link">Ingressos</a></li>
-        </ul>            
+            <h4>Planejamento</h4>
+            <ul class="planner-area">
+                <li class="planner-item"><a href="" class="planner-link">Seguro Viagem</a></li>
+                <li class="planner-item"><a href="" class="planner-link">Aluguel de Veículo</a></li>
+                <li class="planner-item"><a href="" class="planner-link">Encontre um Hotel</a></li>
+                <li class="planner-item"><a href="" class="planner-link">Pacotes</a></li>
+                <li class="planner-item"><a href="" class="planner-link">Ingressos</a></li>
+            </ul>            
+        </div>
+        <div class="hurb">
+            <ins id="afiliateHu" data-ad-client="560868" data-ad-width="300" data-ad-height="250" data-ad-link="_blank" data-ad-cor="3">  </ins>
+            
         </div>
         <div class="publicity">
             <h4>Anúncios</h4>
+            
 EOT;
 if (!empty($banners)){
     // echo"<pre>";
@@ -27,6 +32,7 @@ if (!empty($banners)){
                     <img src="$base/media/uploads/imgs/banners/$banner->img" alt="$banner->title">
                 </a>
             </div>
+            
 EOT;
 }else{
             echo <<<EOT

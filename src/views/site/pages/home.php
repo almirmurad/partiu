@@ -99,6 +99,10 @@
                 <!-- Anuncios -->
                 <?php $render('anunciosIndex',['banners'=>$bannersEndPage]);?>
             </div>
+            <div class="hurb">
+            <ins id="afiliateHu" data-ad-client="560868" data-ad-width="300" data-ad-height="250" data-ad-link="_blank" data-ad-cor="3">  </ins>
+            <script src="https://www.clubehu.com.br/assets/cmp/js/bloco.js"></script>
+        </div>
         </section>
     </div>
 
@@ -110,6 +114,7 @@
 
     <script src="<?=$base;?>/assets/js/script.js"></script>
     <script src="<?=$base;?>/assets/js/requests.js"></script>
+    <script src="https://www.clubehu.com.br/assets/cmp/js/bloco.js"></script>
 </body>
 
 </html>
