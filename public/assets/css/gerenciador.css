@@ -410,6 +410,11 @@ footer{
     padding: 10px;
 }
 
+.midlle-more-package{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
 
 .collum{
     flex-direction: column;
@@ -417,26 +422,27 @@ footer{
 
 .foot-more-package{
     display: flex;
+    justify-content: center;
+    align-items: center ;
     width: 100%;
     margin: 20px 0;
-}
-.img1,.img2{
-    display: flex;
-    flex:1;
-    height: 300px;
-    margin: 0;
-
-}
-.img1,
-.img2{
-    max-width: 375px;
-    box-sizing: border-box;
-    margin: 20px;
-    display: flex;
+    padding: 20px;
+    background-color: #736F36;
     flex-direction: column;
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
-    border: 3px solid #736F36;
 }
+.foot-more-package h5{
+    color: var(--boxColor);
+    font-weight: bold;
+}
+.galerie{
+    margin: 10px 0;
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    flex-direction: row;
+}
+
+
 .cover{
     width: 420px;
     max-height: 300px;
@@ -447,39 +453,32 @@ footer{
 .text-more-package{
     text-align: justify;
 }
-.legend {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    padding-left: 10px;
-    height: 100%;
-}
-.legend p{
-    display: block;
-    font-size: 1em;
-    font-weight: bold;
-    font-style: italic;
-    color: #736F36;
-}
-.top-about{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    padding: 20px;
-}
-.cover-about{
-    max-width: 350px;
-}
 
-.more-package{
-    width: 100%;
-}
-.more-package{
-    display: flex;
-    height: 250px;
-
-}
 .flex{
     display: flex;
+}
+.internal-img{
+    min-width: 210px;
+    height: 210px;
+    margin: 10px;
+    box-shadow: 5px 2px 10px rgba(0, 0, 0, 0.5);
+}
+.more{
+    display: flex;
+    padding: 20px;
+    width: 100%;
+    justify-content: center;
+}
+.more-info,
+.info-financ{
+    display: flex;
+    width:200px;
+    height: 200px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    background-color: var(--boxColor);
+    margin: 0 20px;
 }

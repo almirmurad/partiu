@@ -36,8 +36,10 @@
                                             <li>USUÁRIO: <?= $package->user->name;?></li>
                                             <li>CRIADO EM: <?= date('d/m/Y', strtotime($package->created_at));?></li>
                                             <li>EXPIRA EM: <?= date('d/m/Y', strtotime($package->expires_at));?></li>
+                                            <li>EXPIRA EM (DIAS): <?= $package->days;?></li>
+                                    <li>TOTAL DE DIAS: <?= $package->totalDays;?></li>
                                             <li>PREÇO: R$ <?= $package->price;?></li>
-                                            <li>LINK: <a href="<?= $package->link;?>" target="_blank"><?= $package->link_title;?></a> </li>
+                                            
                                         </ul>
                                         <div class="espaco">
 
@@ -51,64 +53,52 @@
                                 </div>
                                 <div class="midlle-more-package">
                                     <div class="text-more-package">
-                                        <?=stripslashes($package->text);?>
+                                        <h4>DESCRIÇÃO:</h4>
+                                        <?= $package->description;?><br/>
+                                        <h4>TEXTO:</h4>
+                                        <?=stripslashes($package->text);?>                                       
+                                        
+                                    </div>
+                                    <div class="more">
+                                        <div class="info-financ">
+                                            <h5>Informações Financeiras</h5>
+                                            <ul>
+                                                <li>PREÇO: R$ <?= $package->price;?></li>
+                                                <li>PARCELAS: <?= $package->installments;?></li>
+                                                <li>JUROS: <?= $package->fee;?> </li>
+                                            </ul>
+                                        </div>
+                                        <div class="more-info">
+                                            <h5>Mais Informações</h5>
+                                            <ul>
+                                                <li>LINK: <a href="<?= $package->link;?>" target="_blank"><?= $package->link_title;?></a></li>
+                                                <?php if( $package->active == 'A' ):?>
+                                                    <li >SITUAÇÃO: <span class="no-prazo">Ativo</span></li>
+                                                <?php else:?>
+                                                    <li >SITUAÇÃO: <span class="vencido">Inativo</span></li>
+                                                <?php endif?>
+                                                <?php if( $today < $expires ):?>
+                                                    <li >STATUS: <span class="no-prazo">No prazo</span></li>
+                                                <?php else:?>
+                                                    <li >STATUS: <span class="vencido">Vencido</span></li>
+                                                <?php endif?>
+                                                <li>CLICKS: <?= $package->clicks;?></li>
+                                                <li>VIEWS: <?= $package->views;?></li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
+                                
                                 <div class="foot-more-package">
-                                    <div class="more-package flex">
-                                    <div class="internal-img" style="background-image:url(<?=$base?>/media/uploads/imgs/packages/<?=$package->img1?>);"><a href="" class="galerie-link">Galeria</a></div>
-                                    <div class="internal-img" style="background-image:url(<?=$base?>/media/uploads/imgs/packages/<?=$package->img2?>);"><a href="" class="galerie-link">Galeria</a></div>
-                                    <div class="internal-img" style="background-image:url(<?=$base?>/media/uploads/imgs/packages/<?=$package->img3?>);"><a href="" class="galerie-link">texto</a></div>
-                                    <div class="internal-img" style="background-image:url(<?=$base?>/media/uploads/imgs/packages/<?=$package->img4?>);"><a href="" class="galerie-link">texto</a></div>  
+                                <h5>Galeria de Imagens</h5>
+                                    <div class="galerie">
+                                        <div class="internal-img" style="background-image:url(<?=$base?>/media/uploads/imgs/packages/<?=$package->img1?>);"><a href="" class="galerie-link">Galeria</a></div>
+                                        <div class="internal-img" style="background-image:url(<?=$base?>/media/uploads/imgs/packages/<?=$package->img2?>);"><a href="" class="galerie-link">Galeria</a></div>
+                                        <div class="internal-img" style="background-image:url(<?=$base?>/media/uploads/imgs/packages/<?=$package->img3?>);"><a href="" class="galerie-link">texto</a></div>
+                                        <div class="internal-img" style="background-image:url(<?=$base?>/media/uploads/imgs/packages/<?=$package->img4?>);"><a href="" class="galerie-link">texto</a></div>
+                                    </div>
                                 </div>
                             <?php endforeach; ?>
-                            <!-- <ul>
-                                <?php foreach($packages as $package):?>
-                                    <?php 
-                                        $today = date('Y-m-d H:i:s', strtotime("now"));
-                                        $expires = $package->expires_at;
-                                    ?>
-                                    <li># <?= $package->id;?></li>
-                                    <li>TÍTULO: <?= $package->title;?></li>
-                                    <li>DESCRIÇÃO: <?= $package->description;?></li>
-                                    <li>TEXTO: <?= $package->text;?></li>
-                                    <li>CAPA: <?= $package->cover;?></li>
-                                    <li>IMAGEM 1: <?= $package->img1;?></li>
-                                    <li>IMAGEM 2: <?= $package->img2;?></li>
-                                    <li>IMAGEM 3: <?= $package->img3;?></li>
-                                    <li>IMAGEM 4: <?= $package->img4;?></li>
-                                    <li>DESTINO: <?= $package->destination;?> - <?= $package->state;?>/<?= $package->country;?></li>
-                                    <li>PARCEIRO: <?= $package->partner->name;?></li>
-                                    <li>USUÁRIO: <?= $package->user->name;?></li>
-                                    <li>CRIADO EM: <?= date('d/m/Y', strtotime($package->created_at));?></li>
-                                    <li>EXPIRA EM: <?= date('d/m/Y', strtotime($package->expires_at));?></li>
-                                    <li>EXPIRA EM (DIAS): <?= $package->days;?></li>
-                                    <li>TOTAL DE DIAS: <?= $package->totalDays;?></li>
-                                    <?php if( $package->active == 'A' ):?>
-                                        <li >SITUAÇÃO: <span class="no-prazo">Ativo</span></li>
-                                    <?php else:?>
-                                        <li >SITUAÇÃO: <span class="vencido">Inativo</span></li>
-                                    <?php endif?>
-                                    <?php if( $today < $expires ):?>
-                                        <li >STATUS: <span class="no-prazo">No prazo</span></li>
-                                    <?php else:?>
-                                        <li >STATUS: <span class="vencido">Vencido</span></li>
-                                    <?php endif?>
-                                    <li>PREÇO: R$ <?= $package->price;?></li>
-                                    <li>PARCELAS: <?= $package->installments;?></li>
-                                    <li>JUROS: <?= $package->fee;?> </li>
-                                    <li>CLICKS: <?= $package->clicks;?></li>
-                                    <li>VIEWS: <?= $package->views;?></li>
-                                    <li>LINK: <a href="<?= $package->link;?>" target="_blank"><?= $package->link_title;?></a> </li>
-                                    <li></li>
-                                    <li></li>
-                                    <li></li>
-                            
-                                <?php endforeach; ?>
-                            </ul> -->
-                            
-
-                            
                         </div>
                     </div>
                 </div>
