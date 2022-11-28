@@ -91,12 +91,19 @@ class NewsController extends ControllerGerenciador {
         }
 
         $page       = "Edição de Notícias";
-        $news    = Noticia::select()->find($args['id']);
+        $news    = NewsHandler::getNewsId($args['id']);
+        $newsCat = NewsHandler::newsCat();
+        
+        // echo "<pre>";
+        // print_r($newsCat);
+        // exit;
+                                           
         $this->render('editNews', [
             'loggedUser'=>$this->loggedUser,
             'page'      =>$page,
             'news'   =>$news,
-            'flash'     =>$flash
+            'flash'     =>$flash,
+            'subCats' => $newsCat,
         ]);
     }
 

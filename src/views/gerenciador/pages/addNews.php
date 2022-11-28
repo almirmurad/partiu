@@ -56,10 +56,11 @@
                                     <label for="source">Fonte:</label>
                                     <input type="text" id="source" name="source" class="input" placeholder="Digite a fonte da informação">
                                 </div>
-                                <label for="subCatAsc">Categoria pertencente:</label>
+                                <div class="campo">
+                                    <label for="subCatAsc">Categoria pertencente:</label>
                                     <select name="subCatAsc" id="subCatAsc">
                                         <?php foreach ($subCats as $subCat):?>
-                                        <option value="<?=$subCat->id;?>" ><?=$subCat->name;?></option>
+                                            <option value="<?=$subCat->id;?>" ><?=$subCat->name;?></option>
                                         <?php endforeach?>
                                     </select>
                                 </div>

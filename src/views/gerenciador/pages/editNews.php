@@ -18,29 +18,35 @@
                                     <span class="notice">Mensagem:<?=$flash;?></span>
                                 </div>
                             <?php endif; ?>
-
-                        <form method="post" enctype="multipart/form-data" action="<?=$base;?>/news/<?=$news['id'];?>/editNews" class="addUser">
+                            <?php
+                            // echo"<div style='width:500px'>";
+                            // echo"<pre>";
+                            
+                            // print_r($news);
+                            // echo"</div>";
+                            // exit;
+                            ?>
+                        <?php foreach($news as $oneNews):?>
+                        <form method="post" enctype="multipart/form-data" action="<?=$base;?>/news/<?=$oneNews->id;?>/editNews" class="addUser">
                             <fieldset>
                                 <legend>
                                     <h4>Formulário de edição de notícias</h4>
                                 </legend>
                                 <div class="campo">
                                     <label for="title">Título:</label>
-                                    <input type="text" id="title" name="title" class="input" value="<?=$news['title'];?>">
+                                    <input type="text" id="title" name="title" class="input" value="<?=$oneNews->title;?>">
                                 </div>
                                 <div class="campo">
                                     <label for="description">Descrição:</label>
-                                    <input type="text" id="description" name="description" class="input" value="<?=$news['description'];?>">
+                                    <input type="text" id="description" name="description" class="input" value="<?=$oneNews->description;?>">
                                 </div>
                                 <div class="campo">
                                     <label for="text">Texto:</label>
-                                    <textarea name="text" id="text" cols="30" rows="10">
-                                    <?=$news['text'];?>
-                                    </textarea>
+                                    <textarea name="text" id="text" cols="30" rows="10"><?=$oneNews->text;?></textarea>
                                 </div>
                                 <div class="campo">
                                     <label for="cover">Capa:</label>
-                                    <input type="file" id="cover" name="cover" class="input" value="<?=$news['cover'];?>">
+                                    <input type="file" id="cover" name="cover" class="input" value="<?=$oneNews->cover;?>">
                                 </div>
                                 <div class="campo">
                                     <label for="foto1">Foto 1:</label>
@@ -48,7 +54,7 @@
                                 </div>
                                 <div class="campo">
                                     <label for="legend_img1">Legenda da Foto 1:</label>
-                                    <input type="text" id="legend_img1" name="legend_img1" class="input" value="<?=$news['legend_img1'];?>">
+                                    <input type="text" id="legend_img1" name="legend_img1" class="input" value="<?=$oneNews->legend_img1;?>">
                                 </div>
                                 <div class="campo">
                                     <label for="foto2">Foto 2:</label>
@@ -56,16 +62,23 @@
                                 </div>
                                 <div class="campo">
                                     <label for="legend_img2">Legenda da Foto 2:</label>
-                                    <input type="text" id="legend_img2" name="legend_img2" class="input" value="<?=$news['legend_img2'];?>">
+                                    <input type="text" id="legend_img2" name="legend_img2" class="input" value="<?=$oneNews->legend_img2;?>">
                                 </div>
                                 <div class="campo">
                                     <label for="source">Fonte:</label>
-                                    <input type="text" id="source" name="source" class="input" value="<?=$news['source'];?>">
+                                    <input type="text" id="source" name="source" class="input" value="<?=$oneNews->source;?>">
                                 </div>
-                                <label for="subCatAsc">Categoria pertencente:</label>
+                                <!-- <div class="campo">                                 
+                                    <label for="subCatAsc">Categoria pertencente:</label>
+                                    <select name="subCatAsc" id="subCatAsc">
+                                            <option value="<?=$oneNews->subCat->id;?>" ><?=$oneNews->subCat->name;?></option>
+                                    </select>
+                                </div> -->
+                                <div class="campo">
+                                    <label for="subCatAsc">Categoria pertencente:</label>
                                     <select name="subCatAsc" id="subCatAsc">
                                         <?php foreach ($subCats as $subCat):?>
-                                        <option value="<?=$subCat['id'];?>" ><?=$subCat['name'];?></option>
+                                            <option value="<?=$subCat->id;?>" ><?=$subCat->name;?></option>
                                         <?php endforeach?>
                                     </select>
                                 </div>
@@ -75,6 +88,7 @@
                                 
                             </fieldset>
                         </form>
+                        <?php endforeach;?>
                         <!-- fim do Form addUser -->
                     </div>
                 </div>
