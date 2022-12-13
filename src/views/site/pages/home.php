@@ -111,7 +111,9 @@
     <footer>
         <?php $render('foot');?>
     </footer>
-
+    <script type="text/javascript">
+        const BASE ='<?=$base;?>';
+    </script>
     <script src="<?=$base;?>/assets/js/script.js"></script>
     <script src="<?=$base;?>/assets/js/requests.js"></script>
     <script src="https://www.clubehu.com.br/assets/cmp/js/bloco.js"></script>

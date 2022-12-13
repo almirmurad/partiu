@@ -66,3 +66,13 @@ function showHideCatBlog() {
     }
 
 }
+
+if (document.querySelectorAll('.link-banners')){
+    document.querySelectorAll('.link-banners').forEach(item=>{
+        item.addEventListener('click', ()=>{
+            let id = item.closest('.link-banners').getAttribute('data-id');
+            
+	    fetch(BASE+'/ajax/click/'+id);
+        });
+    })
+}

@@ -7,7 +7,8 @@ $router = new Router();
 $router->get('/', 'HomeController@index');
 $router->get('/quemSomos', 'site\QmSmsController@index');
 
-
+//Ajax
+$router->get('/ajax/click/{id}', 'site\AjaxController@click');
 
 //roteiros
 $router->get('/roteiros', 'site\RMController@index');
@@ -167,3 +168,4 @@ $router->get('/Banner', 'gerenciador\BannerController@listBanner');
 $router->get('/Banner/{id}/editBannerPosition', 'gerenciador\BannerPositionController@editBannerPosition');
 $router->post('/partnersType/{id}/editBannerPosition', 'gerenciador\BannerPositionController@editBannerPositionAction');
 $router->get('/partnersType/{id}/deleteBannerPosition', 'gerenciador\BannerPositionController@deleteBannerPosition');
+

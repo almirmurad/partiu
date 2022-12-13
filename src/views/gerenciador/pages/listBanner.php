@@ -24,6 +24,9 @@
                                 <th>ID</th>
                                 <th>Título</th>
                                 <th>Descrição</th>
+                                <th>Clicks</th>
+                                <th>$/Clicks</th>
+                                <th>Custo/clicks</th>
                                 <th>Criado por</th>
                                 <th>Criado em</th>
                                 
@@ -34,7 +37,10 @@
                                     
                                 <td class="user-item"><?= $banner->id;?></td>
                                 <td class="user-item"><?= $banner->title;?></td>
-                                <td class="user-item"><?= $banner->description;?>
+                                <td class="user-item"><?= $banner->description;?></td>
+                                <td class="user-item"><?= $banner->clicks;?></td>
+                                <td class="user-item"><?="R$ ".number_format($banner->priceClick,2,',');?></td>
+                                <td class="user-item"><?="R$ ".number_format($banner->coustClick,2,',');?></td>
                                 <td class='user-item'><?= $banner->user->name;?></td>
                                 <td class='user-item'><?= date('d/m/Y', strtotime($banner->created_at));?></td>
                                 

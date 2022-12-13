@@ -3,6 +3,7 @@ namespace src\handlers\site;
 use src\models\User;
 use src\models\Post;
 use src\models\Banner;
+use src\models\BannerClick;
 use ClanCats\Hydrahon\Query\Expression as Rnd;
 use src\models\Categorie;
 use src\models\Package;
@@ -137,6 +138,9 @@ class BannerSiteHandler {
             $newBanner-> partner_id = $listBannerItem['partner_id'];
             $newBanner-> created_at = $listBannerItem['created_at'];
             
+            $clicks = BannerClick::select()->where('id_banner', $listBannerItem['id'])->get();
+            $newBanner->clicks = count($clicks);
+            
             $newUser = User::select()->where('id',$listBannerItem['user_id'])->one();
             $newBanner->user = new User();
             $newBanner->user->name=$newUser['name'];
@@ -244,7 +248,7 @@ class BannerSiteHandler {
             $newBanner-> description = $listBannerItem['description'];
             $newBanner-> partner_id = $listBannerItem['partner_id'];
             $newBanner-> created_at = $listBannerItem['created_at'];
-            
+           
             $newUser = User::select()->where('id',$listBannerItem['user_id'])->one();
             $newBanner->user = new User();
             $newBanner->user->name=$newUser['name'];
@@ -256,6 +260,17 @@ class BannerSiteHandler {
     
         return $banners;
 
+    }
+
+
+    public static function addClick($id){      
+       
+        BannerClick::insert([
+            'id_banner'     => $id,
+            'created_at'    => date('Y-m-d H:i:s'),
+        ])->execute();
+        
+        return true;
     }
 
     // public static function partner($page){

@@ -31,6 +31,9 @@
 <footer>
     <?php $render('foot');?>
 </footer>
+<script type="text/javascript">
+        const BASE ='<?=$base;?>';
+</script>
 <script src = "<?=$base;?>/assets/js/catSlider.js"></script>
 <script src="<?=$base;?>/assets/js/requests.js"></script>
 </body>
