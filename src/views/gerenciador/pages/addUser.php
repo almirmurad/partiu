@@ -40,6 +40,9 @@
                                     <select name="type" id="type" class="input">
                                         <option value="1">Administrador</option>
                                         <option value="2">Redator</option>
+                                        <option value="3">Parceiro-Banners</option>
+                                        <option value="4">Redator-Anúncios</option>
+                                        <option value="5">Redator-Banners e Anúncios</option>
                                     </select>
                                 </div>
                                 <div class="campo">
