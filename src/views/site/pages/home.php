@@ -17,7 +17,10 @@
         <div class="container column">
             <!-- Pacotes -->
             <?php 
-          
+            //   echo"<pre>";
+            //   echo"pacotes";
+            //   print_r($packages);
+            //   exit;
             if (isset($packages) && $packages != null){
                 $render('pacotes',['packages'=>$packages]);
             }else{
@@ -99,10 +102,7 @@
                 <!-- Anuncios -->
                 <?php $render('anunciosIndex',['banners'=>$bannersEndPage]);?>
             </div>
-            <div class="hurb">
-            <ins id="afiliateHu" data-ad-client="560868" data-ad-width="300" data-ad-height="250" data-ad-link="_blank" data-ad-cor="3">  </ins>
-            <script src="https://www.clubehu.com.br/assets/cmp/js/bloco.js"></script>
-        </div>
+            
         </section>
     </div>
 

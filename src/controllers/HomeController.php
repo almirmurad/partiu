@@ -22,6 +22,10 @@ class HomeController extends ControllerSite {
     private $pacotes;
     private $events;
     private $categories;
+    private $bannersCta;
+    private $bannerNews;
+    private $bannerEvents;
+    private $bannersEndPage;
     
     public function __construct()
     {   
@@ -29,7 +33,7 @@ class HomeController extends ControllerSite {
         //Notícias
         $this->news = Noticia::select()->limit(8)->get();
         //Pacotes
-        $this->pacotes = PackageSIteHandler::packIndex();
+        $this->pacotes = PackageSiteHandler::packIndex();
         //Eventos
         $this->events = EventsSiteHandler::eventsIndex();
         //Categorias

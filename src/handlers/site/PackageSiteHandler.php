@@ -216,6 +216,13 @@ class PackageSiteHandler {
         ->limit(4)
         ->execute();
 
+        // echo"<pre>";
+        //       echo"pacotes";
+        //       echo"<br>";
+        //       print_r($packagesList);
+        //       echo $today;
+        //       exit;
+
         if(empty($packagesList)){
             unset($pacotes);
         }else{
