@@ -32,10 +32,12 @@ class NotController extends ControllerSite{
         $eventsFoot = EventsSiteHandler::eventsFoot();
         $internalBanner = BannerSiteHandler::bannerPublicityInternals();
         $publicityFoot = BannerSiteHandler::publicityFoot();
-        $oneNews = Noticia::select('noticias.title,noticias.created_at, noticias.source, noticias.text, noticias.user_id, noticias.legend_img1, noticias.legend_img2, noticias.img1, noticias.img2, noticias.cover, noticias.description, users.name')
-        ->join('users', 'noticias.user_id', '=', 'users.id')
-        ->where('noticias.id', $args['id'])
-        ->get();
+        $oneNews = NewsSiteHandler::oneNews($args['id']);
+
+    //                echo"<pre>";
+    //    print_r($oneNews);
+    //    exit;
+
         //$oneNews = Noticia::select()->where('id', $args['id'])->execute();
         $this->render('readNews',['page' => 'Ler Notícia',
                 'oneNews' => $oneNews,

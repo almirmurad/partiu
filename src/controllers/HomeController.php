@@ -8,7 +8,7 @@ use src\models\Package;
 use src\models\Event;
 use src\models\Categorie;
 
-use src\handlers\NewsSiteHandler;
+use src\handlers\site\NewsSiteHandler;
 use src\handlers\site\PackageSiteHandler;
 use src\handlers\site\EventsSiteHandler;
 use src\handlers\site\SubCatsSiteHandler;
@@ -31,7 +31,7 @@ class HomeController extends ControllerSite {
     {   
 
         //Notícias
-        $this->news = Noticia::select()->limit(8)->get();
+        $this->news = NewsSiteHandler::newsHome();
         //Pacotes
         $this->pacotes = PackageSiteHandler::packIndex();
         //Eventos
