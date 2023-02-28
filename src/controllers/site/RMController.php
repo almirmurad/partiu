@@ -6,7 +6,7 @@ use src\models\RoadMap;
 use src\handlers\site\SubCatsSiteHandler;
 use src\handlers\site\RMSiteHandler;
 use src\handlers\site\EventsSiteHandler;
-use src\handlers\site\BannerSiteHAndler;
+use src\handlers\site\BannerSiteHandler;
 
 class RMController extends ControllerSite{
     public function index() {
