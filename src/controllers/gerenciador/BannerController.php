@@ -51,11 +51,6 @@ class BannerController extends ControllerGerenciador{
         //   
 
         if($user_id && $title && $description && $position && $url && $image && $width && $height && $createdAt && $expiresAt ){
-
-                // echo"<pre>";
-                // print_r($_POST);
-                // echo"chegou aqui";
-                // exit;
                 
                 $fotosNames = [];
                 foreach($_FILES as $img){
@@ -111,25 +106,27 @@ class BannerController extends ControllerGerenciador{
 
     }
 
-    // public function editPartnerType($args){
-    //     $flash = '';
-    //     if(!empty($_SESSION['flash'])){
-    //         $flash = $_SESSION['flash'];
-    //         $_SESSION['flash'] = '';
-    //     }
-    //     $partnerType    = Typespartner::select()->find($args['id']);
-    //     //$subCatId = $partner['categorie_id'];
-    //     //$subCat        = Subcategorie::select()->Where('id', $subCatId)->one();
-    //     $page       = "Edição de Tipo de Parceria";
+    public function editBanner($args){
+        $flash = '';
+        if(!empty($_SESSION['flash'])){
+            $flash = $_SESSION['flash'];
+            $_SESSION['flash'] = '';
+        }
+        $banner    = BannerHandler::getById($args['id']);
+        //FuncoesUteis::log($banner, "Banner Buscado com sucesso!");
+        $positions = BannerHandler::getPositions();
+        $partners = PartnerHandler::getPartners();
+        $page       = "Edição de Banners";
         
-    //     $this->render('editPartnerType', [
-    //         'loggedUser'=>$this->loggedUser,
-    //         'page'      =>$page,
-    //         'partnerType'     =>$partnerType,
-    //         'flash'     =>$flash,
-    //         //'subCat'    =>$subCat
-    //     ]);
-    // }
+        $this->render('editBanner', [
+            'loggedUser'=>$this->loggedUser,
+            'positions'=>$positions,
+            'page'      =>$page,
+            'banner'     =>$banner,
+            'flash'     =>$flash,
+            'partners'=>$partners
+        ]);
+    }
 
     // public function editPartnerTypeAction($args){
 

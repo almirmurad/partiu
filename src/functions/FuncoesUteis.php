@@ -109,13 +109,6 @@ class FuncoesUteis{
         return true;
     }
 
-    public static function log($args){
-
-        echo "<pre>";
-        print_r($args['0']);
-        exit;
-    }
-
     public static function missingDays($args){
 
         // echo "<pre>";
@@ -176,6 +169,14 @@ class FuncoesUteis{
 
     // Retorna o valor formatado
     return $novo_texto;
-}
+    }
+
+    public static function log($var, string $msg){
+        echo"<pre>";
+        print_r($var);
+        echo"LOG ->".$msg;
+        echo"</pre>";
+        exit;
+       }
 
 }
