@@ -7,12 +7,7 @@ use src\models\BannerClick;
 use src\models\User;
 use src\functions\FuncoesUteis;
 
-// echo"<pre>";
-//                 print_r($_POST);
-//                 echo"chegou aqui no handler";
-//                 exit;
-class BannerHandler {
-                
+class BannerHandler {            
 
     public static function addBannerAction($user_id, $title, $description, $position, $url, $image, $advertiser_id, $partner_id, $width, $height, $createdAt, $expiresAt){
        
@@ -34,13 +29,20 @@ class BannerHandler {
         return true;
     }
 
-    public static function editPartnerTypeAction($title, $user_id, $description, $id){
+    public static function editBannerAction($user_id, $title, $description, $position, $url, $image, $width, $height, $createdAt, $expiresAt ){
 
         Banner::update()
                 ->set('title', $title)
                 ->set('user_id', $user_id)
                 ->set('description', $description)
+                ->set('position', $position)
+                ->set('url', $url)
+                ->set('image', $image)
+                ->set('width', $width)
+                ->set('height', $height)
                 ->set('created_at', date('Y-m-d H:i:s'))
+                ->set('expiresAt', $expiresAt)
+                
                 ->where('id', $id)
                 ->execute();
 
@@ -63,16 +65,10 @@ public static function selectAllTypes(){
 
         $clicks = BannerClick::select()->where('id_banner', $listBannerItem['id'])->get();
         $newBanner->clicks = count($clicks);
-
         $priceClick = BannerPosition::select('price_click')->where('id', $listBannerItem['position_id'])->one();
-        
-
         $newBanner->priceClick = $priceClick['price_click'];
-
         $coustClick = $newBanner->clicks * $newBanner->priceClick;
         $newBanner->coustClick = $coustClick;
-        
-        $newBanner-> created_at = $listBannerItem['created_at'];
         
         $newUser = User::select()->where('id',$listBannerItem['user_id'])->one();
         $newBanner->user = new User();
@@ -119,47 +115,44 @@ public static function getPositions(){
 }
 
     public static function getById($id){
-       $banner = Banner::select()->find($id);
-       //FuncoesUteis::log($banner, "Banner Buscado com sucesso!");
+        
+        $banner = Banner::select()->find($id);
 
-       $newBanner = new Banner;
-       $newBanner-> id = $banner['id'];
-       $newBanner-> title = $banner['title'];
-       $newBanner-> description = $banner['description'];
-       $newBanner-> user_id = $banner['user_id'];
-       $newBanner-> position_id = $banner['position_id'];
-       $newBanner-> url = $banner['url'];
-       $newBanner-> img = $banner['img'];
-       $newBanner-> advertiser_id = $banner['advertiser_id'];
-       $newBanner-> partner_id = $banner['partner_id'];
-       $newBanner-> width = $banner['width'];
-       $newBanner-> height = $banner['heigth'];
-       $newBanner-> expires_at = $banner['expires_at'];
+        $newBanner = new Banner;
+        $newBanner-> id = $banner['id'];
+        $newBanner-> title = $banner['title'];
+        $newBanner-> description = $banner['description'];
+        $newBanner-> user_id = $banner['user_id'];
+        $newBanner-> position_id = $banner['position_id'];
+        $newBanner-> url = $banner['url'];
+        $newBanner-> img = $banner['img'];
+        $newBanner-> advertiser_id = $banner['advertiser_id'];
+        $newBanner-> partner_id = $banner['partner_id'];
+        $newBanner-> width = $banner['width'];
+        $newBanner-> height = $banner['heigth'];
+        $newBanner-> expires_at = $banner['expires_at'];
+        $newBanner-> created_at = $banner['created_at'];
 
+        $clicks = BannerClick::select()->where('id_banner', $banner['id'])->get();
+        $newBanner->clicks = count($clicks);
+        $priceClick = BannerPosition::select('price_click')->where('id', $banner['position_id'])->one();
+        $newBanner->priceClick = $priceClick['price_click'];
+        $coustClick = $newBanner->clicks * $newBanner->priceClick;
+        $newBanner->coustClick = $coustClick;
 
-        //busca o click
-       $clicks = BannerClick::select()->where('id_banner', $banner['id'])->get();
-       $newBanner->clicks = count($clicks);
-       
-       $priceClick = BannerPosition::select('price_click')->where('id', $banner['position_id'])->one();
-       $newBanner->priceClick = $priceClick['price_click'];
-       $coustClick = $newBanner->clicks * $newBanner->priceClick;
-       $newBanner->coustClick = $coustClick;
-       $newBanner-> created_at = $banner['created_at'];
-       
-       $newUser = User::select()->where('id',$banner['user_id'])->one();
-       $newBanner->user = new User();
-       $newBanner->user->name=$newUser['name'];
-       $newBanner->user->avatar=$newUser['avatar'];
+        $newUser = User::select()->where('id',$banner['user_id'])->one();
+        $newBanner->user = new User();
+        $newBanner->user->name=$newUser['name'];
+        $newBanner->user->avatar=$newUser['avatar'];
 
-       
         return $newBanner;
                 
-
-
     }
 
-
+    public static function deleteBanner($id){
+        Banner::delete()->where('id', $id)->execute();
+        return true;
+    }
 
 
  }

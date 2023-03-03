@@ -166,6 +166,6 @@ $router->get('/newBanner', 'gerenciador\BannerController@addBanner');
 $router->post('/newBanner', 'gerenciador\BannerController@addBannerAction');
 $router->get('/Banner', 'gerenciador\BannerController@listBanner');
 $router->get('/Banner/{id}/editBanner', 'gerenciador\BannerController@editBanner');
-$router->post('/partnersType/{id}/editBannerPosition', 'gerenciador\BannerPositionController@editBannerPositionAction');
-$router->get('/partnersType/{id}/deleteBannerPosition', 'gerenciador\BannerPositionController@deleteBannerPosition');
+$router->post('/Banner/{id}/editBanner', 'gerenciador\BannerController@editBannerAction');
+$router->get('/banner/{id}/deleteBanner', 'gerenciador\BannerController@deleteBanner');
 

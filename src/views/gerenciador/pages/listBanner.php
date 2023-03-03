@@ -46,7 +46,7 @@
                                 
                                 <td class="user-item">
                                     <a href="<?=$base;?>/banner/<?= $banner->id;?>/editBanner"><img src="<?=$base?>/assets/img/img_admin/edit.png" width="20px" height="20px" alt=""></a>
-                                    <a href="<?=$base;?>/partnersType/<?= $banner->id;?>/deletebannerType" onclick="confirm('Tem certeza que deseja excluir o Parceiro: <?= $banner->title; '? <br/> Esta ação não poderá ser revertida e excluirá também os pacotes de viagem deste parceiro!'?>')"><img src="<?=$base?>/assets/img/img_admin/del.png" width="20px" height="20px" alt=""></a>
+                                    <a href="<?=$base;?>/banner/<?= $banner->id;?>/deleteBanner" onclick="confirm('Tem certeza que deseja excluir o Parceiro: <?= $banner->title; '? <br/> Esta ação não poderá ser revertida e excluirá também os pacotes de viagem deste parceiro!'?>')"><img src="<?=$base?>/assets/img/img_admin/del.png" width="20px" height="20px" alt=""></a>
                                 </td>
                                 
                             </tr>

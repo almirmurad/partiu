@@ -119,38 +119,80 @@ class BannerController extends ControllerGerenciador{
         $page       = "Edição de Banners";
         
         $this->render('editBanner', [
-            'loggedUser'=>$this->loggedUser,
-            'positions'=>$positions,
-            'page'      =>$page,
-            'banner'     =>$banner,
-            'flash'     =>$flash,
-            'partners'=>$partners
+            'loggedUser'    =>$this->loggedUser,
+            'positions'     =>$positions,
+            'page'          =>$page,
+            'banner'        =>$banner,
+            'flash'         =>$flash,
+            'partners'      =>$partners
         ]);
     }
 
-    // public function editPartnerTypeAction($args){
+    public function editBannerAction($args){
 
-    //     $user_id = $this->loggedUser->id;
-    //     $description = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_ADD_SLASHES);
-    //     $title   = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_ADD_SLASHES);
- 
-    //     if($title && $user_id && $description){
-    
-    //             //se gerou insere no banco de dados e retorna ao dashboard
-    //             PartnerTypeHandler::editPartnertypeAction( $title, $user_id, $description, $args['id']);
-    //             $this->redirect('/gerenciador');      
+        $user_id = $this->loggedUser->id;
+
+        $title   = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_ADD_SLASHES);
+        $description = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_ADD_SLASHES);
+        $position = filter_input(INPUT_POST, 'position', FILTER_SANITIZE_ADD_SLASHES);
+        $url = filter_input(INPUT_POST, 'url', FILTER_SANITIZE_ADD_SLASHES);
+        $image = $_FILES['img']['name'];
+        $advertiser_id = filter_input(INPUT_POST, 'advertiser_id', FILTER_SANITIZE_ADD_SLASHES);
+        $partner_id = filter_input(INPUT_POST, 'partner_id', FILTER_SANITIZE_ADD_SLASHES);
+        $width = filter_input(INPUT_POST, 'width', FILTER_SANITIZE_ADD_SLASHES);
+        $height = filter_input(INPUT_POST, 'height', FILTER_SANITIZE_ADD_SLASHES);
+        $createdAt = filter_input(INPUT_POST, 'created_at', FILTER_SANITIZE_ADD_SLASHES);
+        $expiresAt = filter_input(INPUT_POST, 'expires_at', FILTER_SANITIZE_ADD_SLASHES);
+
+        if($user_id && $title && $description && $position && $url && $image && $width && $height && $createdAt && $expiresAt ){
+                
+                $fotosNames = [];
+                foreach($_FILES as $img){
+                   if(isset ($img['type'])){
+                        if(in_array($img['type'],['image/jpeg', 'image/jpg', 'image/png'])){
+                            $fotosNames[] = $img;
+                        }
+                   } 
+                }
+                //verifica se existe a pasta imagens específica para pacotes 
+                $caminho = "media/uploads/imgs/banners";
+                if(!is_dir($caminho)){
+                    //se não não existir cria
+                    mkdir($caminho, 0777);
+                }
+                //gera todas as imagens no tamanho específicado
+            $imgNames = FuncoesUteis::editImg($fotosNames, $width, $height, $caminho);
+            if(isset($imgNames) && !empty($imgNames)){
+
+                // echo"<pre>";
+                // print_r($imgNames);
+                // echo $imgNames[0];
+                // exit;
+                    
+                //se gerou insere no banco de dados e retorna ao dashboard
+                BannerHandler::editBannerAction($user_id, $title, $description, $position, $url, $imgNames[0], $advertiser_id, $partner_id, $width, $height, $createdAt, $expiresAt);
+                $this->redirect('/gerenciador');      
+                
+            }
+            else{
+                    //se não gerou retorna ao formulario
+                    $this->redirect('/newBanner');
+                } 
+
             
-    //          }else{
-    //                 //se não gerou retorna ao formulario
-    //                 $this->redirect('/newPartnerType');
-    //             }
+             }else{
+                    //se não gerou retorna ao formulario
+                    $this->redirect('/newBanner');
+                }   
+              
 
-    // }
-    // public function deletePartnerType($args){
-    //     //package::delete()->where('partner_id',$args['id'])->execute();
-    //     TypesPartner::delete()->where('id', $args['id'])->execute();
-    //     $this->redirect('/partnersType');
-    // }
+    }
+    public function deleteBanner($args){
+        //package::delete()->where('partner_id',$args['id'])->execute();
+        $deleted = BannerHandler::deleteBanner($args);
+        ($deleted) ? $this->redirect('/banner') : $this->redirect('/gerenciador');
+        
+    }
 }
 
 
