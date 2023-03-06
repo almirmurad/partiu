@@ -28,12 +28,13 @@
 
 .news{
     background-color:var(--blue);
-    height:45%;
+    flex: 1;
     display:flex;
     justify-content: center;
     align-items: center;
     width: 100wh;
     box-shadow: var(--shadow-boxes);
+    padding: 50px 0;
 }
 
 .foot-cont{
@@ -49,6 +50,7 @@
 }
 .foot-cont-content form{
     display: flex;
+    flex-direction: column;
     margin: 20px 0;
     width: 50%;
 }
@@ -57,6 +59,19 @@
     display: flex;
     flex: 4;
 
+}
+.checkbox{
+    display: flex;
+    justify-content: flex-start;
+    justify-self: flex-start;
+
+    padding: 20px;
+  
+}
+.checkbox input{
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
 }
 .campo-btn{
     flex: 1;
@@ -87,11 +102,11 @@ input:focus{
 .social-links{
     background-color:var(--orange);
     width: 100wh;
-    height: 25%;
+    height: 50%;
     display:flex;
     justify-content: center;
     align-items:center;
-    padding: 20px 0;
+    padding: 50px 0;
 }
 .social-links ul{
     display: flex;
@@ -125,11 +140,11 @@ input:focus{
 }
 .sessoes{
     background-color:var(--grey);
-    height: 30%;
+    height: 50%;
     display:flex;
     justify-content: center;
     align-items:center;
-    
+    padding: 50px 0;
 }
 .row{
     display: flex;

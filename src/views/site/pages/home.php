@@ -17,10 +17,7 @@
         <div class="container column">
             <!-- Pacotes -->
             <?php 
-            //   echo"<pre>";
-            //   echo"pacotes";
-            //   print_r($packages);
-            //   exit;
+            
             if (isset($packages) && $packages != null){
                 $render('pacotes',['packages'=>$packages]);
             }else{
@@ -109,7 +106,7 @@
 </main>
 
     <footer>
-        <?php $render('foot');?>
+        <?php $render('foot',['flash'=>$flash]);?>
     </footer>
     <script type="text/javascript">
         const BASE ='<?=$base;?>';

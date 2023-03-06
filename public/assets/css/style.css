@@ -804,7 +804,7 @@ background-color: rgba(242, 159, 5, 1) ;
  font-weight: bold;
 }
 footer{
-    height: 100vh;
+    
     background-color:#736F36;
     display: flex;
     flex-direction: column;

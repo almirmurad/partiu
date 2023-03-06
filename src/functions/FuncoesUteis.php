@@ -173,10 +173,19 @@ class FuncoesUteis{
 
     public static function log($var, string $msg){
         echo"<pre>";
-        print_r($var);
-        echo"LOG ->".$msg;
+        if(is_array($var)){
+            print_r($var);
+            echo"LOG ->".$msg;
         echo"</pre>";
         exit;
+        }
+        else{
+            echo $var."<br/>";
+            echo"LOG ->".$msg;
+            echo"</pre>";
+            exit;
+        }
+        
        }
 
 }

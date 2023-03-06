@@ -46,6 +46,13 @@ class HomeController extends ControllerSite {
     }
     
     public function index() {
+
+        $flash = '';
+        if(!empty($_SESSION['flash'])){
+                $flash = $_SESSION['flash'];
+                $_SESSION['flash'] = '';
+            }
+
         if (isset($this->pacotes)){
             $pacotes = $this->pacotes;
         }else{
@@ -61,6 +68,7 @@ class HomeController extends ControllerSite {
             'bannersNews'=>$this->bannerNews,
             'bannersEvents'=>$this->bannerEvents,
             'bannersEndPage'=>$this->bannersEndPage,
+            'flash'=>$flash,
         ]);
     }    
 }

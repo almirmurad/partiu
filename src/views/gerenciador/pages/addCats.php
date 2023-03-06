@@ -14,10 +14,10 @@
                     <div class="dash-boxes column">
                         <!-- Form addUser -->
                         <?php if(!empty($flash)): ?>
-                                <div class="error-notice">
-                                    <span class="notice">Mensagem: <?=$flash;?></span>
-                                </div>
-                            <?php endif; ?>
+                            <div class="error-notice">
+                                <span class="notice">Mensagem: <?=$flash;?></span>
+                            </div>
+                        <?php endif; ?>
                         <form method="post" enctype="multipart/form-data" action="<?=$base?>/newCat" class="addUser">
                             <fieldset>
                                 <legend>

@@ -38,6 +38,8 @@ $router->get('/events/{id}/readEvent', 'site\EvenController@readEvent');
 $router->get('/partner/{id}/readPartner', 'site\ParcController@readPartner');
 $router->get('/parcerias', 'site\ParcController@index');
 
+/* Newsletter */
+$router->post('/newsletter', 'site\NewslController@addNewsl');
 
 /********** Rotas do Gerenciador **********/
 
@@ -169,3 +171,11 @@ $router->get('/Banner/{id}/editBanner', 'gerenciador\BannerController@editBanner
 $router->post('/Banner/{id}/editBanner', 'gerenciador\BannerController@editBannerAction');
 $router->get('/banner/{id}/deleteBanner', 'gerenciador\BannerController@deleteBanner');
 
+/********** Controle newslwtter **********/
+//banners
+//$router->get('/newBanner', 'gerenciador\BannerController@addBanner');
+//$router->post('/newBanner', 'gerenciador\BannerController@addBannerAction');
+$router->get('/newsletter', 'gerenciador\NewsletterController@listNewsl');
+//$router->get('/Banner/{id}/editBanner', 'gerenciador\BannerController@editBanner');
+//$router->post('/Banner/{id}/editBanner', 'gerenciador\BannerController@editBannerAction');
+$router->get('/newsletter/{id}/deleteNewsletter', 'gerenciador\NewsletterController@deleteNewsl');

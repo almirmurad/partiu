@@ -6,13 +6,32 @@
                 <h2>Curtiu nosso conteúdo?</h2>
                 <p>Inscreva-se e enviaremos as melhores novidades para você!</p>
             </div>
+            <?php if(!empty($flash)): ?>
+                <div class="error-notice">
+                    <span class="notice">Mensagem: <?=$flash;?></span>
+                </div>
+            <?php endif; ?>
             <div class="foot-cont-content center">
-                <form action="">
+                <form method="post" action="<?=$base?>/newsletter">
                     <div class="campo">
-                        <input type="email" name="mail" id="mail" />
+                        <!-- <label for="name">Nome:</label> -->
+                        <input type="text" name="name" id="name" placeholder="Nome" />
+                    </div>
+                    <div class="campo">
+                        <!-- <label for="mail">E-mail:</label> -->
+                        <input type="email" name="mail" id="mail" placeholder="E-mail" required/>
+                    </div>
+                    <div class="campo">
+                        <!-- <label for="phone">Telefone:</label> -->
+                        <input type="text" name="phone" id="phone" placeholder="Telefone" />
+                    </div>
+                    <div class="checkbox">
+                        <!-- <label for="phone">Telefone:</label> -->
+                        <input type="checkbox" name="check" id="check" required />
+                         Eu aceito que meus dados sejam enviados
                     </div>
                     <div class="campo-btn">
-                        <input  class="bt" type="button" value="Enviar">
+                        <input  class="bt" type="submit" value="Enviar">
                     </div>
                 </form>
             </div>
