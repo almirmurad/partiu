@@ -3,10 +3,6 @@ namespace src\controllers\site;
 
 use core\ControllerSite;
 use src\handlers\site\NewslSiteHandler;
-use src\functions\FuncoesUteis;
-
-
-
 class NewslController extends ControllerSite{
 
     public function addNewsl() {
@@ -16,7 +12,6 @@ class NewslController extends ControllerSite{
         $nome = filter_input(INPUT_POST,'name',FILTER_SANITIZE_SPECIAL_CHARS);
         $telefone = filter_input(INPUT_POST,'phone',FILTER_VALIDATE_INT);
         $check = (filter_input(INPUT_POST, 'check')) ? $check =1 : $check=0 ;
-       //FuncoesUteis::log($check, "email cadastrado com sucesso!");
 
         if($email && $check){
 

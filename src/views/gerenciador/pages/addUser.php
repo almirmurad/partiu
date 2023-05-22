@@ -4,7 +4,7 @@
     <main>
         <aside>
             <h4>Navegação</h4>
-            <?php $render('nav');?>
+            <?php $render('nav', ['loggedUser'=>$loggedUser]);?>
         </aside>
         <section>
             <div class="container column">
@@ -40,9 +40,9 @@
                                     <select name="type" id="type" class="input">
                                         <option value="1">Administrador</option>
                                         <option value="2">Redator</option>
-                                        <option value="3">Parceiro-Banners</option>
-                                        <option value="4">Redator-Anúncios</option>
-                                        <option value="5">Redator-Banners e Anúncios</option>
+                                        <option value="3">Parceiro</option>
+                                        <!-- <option value="4">Parceiro-Anúncios</option>
+                                        <option value="5">Parceiro-Banners e Anúncios</option> -->
                                     </select>
                                 </div>
                                 <div class="campo">
@@ -50,7 +50,7 @@
                                     <input type="file" id="avatar" name="avatar" class="input" placeholder="Escolha uma foto">
                                 </div>
                                 <div class="campo">
-                                    <input type="submit" class="btn" value="Cadatrar">
+                                    <input type="submit" class="btn" value="Cadastrar">
                                 </div>
                                 
                             </fieldset>

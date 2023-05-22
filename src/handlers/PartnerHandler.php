@@ -85,9 +85,9 @@ class PartnerHandler {
     }
 
     
-public static function getPartners(){
+public static function getPartners($id){
        
-    $listPartners = Partner::select()->get();
+    $listPartners = Partner::select()->where('user_id',$id)->get();
     $partners = [];
     foreach($listPartners as $listPartnersItem){
         $newPartners = new Partner;

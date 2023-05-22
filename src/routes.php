@@ -37,6 +37,8 @@ $router->get('/events/{id}/readEvent', 'site\EvenController@readEvent');
 //$router->get('/partner', 'site\ParcController@partners');
 $router->get('/partner/{id}/readPartner', 'site\ParcController@readPartner');
 $router->get('/parcerias', 'site\ParcController@index');
+$router->get('/parcerias/{id}/verParceria', 'site\ParcController@verParceria');
+$router->get('/contratarParceria/{id}/form', 'site\ParcController@formParceria');
 
 /* Newsletter */
 $router->post('/newsletter', 'site\NewslController@addNewsl');
@@ -51,14 +53,22 @@ $router->get('/gerenciador', 'CmsController@index');
 /* Rotas */
 $router->get('/login', 'LoginController@signin');
 $router->post('/login', 'LoginController@signinAction');
-$router->get('/registration', 'LoginController@signup');
 $router->get('/logout', 'LoginController@signout');
+
+/********** Sistema de Registros de usuarios e parceiros **********/
+
+
+
 
 /********** Controle de Ususários do sistema **********/
 /* UsersController / loginHandler / User */
 /* Rotas */
 $router->get('/newUser', 'UsersController@addUser');
 $router->post('/newUser', 'UsersController@addUserAction');
+
+$router->get('/registration/{id}/partnerid/{pid}/parceria', 'LoginController@signup');
+$router->post('/newUserSite', 'site\UserControllerSite@addUserAction');
+
 $router->get('/users', 'UsersController@listUsers');
 $router->get('/user/{id}/editUser','UsersController@editUser');
 $router->post('/user/{id}/editUser','UsersController@editUserAction');

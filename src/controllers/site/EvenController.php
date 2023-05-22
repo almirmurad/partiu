@@ -2,12 +2,20 @@
 namespace src\controllers\site;
 
 use core\ControllerSite;
-use src\models\Event;
+use src\handlers\LoginHandler;
 use src\handlers\site\SubCatsSiteHandler;
 use src\handlers\site\EventsSiteHandler;
 use src\handlers\site\BannerSiteHandler;
 
 class EvenController extends ControllerSite{
+
+    private $loggedUser;
+
+    public function __construct()
+    {   
+        $this->loggedUser = LoginHandler::checkLogin();
+  
+    }
 
     public function index() {
         $page = intval(filter_input(INPUT_GET, 'page'));
@@ -22,7 +30,8 @@ class EvenController extends ControllerSite{
                 'categories'=>$categories,
                 'eventsFoot'=>$eventsFoot,
                 'internalPublicity'=>$internalBanner,
-                'publicityFoot'=>$publicityFoot
+                'publicityFoot'=>$publicityFoot,
+                'loggedUser'=>$this->loggedUser,
             ]);
 
     }
@@ -38,7 +47,8 @@ class EvenController extends ControllerSite{
                 'categories'=>$categories,
                 'eventsFoot'=>$eventsFoot,
                 'internalPublicity'=>$internalBanner,
-                'publicityFoot'=>$publicityFoot
+                'publicityFoot'=>$publicityFoot,
+                'loggedUser'=>$this->loggedUser,
         ]);
     }
 }

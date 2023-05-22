@@ -28,7 +28,7 @@ if (!empty($banners)){
         if ($banner->position_id === 2){
             echo <<<EOT
             <div class="plublicity-item">
-                <a class="link-banners" target="_blank" href="$banner->url">
+                <a class="link-banners" target="_blank" href="$banner->url" data-id="<?=$banner->id;?>">
                     <img src="$base/media/uploads/imgs/banners/$banner->img" alt="$banner->title">
                 </a>
             </div>
@@ -85,7 +85,7 @@ EOT;
         if ($banner->position_id === 2){
             echo <<<EOT
             <div class="plublicity-item">
-                <a class="link-banners" target="_blank" href="$banner->url">
+                <a class="link-banners" target="_blank" href="$banner->url" data-id="<?=$banner->id;?>">
                     <img src="$base/media/uploads/imgs/banners/$banner->img" alt="$banner->title">
                 </a>
             </div>

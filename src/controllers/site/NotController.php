@@ -2,7 +2,7 @@
 namespace src\controllers\site;
 
 use core\ControllerSite;
-use src\models\Noticia;
+use src\handlers\LoginHandler;
 use src\handlers\site\SubCatsSiteHandler;
 use src\handlers\site\NewsSiteHandler;
 use src\handlers\site\EventsSiteHandler;
@@ -10,6 +10,14 @@ use src\handlers\site\BannerSiteHandler;
 
 class NotController extends ControllerSite{
     
+    private $loggedUser;
+
+    public function __construct()
+    {   
+        $this->loggedUser = LoginHandler::checkLogin();
+  
+    }
+
     public function index() {
         $page = intval(filter_input(INPUT_GET, 'page'));
         $news = NewsSiteHandler::news($page);
@@ -23,7 +31,8 @@ class NotController extends ControllerSite{
                 'categories'=>$categories,
                 'eventsFoot'=>$eventsFoot,
                 'internalPublicity'=>$internalBanner,
-                'publicityFoot'=>$publicityFoot
+                'publicityFoot'=>$publicityFoot,
+                'loggedUser'=>$this->loggedUser,
             ]);
     }
 
@@ -44,7 +53,8 @@ class NotController extends ControllerSite{
                 'categories' => $categories,
                 'eventsFoot'=>$eventsFoot,
                 'internalPublicity'=>$internalBanner,
-                'publicityFoot'=>$publicityFoot
+                'publicityFoot'=>$publicityFoot,
+                'loggedUser'=>$this->loggedUser,
             ]);
     }
 

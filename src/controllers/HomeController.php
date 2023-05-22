@@ -7,7 +7,7 @@ use src\models\Noticia;
 use src\models\Package;
 use src\models\Event;
 use src\models\Categorie;
-
+use src\handlers\LoginHandler;
 use src\handlers\site\NewsSiteHandler;
 use src\handlers\site\PackageSiteHandler;
 use src\handlers\site\EventsSiteHandler;
@@ -26,9 +26,17 @@ class HomeController extends ControllerSite {
     private $bannerNews;
     private $bannerEvents;
     private $bannersEndPage;
+
+
+    private $loggedUser;
+
     
     public function __construct()
     {   
+        $this->loggedUser = LoginHandler::checkLogin();
+        // if($this->loggedUser === false){
+        //     $this->redirect('/login');
+        // }
 
         //Notícias
         $this->news = NewsSiteHandler::newsHome();
@@ -69,6 +77,7 @@ class HomeController extends ControllerSite {
             'bannersEvents'=>$this->bannerEvents,
             'bannersEndPage'=>$this->bannersEndPage,
             'flash'=>$flash,
+            'loggedUser'=>$this->loggedUser,
         ]);
     }    
 }

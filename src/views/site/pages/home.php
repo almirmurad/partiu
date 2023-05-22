@@ -2,13 +2,14 @@
 <body>
     <header>
         <!-- Logo e Search-->
-        <?php $render('header');?>
+        <?php $render('header',['loggedUser'=>$loggedUser]);?>
         <div class="nav">
             <!-- Menu navegação-->
             <?php $render('menuNavigation');?>
         </div>
         <!--Ínicio Slider-->
         <?php $render('slider');?>
+        
     </header>
 <main class="column">
     <!-- Categorias -->

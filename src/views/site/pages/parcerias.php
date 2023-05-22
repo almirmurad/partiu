@@ -3,7 +3,7 @@
 <header>
         <!-- Logo e Search-->
         
-        <?php $render('header');?>
+        <?php $render('header',['loggedUser'=>$loggedUser]);?>
         <div class="nav">
             <!-- Menu navegação-->
             
@@ -31,88 +31,63 @@
                     <p>Preparamos as melhores parcerias para que possa aproveitar o melhor da nossa plataforma. <br>
                     São três tipos de parcerias:</p>
                     <div class="boxes-parcerias">
+                        <?php foreach($parcerias as $parceria): ?> 
                         <a href="">
                             <div class="boxes">
                                 <div class="boxes-icon">
+                                <?php switch ($parceria->id): ?><?php case 1: ?>
                                     <div class="icon">
                                         <i class="fas fa-suitcase-rolling"></i>
-                                    </div>
-                                </div>
-                                PACOTES
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="boxes">
-                                <div class="boxes-icon">
+                                     </div>
+                                    <?php break;?>
+                                <?php case 2: ?>
                                     <div class="icon">
                                         <i class="fas fa-bullhorn"></i>
                                     </div>
-                                </div>
-                                ANÚNCIOS
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="boxes">
-                                <div class="boxes-icon">
+                                    <?php break;?>
+                                <?php case 3: ?>
                                     <div class="icon">
                                         <i class="fas fa-suitcase-rolling"></i>
-                                    </div> 
+                                     </div> 
                                     <div class="icon">
                                         <i class="fas fa-bullhorn"></i>
                                     </div>
+                                <?php endswitch ?>
                                 </div>
-                                PACOTES & ANÚNCIOS
+                                <?=$parceria->title?>
                             </div>
                         </a>
+                        <?php endforeach;?>
                     </div>
-                                        
-                    <div class="tag-tipos-anuncios">
-                        <div class="boxes-icon center">
-                            <div class="icon">
-                                <i class="fas fa-suitcase-rolling"></i>
+                    
+                    <?php foreach($parcerias as $parceria): ?>                
+                        <div class="tag-tipos-anuncios">
+                            <div class="boxes-icon center">
+                                <?php switch ($parceria->id): ?><?php case 1: ?>
+                                        <div class="icon">
+                                            <i class="fas fa-suitcase-rolling"></i>
+                                        </div>
+                                        <?php break;?>
+                                    <?php case 2: ?>
+                                        <div class="icon">
+                                            <i class="fas fa-bullhorn"></i>
+                                        </div>
+                                        <?php break;?>
+                                    <?php case 3: ?>
+                                        <div class="icon">
+                                            <i class="fas fa-suitcase-rolling"></i>
+                                        </div> 
+                                        <div class="icon">
+                                            <i class="fas fa-bullhorn"></i>
+                                        </div>
+                                <?php endswitch ?>
                             </div>
+                            <p>
+                                <strong><?=$parceria->title?></strong>: <?=$parceria->description?>
+                            </p>
+                            <div class="mais"><a href="<?=$base?>/parcerias/<?=$parceria->id?>/verParceria" class="mais-info">+ Saiba mais +</a></div>
                         </div>
-                        <p>
-                        Em <strong>Pacotes</strong>, você poderá expor as informações e quatro fotos de seus pacotes de viagens mais atrativos por um preço justo,
-                        possibilitando assim o aumento da visibilidade e a lucratividade da sua empresa. <br>
-                        Nesta Modalidade além de informações de seus pacotes sua empresa ganhará também uma página interna com descrição, links para seu WhatsApp e 
-                        para suas principais redes sociais, além de mais quatro fotos da sua empresa.
-                        Entre em contato agora mesmo e seja nosso parceiro!<br>
-                        </p>
-                        <div class="mais"><a href="" class="mais-info">+ Saiba mais +</a></div>
-                    </div>
-
-                    <div class="tag-tipos-anuncios">
-                        <div class="boxes-icon center">
-                            <div class="icon">
-                                <i class="fas fa-bullhorn"></i>
-                            </div>
-                        </div>
-                        <p>
-                        Em <strong>Anúncios</strong>, você veícula seus banners de propagandas mais atrativos em diversos formatos, aumenta a visibilidade da sua empresa na internet, 
-                        e consequentemente seu faturamento. <br>
-                        Conheça as posições e os formatos de nossos anúncios. Promova sua empresa agora mesmo!
-                        </p>
-                        <div class="mais"><a href="" class="mais-info">+ Saiba mais +</a></div>
-                    </div>
-
-                    <div class="tag-tipos-anuncios">
-                        <div class="boxes-icon center ">
-                            <div class="icon">
-                                <i class="fas fa-suitcase-rolling"></i>
-                            </div> 
-                            <div class="icon">
-                                <i class="fas fa-bullhorn"></i>
-                            </div>
-                        </div>
-                        <p>
-                        Em <strong>Pacotes & Anúncios</strong>, você poderá anunciar seus pacotes de viagens, obterá uma página interna sobre a sua empresa
-                        com links para WhatsApp e redes sociais, divulgará fotos da empresas e promoverá seus banners mais atrativos.
-                        Aumente agora o poder de faturamento da sua empresa, anunciando pacotes de viagens e banners publicitários.
-                        </p>
-                        <div class="mais"><a href="" class="mais-info">+ Saiba mais +</a></div>
-                    </div>
-                                                         
+                    <?php endforeach;?>                                                         
 
                 </div>
             </div>

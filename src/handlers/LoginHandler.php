@@ -2,7 +2,7 @@
 namespace src\handlers;
 
 use src\models\User;
-
+use src\models\Partner;
 class LoginHandler {
 
     public static function checkLogin(){
@@ -16,6 +16,14 @@ class LoginHandler {
                 $loggedUser->id = $data['id'];
                 $loggedUser->name = $data['name'];
                 $loggedUser->mail = $data['email'];
+                $loggedUser->partnerstype = $data['typespartner_id'];
+
+                // $partner = Partner::select()->where('user_id',$data['id'])->one();
+
+                // $loggedUser->partner = new Partner();
+                // $loggedUser->partner->name=$partner['name'];
+                // $loggedUser->partner->id=$partner['id'];  
+                // $loggedUser->partner->user_id=$partner['user_id']; 
                 
                 switch($loggedUser->type = $data['type_user']){
                 case 1: 
@@ -23,6 +31,10 @@ class LoginHandler {
                     break;
                 case 2:
                     $loggedUser->type = "Redator"; 
+                    break;
+                case 3:
+                    $loggedUser->type = "Parceiro";
+                    break; 
                 }
 
                 $loggedUser->avatar = $data['avatar'];
@@ -56,7 +68,12 @@ class LoginHandler {
         return $user ? true : false;
     }
 
-    public static function addUser($name, $mail, $pass, $phone, $type, $avatar){
+    public static function addUser($name, $mail, $pass, $phone, $type, $imgNames, $typesPartnerId){
+
+        list($avatar) = $imgNames;
+        // echo "<pre>";
+        // var_dump($avatar);
+        // exit;
         $hash = password_hash($pass, PASSWORD_DEFAULT);
         $token = md5(time().rand(0,9999).time());
         User::insert([
@@ -66,6 +83,7 @@ class LoginHandler {
             'phone'     => $phone,
             'avatar'    => $avatar,
             'type_user' => $type,
+            'typespartner_id' => $typesPartnerId,
             'token'     => $token,
             'created_at'=> date('Y-m-d H:i:s')
         ])->execute();

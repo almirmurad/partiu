@@ -3,6 +3,7 @@ namespace src\handlers\gerenciador;
 
 use src\models\Typespartner;
 use src\models\User;
+use src\functions\FuncoesUteis;
 
 class PartnerTypeHandler {
 
@@ -55,6 +56,22 @@ public static function selectAllTypes(){
     }   
 
     return $types;
+}
+
+public static function selectOneType($args){
+      
+    $one = Typespartner::select()->where('id',$args)->one();
+
+
+   
+        $type = new Typespartner;
+        $type-> id = $one['id'];
+        $type-> title = $one['title'];
+        $type-> description = $one['description'];
+        $type-> user_id = $one['user_id'];
+        $type-> created_at = $one['created_at'];
+
+    return $type;
 }
 
  }

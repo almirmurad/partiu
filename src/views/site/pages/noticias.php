@@ -2,7 +2,7 @@
 <body>
 <header>
         <!-- Logo e Search-->
-        <?php $render('header');?>
+        <?php $render('header',['loggedUser'=>$loggedUser]);?>
         <div class="nav">
             <!-- Menu navegação-->
             <?php $render('menuNavigation');?>

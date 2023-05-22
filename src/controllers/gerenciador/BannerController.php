@@ -25,7 +25,7 @@ class BannerController extends ControllerGerenciador{
     public function addBanner(){
         $page = "Banners";
         $positions = BannerHandler::getPositions();
-        $partners = PartnerHandler::getPartners();
+        $partners = PartnerHandler::getPartners($this->loggedUser->id);
         $this->render('addBanner', ['page' => $page,
         'partners'=>$partners,
         'loggedUser'=>$this->loggedUser, 
@@ -97,11 +97,15 @@ class BannerController extends ControllerGerenciador{
 
         $page = "Lista de Banners";
         $banners = BannerHandler::selectAllTypes();
+        $partnerId = Partner::select('id')->where('user_id', $this->loggedUser->id)->one();
+        $bannersPartner = BannerHandler::getByPartner($partnerId);
         
         $this->render('listBanner',[
             'loggedUser'=>$this->loggedUser,
+            'bannersPartner' => $bannersPartner,
             'banners' => $banners,
-            'page'=>$page
+            'page'=>$page,
+            'partner'=>$partnerId,
         ]);
 
     }
@@ -115,7 +119,8 @@ class BannerController extends ControllerGerenciador{
         $banner    = BannerHandler::getById($args['id']);
         //FuncoesUteis::log($banner, "Banner Buscado com sucesso!");
         $positions = BannerHandler::getPositions();
-        $partners = PartnerHandler::getPartners();
+        
+        $partners = PartnerHandler::getPartners($this->loggedUser->id);
         $page       = "Edição de Banners";
         
         $this->render('editBanner', [

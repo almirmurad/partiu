@@ -26,9 +26,14 @@
 }
 .addUser{
     display: flex;
-    width: 50%;
+    width: 100%;
     justify-content: center;
    }
+.addPartner{
+    display: flex;
+    width: 100%;
+    justify-content: center; 
+}
 legend{
 display: none;
 }
@@ -45,6 +50,9 @@ fieldset{
     display: flex;
     flex-direction: column;
     max-width: 800px;
+}
+.full{
+    min-width:100%;
 }
 .row::before{
     content: 'Status:';

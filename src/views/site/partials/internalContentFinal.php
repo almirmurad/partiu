@@ -3,7 +3,7 @@
     <?php if (!empty($banners)):?>
         <?php foreach ($banners as $banner):?>
             <?php if ($banner->position_id === 7):?>
-                <a class="link-banners" target="_blank" href="<?=$banner->url;?>">
+                <a class="link-banners" target="_blank" href="<?=$banner->url;?>" data-id="<?=$banner->id;?>">
                 <div class="roteiro1" style="background-image:linear-gradient(
         to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2)), url(<?=$base?>/media/uploads/imgs/banners/<?=$banner->img;?>);">
                     

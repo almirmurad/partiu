@@ -3,13 +3,14 @@
     <main>
         <aside>
             <h4>Navegação</h4>
-            <?php $render('nav');?>
+            <?php $render('nav', ['loggedUser'=>$loggedUser]);?>
         </aside>
         <section>
             <div class="container column">
                 <?php $render('breadcrumbs',['page'=>$page]);?>
                 <div class="content column">
                     <h2><?=$page;?></h2>
+                    
                     <div class="dash-boxes ">
                         <!-- Form addUser -->
                         <form method="post" enctype="multipart/form-data" action="<?=$base?>/newPackage" class="addUser">
@@ -115,22 +116,28 @@
                                     </div>
 
                                 </div>
-                                <!--<div class="campo">
-                                <label for="subCatAsc">Categoria pertencente:</label>
-                                    <select name="subCatAsc" id="subCatAsc">
-                                        <?php foreach ($subCats as $subCat):?>
-                                        <option value="<?=$subCat['id'];?>" ><?=$subCat['name'];?></option>
-                                        <?php endforeach?>
-                                    </select>
-                                </div>-->
-                                 <div class="campo">
-                                <label for="partner">Parceiro:</label>
-                                    <select name="partner_id" id="partner">
-                                    <?php foreach ($partners as $partner):?>
-                                        <option value="<?=$partner['id'];?>" ><?=$partner['name'];?></option>
-                                        <?php endforeach?>
-                                    </select>
-                                </div>
+                                
+                                <?php if($loggedUser->type == "Parceiro"):?>
+                                    <?php if(!empty($partnerUserId['name'])):?>
+                                        <div class="campo">
+                                            <label for="partner">Parceiro:</label>
+                                            <input type="text" class="input" value=" <?=$partnerUserId['name']?>" disabled>
+                                        </div>
+                                    <?php endif?>
+                                    
+                                <?php else:?>
+                                    <div class="campo">
+                                        <label for="partner">Parceiro:</label>
+                                        <select name="partner_id" id="partner">
+                                        <?php foreach ($partners as $partner):?>
+                                            <option value="<?=$partner['id'];?>" ><?=$partner['name'];?></option>
+                                            <?php endforeach?>
+                                        </select>
+                                    </div>
+                                <?php endif?>
+
+                                <input type="hidden"name="partner_id" id="partner" class="input" value="<?=$partnerUserId['id'];?>">
+
                                 <div class="campo">
                                     <input type="submit" class="btn" value="Cadastrar">
                                 </div>

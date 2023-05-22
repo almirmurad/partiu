@@ -49,7 +49,12 @@
 
                     </form>
                     <div class="register">
-                        <span class="reg">Ainda não tem cadastro?<a href="<?=$base?>/registration" class="register-link">Cadastre-se aqui</a></span>
+                        <?php if(!empty($id)&&!empty($pid)):?>
+                            <span class="reg">Ainda não tem cadastro?<a href="<?=$base?>/registration/<?=$id?>/partnerid/<?=$pid?>/parceria" class="register-link">Cadastre-se aqui</a></span>
+                        <?php else:?>
+                            <span class="reg">Ainda não tem cadastro?<a href="<?=$base?>/parcerias" class="register-link">Cadastre-se aqui</a></span>
+                        <?php endif?>
+
                     </div>
                 </div>
             </section>
@@ -57,7 +62,7 @@
             <div class="area-logo-footer-right">
                     <div class="logo-footer">
                         <img src="" alt="" class="logotipo-footer">
-                        <span>Partiu! Viagens e Turismo <a href="" target="">Site</a></span>
+                        <span>Partiu! Viagens e Turismo <a href="<?=$base?>/" target="">Site</a></span>
                     </div>
                 </div>
                 <div class="copy">

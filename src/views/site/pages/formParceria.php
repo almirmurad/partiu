@@ -1,17 +1,18 @@
-<?php $render('../../site/partials/head');?>
+<?php $render('head');?>
 <body>
-<header class="pg-form-user">
+<header>
         <!-- Logo e Search-->
         
-        <?php $render('../../site/partials/header',['loggedUser'=>$loggedUser]);?>
+        <?php $render('header',['loggedUser'=>$loggedUser]);?>
+        
         <div class="nav">
             <!-- Menu navegação-->
             
-            <?php $render('../../site/partials/menuNavigation');?>
+            <?php $render('menuNavigation');?>
         </div>
-        <?php // $render('internalSlider',['page'=>$page]);?>
+        <?php $render('internalSlider',['page'=>$page]);?>
         
-        <?php //$render('internalCategories',['categories'=>$categories])?>
+        <?php $render('internalCategories',['categories'=>$categories])?>
         
 
 </header>
@@ -28,8 +29,7 @@
             <div class="midlle-about area-form-parceiro">
                 <div class="form-cadastro-parceiro">
                     <?php
-
-                        switch($id){
+                        switch($idParceria){
                             case 1:
                                 $parceria = "Simple";
                                 break;
@@ -41,15 +41,7 @@
                                 break;
                         }
                     ?>
-                    <?php if(empty($loggedUser)):?>
-                        <?php $render('../../site/partials/addPartner',['parceria'=>$parceria, 'pid'=>$pid]);?>
-                    <?php else:?>
-                        <div> 
-                            <p>Olá <?=$loggedUser->name?>, você já é um usuário cadastrado.<br/>
-                            Retorne ao <a href="<?=$base?>/">Início</a>! </p> 
-                        </div>
-                    <?php endif?>
-                    
+                    <?php $render('addPartner',['parceria'=>$parceria]);?>
                </div>
             </div>
             <div class="foot-about">
@@ -57,13 +49,13 @@
             </div>
 
         </section>
-        <aside class="hidden">
-        <?php //$render('aside',['page'=>$page, 'banners'=>$internalPublicity]);?>
+        <aside>
+        <?php $render('aside',['page'=>$page, 'banners'=>$internalPublicity]);?>
         </aside>    
     </div>
 </main>
 <section class="final">
-    <?php //$render('internalContentFinal',['events'=>$eventsFoot, 'banners'=>$publicityFoot]);?>
+    <?php $render('internalContentFinal',['events'=>$eventsFoot, 'banners'=>$publicityFoot]);?>
 </section>
 <footer>
     <?php $render('foot');?>

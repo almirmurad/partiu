@@ -6,15 +6,28 @@ use src\handlers\LoginHandler;
 
 class LoginController extends ControllerGerenciador {
 
+    private $loggedUser;
+
+    public function __construct()
+    {   
+        $this->loggedUser = LoginHandler::checkLogin();
+  
+    }
+
 
     public function signin() {
+        $id = filter_input(INPUT_GET, 'partnerid');
+        $pid =filter_input(INPUT_GET, 'parceria');
+       
         $flash ='';
         if(!empty($_SESSION['flash'])){
             $flash = $_SESSION['flash'];
             $_SESSION['flash'] = '';
         }
         $this->render('signin',[
-            'flash' => $flash
+            'flash' => $flash,
+            'id'=>$id,
+            'pid'=>$pid
         ]);
     }
     public function signinAction(){
@@ -36,16 +49,23 @@ class LoginController extends ControllerGerenciador {
         }
     }
 
-    public function signup(){
+    public function signup($args){
+        
+        $id = $args['id'];
+        $pid = $args['pid'];
+        
         $flash ='';
-        $page ="Cadstro de Usuarios";
+        $page ="Cadastro de Usuarios";
         if(!empty($_SESSION['flash'])){
             $flash = $_SESSION['flash'];
             $_SESSION['flash'] = '';
         }
-        $this->render('addUser',[
+        $this->render('signup',[
             'flash' => $flash,
-            'page'  => $page
+            'page'  => $page,
+            'id' => $id,
+            'pid'=>$pid,
+            'loggedUser'=>$this->loggedUser,
         ]);
     }
 

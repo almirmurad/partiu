@@ -2,7 +2,7 @@
     <?php if (!empty($banners)):?>
         <?php foreach ($banners as $banner):?>
             <?php if ($banner->position_id === 5):?>
-                <a class="link-banners" target="_blank" href="<?=$banner->url;?>">
+                <a class="link-banners" target="_blank" href="<?=$banner->url;?>" data-id="<?=$banner->id;?>">
                     <img src="<?=$base?>/media/uploads/imgs/banners/<?=$banner->img;?>" alt="<?=$banner->title;?>">
                 </a>
                 <?php else:?> 

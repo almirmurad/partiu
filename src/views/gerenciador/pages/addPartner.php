@@ -3,7 +3,7 @@
     <main>
         <aside>
             <h4>Navegação</h4>
-            <?php $render('nav');?>
+            <?php $render('nav', ['loggedUser'=>$loggedUser]);?>
         </aside>
         <section>
             <div class="container column">
@@ -115,15 +115,28 @@ Digite aqui o texto sobre a empresa do parceiro.
                                     <label for="insta">Instagram:</label>
                                     <input type="url" id="insta" name="insta" class="input" placeholder="Digite o url do Instagram do parceiro">
                                 </div>
-                                <div class="campo">
-                                    <label for="partner_type_id">Tipos de Parcerias:</label>
-                                    <select name="partner_type_id" id="partner_type_id">
-                                        <option value="0" selected >Escolha um tipos de Parceria</option>
-                                        <?php foreach ($partners as $partnerTypeItem):?>
-                                            <option value="<?=$partnerTypeItem->id;?>" ><?=$partnerTypeItem->title;?></option>
-                                        <?php endforeach?>
-                                    </select>
-                                </div>
+
+                                <?php 
+                         
+                                    if($loggedUser->type == "Parceiro"):?>
+
+                                        <div class="campo">
+                                            <label for="partner_type_id">Tipos de Parcerias:</label>
+                                            <input type="text" name="partner_type_id" id="partner_type_id" value=" <?=$loggedUser->partnerstype;?>">
+                                        </div>
+                                    
+                                    <?php else:?>
+                                        
+                                        <div class="campo">
+                                        <label for="partner_type_id">Tipos de Parcerias:</label>
+                                        <select name="partner_type_id" id="partner_type_id">
+                                            <option value="0" selected >Escolha um tipos de Parceria</option>
+                                            <?php foreach ($partners as $partnerTypeItem):?>
+                                                <option value="<?=$partnerTypeItem->id;?>" ><?=$partnerTypeItem->title;?></option>
+                                            <?php endforeach?>
+                                        </select>
+                                    </div>
+                                <?php endif?>
                                 <!--<div class="campo">
                                 <label for="subCatAsc">Categoria pertencente:</label>
                                     <select name="subCatAsc" id="subCatAsc">

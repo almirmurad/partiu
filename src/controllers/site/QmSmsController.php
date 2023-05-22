@@ -3,12 +3,22 @@ namespace src\controllers\site;
 
 use core\ControllerSite;
 use src\handlers\site\SubCatsSiteHandler;
+use src\handlers\LoginHandler;
 use src\handlers\site\EventsSiteHandler;
 use src\handlers\site\BannerSiteHandler;
 
 class QmSmsController extends ControllerSite{
 
+    private $loggedUser;
+
+    public function __construct()
+    {   
+        $this->loggedUser = LoginHandler::checkLogin();
+  
+    }
+
     public function index(){
+        
         $categories = SubCatsSiteHandler::catsRoadMap();
         $eventsFoot = EventsSiteHandler::eventsFoot();
         $internalBanner = BannerSiteHandler::bannerPublicityInternals();
@@ -18,7 +28,8 @@ class QmSmsController extends ControllerSite{
             'categories'=>$categories,
             'eventsFoot'=>$eventsFoot,
             'internalPublicity'=>$internalBanner,
-            'publicityFoot'=>$publicityFoot
+            'publicityFoot'=>$publicityFoot,
+            'loggedUser'=>$this->loggedUser,
         ]);
 
     }

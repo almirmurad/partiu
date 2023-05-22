@@ -149,6 +149,40 @@ public static function getPositions(){
                 
     }
 
+    public static function getByPartner($id){ 
+
+        $listBanners = Banner::select()->where('partner_id',$id)->get();
+
+    $banners = [];
+    foreach($listBanners as $listBannerItem){
+        $newBanner = new Banner;
+        $newBanner-> id = $listBannerItem['id'];
+        $newBanner-> title = $listBannerItem['title'];
+        $newBanner-> description = $listBannerItem['description'];
+        $newBanner-> user_id = $listBannerItem['user_id'];
+        $newBanner-> created_at = $listBannerItem['created_at'];
+        $newBanner-> position_id = $listBannerItem['position_id'];
+
+        $clicks = BannerClick::select()->where('id_banner', $listBannerItem['id'])->get();
+        $newBanner->clicks = count($clicks);
+        $priceClick = BannerPosition::select('price_click')->where('id', $listBannerItem['position_id'])->one();
+        $newBanner->priceClick = $priceClick['price_click'];
+        $coustClick = $newBanner->clicks * $newBanner->priceClick;
+        $newBanner->coustClick = $coustClick;
+        
+        $newUser = User::select()->where('id',$listBannerItem['user_id'])->one();
+        $newBanner->user = new User();
+        $newBanner->user->name=$newUser['name'];
+        $newBanner->user->avatar=$newUser['avatar'];
+
+        $banners [] = $newBanner;
+    
+    }   
+
+    return $banners;
+                
+    }
+
     public static function deleteBanner($id){
         Banner::delete()->where('id', $id)->execute();
         return true;

@@ -23,6 +23,8 @@
     font-size: 16px;
     font-weight: normal;
 }
+
+    
 h2{
     font-size: 1.5em;
     font-weight: 600;
@@ -37,6 +39,10 @@ header{
     display: flex;
     flex-direction: column;
     height: 100vh;   
+}
+.pg-form-user{
+    height: auto;
+    margin-bottom: 50px;
 }
 main{
     display: flex;
@@ -360,6 +366,18 @@ main{
     display: flex;
     justify-content:space-between;
     align-items: center;
+}
+.form-search-pack{
+    width:400px;
+    height: 400px;
+    margin-top: 50px;
+    padding: 20px;
+    left: 100px;
+    display: flex;
+    position: absolute;
+    background-color: #ACD7F2;
+    z-index: 1000;
+    box-shadow: var(--shadow-boxes);
 }
 .slider{
     flex: 1;
@@ -843,7 +861,88 @@ footer{
     color:rgba(242, 159, 5, 1); 
     font-weight: 600;
 }
+.area-boxes-partnership{
+    display:flex;
+    margin-top: 50px;
+    
+}
+.boxes-partnership{
+    display: flex;
+    flex: 1;
+    flex-wrap: wrap;
+    flex-direction: column;
+    border-radius: 10px;
+    margin-left: 5px;
+    height: auto;
+    
+ }
+ .boxes-partnership:hover{
 
+    box-shadow: var(--shadow-boxes);
+ }
+ .boxes-partnership:first-child{
+    position:relative;
+    z-index: 50;
+    background: linear-gradient(0deg, rgba(115,111,54,1) 0%, rgba(172,242,196,1) 50%, rgba(172,242,196,1) 50%, rgba(115,111,54,1) 100%);
+    box-shadow: var(--shadow-boxes);
+    
+ }
+.capa-partnership{
+    height: 100px;
+    width: 100%;
+    border-radius: 10px 10px 0 0;
+    background-color: #333;
+    background-position:center;
+    background-size:cover;
+    background-blend-mode: overlay;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+}
+.titulo-partnership{
+    display: flex;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bolder;
+    letter-spacing: 2px;
+    font-size: 1.8em;
+    justify-content: center;
+    align-items: center;
+}
+.descricao-partnership,.rodape-partnership{
+    padding: 10px;
+}
+.rodape-partnership{
+display: flex;
+flex-direction: column;
+}
+.btn-partnership{
+    padding: 10px;
+    background-color:red;
+    color: #fff;
+    margin:10px 20px;
+    font-weight: bold;
+    text-align: center; 
+}
+
+.area-form-parceiro{
+    flex-direction: row;
+    width: 100%;
+    padding: 50px;
+    background-color: #ACD7F2;
+    border: 4px solid #333;
+    }
+
+.hidden{
+    display: none;
+}
+
+.form-cadastro-parceiro{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+
+}
 
 @media screen and (min-width: 0px) and (max-width: 480px) {
     section{

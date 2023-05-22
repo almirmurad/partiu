@@ -104,9 +104,9 @@ class PartnerController extends ControllerGerenciador {
     }
 
     public function listPartners() {
-
+        $id = $this->loggedUser->id;
         $page = "Lista de Parceiros";
-        $partners = PartnerHandler::getPartners();
+        $partners = PartnerHandler::getPartners($id);
         $this->render('listPartners',[
             'loggedUser'=>$this->loggedUser,
             'partners' => $partners,

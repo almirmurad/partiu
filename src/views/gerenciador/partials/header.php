@@ -12,13 +12,13 @@
                 <img src="<?=$base?>/assets/img/img_admin/sino.png" alt="Avatar-Usuario" >
             </div>
             <div class="user"  onclick="showHideAvatarInfo();" >
-                <img src="<?=$base?>/assets/img/img_admin/<?=$loggedUser->avatar;?>" alt="Avatar-Usuario">
+                <img src="<?=$base?>/assets/img/img_admin/avatar/<?=$loggedUser->avatar;?>" alt="Avatar-Usuario">
             </div>
             
         </div>
         <div class="avatar-info" style="display: none;">
                 <div class="avatar-img">
-                    <img src="<?=$base?>/assets/img/img_admin/<?=$loggedUser->avatar;?>" alt="Avatar-Usuario" >
+                    <img src="<?=$base?>/assets/img/img_admin/avatar/<?=$loggedUser->avatar;?>" alt="Avatar-Usuario" >
                 </div>
                 <div class="avatar-name">
                     <h5><?=$loggedUser->name;?></h5>

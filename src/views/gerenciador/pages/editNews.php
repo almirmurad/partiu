@@ -4,7 +4,7 @@
     <main>
         <aside>
             <h4>Navegação</h4>
-            <?php $render('nav');?>
+            <?php $render('nav', ['loggedUser'=>$loggedUser]);?>
         </aside>
         <section>
             <div class="container column">

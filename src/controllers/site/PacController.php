@@ -2,13 +2,22 @@
 namespace src\controllers\site;
 
 use core\ControllerSite;
-use src\models\Package;
+use src\handlers\LoginHandler;
 use src\handlers\site\PackageSiteHandler;
 use src\handlers\site\SubCatsSiteHandler;
 use src\handlers\site\EventsSiteHandler;
 use src\handlers\site\BannerSiteHandler;
 
 class PacController extends ControllerSite{
+    
+    private $loggedUser;
+
+    public function __construct()
+    {   
+        $this->loggedUser = LoginHandler::checkLogin();
+  
+    }
+
     public function index() {
         //$categoriaBlog =  PackageSiteHandler::nameCategoriePosts();
         $page = intval(filter_input(INPUT_GET, 'page'));
@@ -23,7 +32,8 @@ class PacController extends ControllerSite{
             'categories'=>$categories,
             'eventsFoot'=>$eventsFoot,
             'internalPublicity'=>$internalBanner,
-            'publicityFoot'=>$publicityFoot
+            'publicityFoot'=>$publicityFoot,
+            'loggedUser'=>$this->loggedUser,
         ]);                
     }
 
@@ -38,7 +48,8 @@ class PacController extends ControllerSite{
                 'categories'=>$categories,
                 'eventsFoot'=>$eventsFoot,
                 'internalPublicity'=>$internalBanner,
-                'publicityFoot'=>$publicityFoot
+                'publicityFoot'=>$publicityFoot,
+                'loggedUser'=>$this->loggedUser,
             ]);
     }
 }

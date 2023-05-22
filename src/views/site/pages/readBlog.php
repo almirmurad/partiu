@@ -4,7 +4,7 @@
 <header>
 
         <!-- Logo e Search-->
-        <?php $render('header',['page'=>$page]);?>
+        <?php $render('header',['loggedUser'=>$loggedUser, 'page'=>$page]);?>
 
         <div class="nav">
             <!-- Menu navegação-->

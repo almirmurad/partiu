@@ -4,12 +4,22 @@ namespace src\controllers\site;
 use core\ControllerSite;
 
 use src\models\Post;
+use src\handlers\LoginHandler;
 use src\handlers\site\SubCatsSiteHandler;
 use src\handlers\site\PostSiteHandler;
 use src\handlers\site\EventsSiteHandler;
 use src\handlers\site\BannerSiteHandler;
 
 class BlogController extends ControllerSite{
+
+    private $loggedUser;
+
+    public function __construct()
+    {   
+        $this->loggedUser = LoginHandler::checkLogin();
+  
+    }
+    
     public function index() {
         $categoriaBlog =  PostSiteHandler::nameCategoriePosts();
         $categories = SubCatsSiteHandler::catsBlog();
@@ -28,7 +38,8 @@ class BlogController extends ControllerSite{
             'categories'=>$categories,
             'total'=>$totalPostCat,
             'internalPublicity'=>$internalBanner,
-            'publicityFoot'=>$publicityFoot
+            'publicityFoot'=>$publicityFoot,
+            'loggedUser'=>$this->loggedUser,
         ]);                
     }
 

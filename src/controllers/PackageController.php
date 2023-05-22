@@ -23,9 +23,17 @@ class PackageController extends ControllerGerenciador {
 
     public function addPackage() {
         $partners = Partner::select()->execute();
-
+        $partnerUserId = Partner::select()->where('user_id',$this->loggedUser->id)->one();
+        // echo"<pre>";
+        // echo $_GET['userId'];
+        // var_dump($partners);
+        // echo"parceiro pelo id";
+        // var_dump($partnerUserId);
+        // echo"<pre>";
+        // exit;
         $this->render('addPackage',[
             'partners'=>$partners,
+            'partnerUserId'=> $partnerUserId,
             'page' => 'Cadastro de Pacotes', 
             'loggedUser'=>$this->loggedUser
         ]);
@@ -91,9 +99,38 @@ class PackageController extends ControllerGerenciador {
 
     public function listPackages() {
 
-        $page = "Lista de Pacotes";
+        $page = "Lista de Pacotes do parceiro: ".$this->loggedUser->name;
+        $partnerId = Partner::select('id')->where('user_id', $this->loggedUser->id)->one();
+        
         $packages = PackageHandler::getPackage();
+        $packagesPartner = PackageHandler::getPackageIdPartner($partnerId);
+        
         $partners = Partner::select()->execute();
+        // echo"<pre>";
+        // print_r($packagesPartner);
+        // exit;
+
+
+        $this->render('listPackages',[
+            'loggedUser'=>$this->loggedUser,
+            'packagesPartner'=>$packagesPartner,
+            'packages' => $packages,
+            'partners' => $partnerId,
+            'page'=>$page
+        ]);
+
+    }
+
+    public function listPackagesPartner() {
+        $partnerId = Partner::select('id')->where('user_id', $this->loggedUser->id)->one();
+        $page = "Lista de Pacotes do sei la parceiro: ".$this->loggedUser->name;
+        
+        
+        // pacote por parceiro SELECT * FROM partners where user_id = 16
+        
+
+        var_dump($partnerId);
+        exit;
         $this->render('listPackages',[
             'loggedUser'=>$this->loggedUser,
             'packages' => $packages,

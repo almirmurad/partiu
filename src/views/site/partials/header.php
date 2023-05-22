@@ -17,8 +17,12 @@
                 </div>
                 <div class="signins">
                     <a class="header-btn" href="<?=$base;?>/parcerias">Anuncie seu Pacote</a>
-                    <a class="header-btn">Cadastre-se</a>
-                    <a class="header-btn">Login</a>
+                    <a class="header-btn"  href="<?=$base;?>/parcerias">Cadastre-se</a>
+                    <?php if(empty($loggedUser)):?>
+                        <a class="header-btn" href="<?=$base;?>/login">Login</a>
+                    <?php else:?>
+                        <a class="header-btn" href="<?=$base;?>/logout">Sair</a>
+                    <?php endif?>
                 </div>
             </div>
             <div class="area-api">

@@ -2,6 +2,8 @@
 namespace src\controllers\site;
 
 use core\ControllerSite;
+
+use src\handlers\LoginHandler;
 use src\models\RoadMap;
 use src\handlers\site\SubCatsSiteHandler;
 use src\handlers\site\RMSiteHandler;
@@ -9,6 +11,15 @@ use src\handlers\site\EventsSiteHandler;
 use src\handlers\site\BannerSiteHandler;
 
 class RMController extends ControllerSite{
+
+    private $loggedUser;
+
+    public function __construct()
+    {   
+        $this->loggedUser = LoginHandler::checkLogin();
+  
+    }
+
     public function index() {
         $roadMaps = RMSiteHandler::roadMaps();
         $eventsFoot = EventsSiteHandler::eventsFoot();  
@@ -22,7 +33,8 @@ class RMController extends ControllerSite{
             'categories'=>$categories,
             'eventsFoot'=>$eventsFoot,
             'internalPublicity'=>$internalBanner,
-            'publicityFoot'=>$publicityFoot
+            'publicityFoot'=>$publicityFoot,
+            'loggedUser'=>$this->loggedUser,
         ]);
     }
 
@@ -44,7 +56,8 @@ class RMController extends ControllerSite{
             'categories'=> $categories,
             'eventsFoot'=>$eventsFoot,
             'internalPublicity'=>$internalBanner,
-            'publicityFoot'=>$publicityFoot
+            'publicityFoot'=>$publicityFoot,
+            'loggedUser'=>$this->loggedUser,
         ]);
     }
 
@@ -65,7 +78,8 @@ class RMController extends ControllerSite{
             'eventsFoot'=>$eventsFoot,
             'idPageCat'=>$args,
             'internalPublicity'=>$internalBanner,
-            'publicityFoot'=>$publicityFoot
+            'publicityFoot'=>$publicityFoot,
+            'loggedUser'=>$this->loggedUser,
         ]);
     }
 }

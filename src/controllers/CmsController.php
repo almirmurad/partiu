@@ -3,7 +3,7 @@ namespace src\controllers;
 
 use \core\ControllerGerenciador;
 use \src\handlers\LoginHandler;
-use \src\handlers\PackageHandler;
+use \src\handlers\gerenciador\DashboardHandler;
 
 class CmsController extends ControllerGerenciador {
 
@@ -20,18 +20,41 @@ class CmsController extends ControllerGerenciador {
     public function index() {
         $page = "Dashboard";
         $loggedUser = $this->loggedUser = LoginHandler::checkLogin();
-        $dash = PackageHandler::dash();
-        
+        $packageDash = DashboardHandler::packageDash();
+        $newsDash = DashboardHandler::newsDash();
+        $partnerDash = DashboardHandler::partnerDash();
+        $postDash = DashboardHandler::postDash();
+        $roadmapDash = DashboardHandler::roadmapDash();
+        $eventDash = DashboardHandler::eventDash();
+        $userDash = DashboardHandler::userDash();
+        $newsletterDash = DashboardHandler::newsletterDash();
+        $bannerDash = DashboardHandler::bannerDash();
+
         // echo"<pre>";
-        // print_r($dash);
+        // print_r($packageDash);
         // exit;
                
         $this->render('home', [
             'page' => $page,
             'loggedUser'=>$loggedUser,
-            'totalPack'=>$dash['total'],
-            'totalActive'=>$dash['totalActive'],
-            'totalForaPrazo' =>$dash['totalForaPrazo'],
+            'totalPack'=>$packageDash['total'],
+            'totalActive'=>$packageDash['totalActive'],
+            'totalForaPrazo' =>$packageDash['totalForaPrazo'],
+            'totalNews'=>$newsDash['total'],
+            'totalNewsActive'=>$newsDash['totalActive'],
+            'totalPartner'=>$partnerDash['total'],
+            'totalPartnerActive'=>$partnerDash['totalActive'],
+            'totalPost'=>$postDash['total'],
+            'totalPostActive'=>$postDash['totalActive'],
+            'totalRoadmap'=>$roadmapDash['total'],
+            'totalRoadmapActive'=>$roadmapDash['totalActive'],
+            'totalEvent'=>$eventDash['total'],
+            'totalEventActive'=>$eventDash['totalActive'],
+            'totalUser'=>$userDash['total'],
+            'totalUserActive'=>$userDash['totalActive'],
+            'totalNewsletter'=>$newsletterDash['total'],
+            'totalBanner'=>$bannerDash['total'],
+            'totalBannerActive'=>$bannerDash['totalActive'],
         ]);
     }
 
